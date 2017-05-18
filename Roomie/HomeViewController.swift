@@ -44,6 +44,85 @@ class HomeViewController: UIViewController {
         choreButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         choreButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
     }
+    
+    let billButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor.blue
+        button.setTitle("Bills", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    func setupBillButton() {
+        billButton.leftAnchor.constraint(equalTo: choreButton.rightAnchor).isActive = true
+        billButton.topAnchor.constraint(equalTo: ButtonsContainer.topAnchor).isActive = true
+        billButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        billButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    let roommateButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor.gray
+        button.setTitle("Roommate", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    func setupRoommateButton() {
+        roommateButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
+        roommateButton.topAnchor.constraint(equalTo: choreButton.bottomAnchor).isActive = true
+        roommateButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        roommateButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    let groceriesButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor.black
+        button.setTitle("Groceries", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    func setupGroceriesButton() {
+        groceriesButton.leftAnchor.constraint(equalTo: roommateButton.rightAnchor).isActive = true
+        groceriesButton.topAnchor.constraint(equalTo: billButton.bottomAnchor).isActive = true
+        groceriesButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        groceriesButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    let profileButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor.orange
+        button.setTitle("Profile", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    func setupProfileButton() {
+        profileButton.rightAnchor.constraint(equalTo: ButtonsContainer.rightAnchor).isActive = true
+        profileButton.topAnchor.constraint(equalTo: groceriesButton.bottomAnchor).isActive = true
+        profileButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        profileButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+
+    let blankButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor.cyan
+        button.setTitle("Profile", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    func setupBlankButton() {
+        blankButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
+        blankButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
+        blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+
+    
+    //////////////
+    // VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
@@ -51,24 +130,19 @@ class HomeViewController: UIViewController {
         view.addSubview(ButtonsContainer)
         setupButtonsContainer()
         ButtonsContainer.addSubview(choreButton)
+        ButtonsContainer.addSubview(billButton)
+        ButtonsContainer.addSubview(roommateButton)
+        ButtonsContainer.addSubview(groceriesButton)
+        ButtonsContainer.addSubview(profileButton)
+        ButtonsContainer.addSubview(blankButton)
+        setupBlankButton()
+        setupProfileButton()
+        setupGroceriesButton()
+        setupRoommateButton()
         setupChoreButton()
+        setupBillButton()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
