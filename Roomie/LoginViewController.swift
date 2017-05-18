@@ -93,8 +93,8 @@ class LoginViewController: UIViewController {
     func loggedIn() {
         
         //present(HomeViewController(), animated: true, completion: nil)
-        let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        let objVC: HomeViewController? = HomeViewController()
+        let navController = UINavigationController(rootViewController: objVC!) // Creating a navigation controller with VC1 at the root of the navigation stack.
         self.present(navController, animated:true, completion: nil)
         
     }

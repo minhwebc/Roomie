@@ -119,13 +119,19 @@ class HomeViewController: UIViewController {
         blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
     }
-
+    
+    ////// 
+    // LOGOUT FUNCTION
+    func handleLogout() {
+        present(LoginViewController(), animated: true, completion: nil)
+    }
     
     //////////////
     // VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(handleLogout))
         view.backgroundColor = UIColor.blue
         view.addSubview(ButtonsContainer)
         setupButtonsContainer()
