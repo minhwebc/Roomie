@@ -32,8 +32,10 @@ class LoginViewController: UIViewController {
         setupEmail()
         inputContainer.addSubview(password)
         setupPassword()
-
-        
+        inputContainer.addSubview(nameSeparator)
+        setupNameSeparator()
+        inputContainer.addSubview(emailSeparator)
+        setupEmailSeparator()
     }
     
     let name:UITextField = {
@@ -50,6 +52,21 @@ class LoginViewController: UIViewController {
         name.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
     }
     
+    let nameSeparator:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupNameSeparator() {
+        nameSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
+        nameSeparator.topAnchor.constraint(equalTo: name.bottomAnchor).isActive = true
+        nameSeparator.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
+        nameSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+   
     let email:UITextField = {
         let email = UITextField()
         email.placeholder = "Email"
@@ -65,6 +82,21 @@ class LoginViewController: UIViewController {
         email.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
         
     }
+    
+    let emailSeparator:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupEmailSeparator() {
+        emailSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
+        emailSeparator.topAnchor.constraint(equalTo: email.bottomAnchor).isActive = true
+        emailSeparator.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
+        emailSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
     
     let password:UITextField = {
         let pass = UITextField()
@@ -99,7 +131,6 @@ class LoginViewController: UIViewController {
     
     func loggedIn() {
         
-        //present(HomeViewController(), animated: true, completion: nil)
         let objVC: HomeViewController? = HomeViewController()
         let navController = UINavigationController(rootViewController: objVC!) // Creating a navigation controller with VC1 at the root of the navigation stack.
         self.present(navController, animated:true, completion: nil)
