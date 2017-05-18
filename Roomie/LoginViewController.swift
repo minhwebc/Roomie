@@ -26,6 +26,13 @@ class LoginViewController: UIViewController {
         inputContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputContainer.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         inputContainer.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        inputContainer.addSubview(name)
+        setupName()
+        inputContainer.addSubview(email)
+        setupEmail()
+        inputContainer.addSubview(password)
+        setupPassword()
+
         
     }
     
@@ -107,12 +114,6 @@ class LoginViewController: UIViewController {
         view.addSubview(inputContainer)
         // Do any additional setup after loading the view.
         setupInputContainer()
-        inputContainer.addSubview(name)
-        setupName()
-        inputContainer.addSubview(email)
-        setupEmail()
-        inputContainer.addSubview(password)
-        setupPassword()
         view.addSubview(loginButton)
         setupLoginButton()
         loginButton.addTarget(self, action: #selector(loggedIn), for: .touchUpInside)

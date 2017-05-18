@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     //////////////////////////////////////////
     /////////////////////////
     ////// SET UP THE BUTTONS TO CLICK AND GO TO OTHER VIEWS
+    
     let ButtonsContainer:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.green
@@ -26,7 +27,19 @@ class HomeViewController: UIViewController {
         ButtonsContainer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         ButtonsContainer.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         ButtonsContainer.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-
+        
+        ButtonsContainer.addSubview(choreButton)
+        ButtonsContainer.addSubview(billButton)
+        ButtonsContainer.addSubview(roommateButton)
+        ButtonsContainer.addSubview(groceriesButton)
+        ButtonsContainer.addSubview(profileButton)
+        ButtonsContainer.addSubview(blankButton)
+        setupBlankButton()
+        setupProfileButton()
+        setupGroceriesButton()
+        setupRoommateButton()
+        setupChoreButton()
+        setupBillButton()
     }
 
     
@@ -108,7 +121,7 @@ class HomeViewController: UIViewController {
     let blankButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor.cyan
-        button.setTitle("Profile", for: .normal)
+        button.setTitle("Blank", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -135,18 +148,6 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor.blue
         view.addSubview(ButtonsContainer)
         setupButtonsContainer()
-        ButtonsContainer.addSubview(choreButton)
-        ButtonsContainer.addSubview(billButton)
-        ButtonsContainer.addSubview(roommateButton)
-        ButtonsContainer.addSubview(groceriesButton)
-        ButtonsContainer.addSubview(profileButton)
-        ButtonsContainer.addSubview(blankButton)
-        setupBlankButton()
-        setupProfileButton()
-        setupGroceriesButton()
-        setupRoommateButton()
-        setupChoreButton()
-        setupBillButton()
         // Do any additional setup after loading the view.
     }
 
