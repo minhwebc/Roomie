@@ -56,6 +56,11 @@ class HomeViewController: UIViewController {
         choreButton.topAnchor.constraint(equalTo: ButtonsContainer.topAnchor).isActive = true
         choreButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         choreButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        choreButton.addTarget(self, action: #selector(choreButtonClicked), for: .touchUpInside)
+    }
+    
+    func choreButtonClicked() {
+        self.navigationController?.pushViewController(ChoresViewController(), animated: true)
     }
     
     let billButton:UIButton = {
@@ -71,6 +76,11 @@ class HomeViewController: UIViewController {
         billButton.topAnchor.constraint(equalTo: ButtonsContainer.topAnchor).isActive = true
         billButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         billButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        billButton.addTarget(self, action: #selector(billButtonClicked), for: .touchUpInside)
+    }
+    
+    func billButtonClicked() {
+        self.navigationController?.pushViewController(BillsViewController(), animated: true)
     }
     
     let roommateButton:UIButton = {
@@ -86,6 +96,11 @@ class HomeViewController: UIViewController {
         roommateButton.topAnchor.constraint(equalTo: choreButton.bottomAnchor).isActive = true
         roommateButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         roommateButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        roommateButton.addTarget(self, action: #selector(roommateButtonClicked), for: .touchUpInside)
+    }
+    
+    func roommateButtonClicked() {
+        self.navigationController?.pushViewController(RoommateViewController(), animated: true)
     }
     
     let groceriesButton:UIButton = {
@@ -101,6 +116,11 @@ class HomeViewController: UIViewController {
         groceriesButton.topAnchor.constraint(equalTo: billButton.bottomAnchor).isActive = true
         groceriesButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         groceriesButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        groceriesButton.addTarget(self, action: #selector(groceriesButtonClicked), for: .touchUpInside)
+    }
+    
+    func groceriesButtonClicked()  {
+        self.navigationController?.pushViewController(GroceriesViewController(), animated: true)
     }
     
     let profileButton:UIButton = {
@@ -116,8 +136,13 @@ class HomeViewController: UIViewController {
         profileButton.topAnchor.constraint(equalTo: groceriesButton.bottomAnchor).isActive = true
         profileButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         profileButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
     }
-
+    
+    func profileButtonClicked() {
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
+    
     let blankButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor.cyan
