@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934094221ECE50CF00B06C9E /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094211ECE50CF00B06C9E /* ChoresViewController.swift */; };
+		934094241ECE50E400B06C9E /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094231ECE50E400B06C9E /* BillsViewController.swift */; };
+		934094261ECE50FE00B06C9E /* RoommateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094251ECE50FE00B06C9E /* RoommateViewController.swift */; };
+		934094281ECE511800B06C9E /* GroceriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094271ECE511800B06C9E /* GroceriesViewController.swift */; };
+		9340942A1ECE512B00B06C9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094291ECE512B00B06C9E /* ProfileViewController.swift */; };
 		93ACF7F81ECD8B620093432E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ACF7F71ECD8B620093432E /* AppDelegate.swift */; };
 		93ACF7FA1ECD8B630093432E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ACF7F91ECD8B630093432E /* LoginViewController.swift */; };
 		93ACF7FD1ECD8B630093432E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93ACF7FB1ECD8B630093432E /* Main.storyboard */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		934094211ECE50CF00B06C9E /* ChoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
+		934094231ECE50E400B06C9E /* BillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillsViewController.swift; sourceTree = "<group>"; };
+		934094251ECE50FE00B06C9E /* RoommateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoommateViewController.swift; sourceTree = "<group>"; };
+		934094271ECE511800B06C9E /* GroceriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceriesViewController.swift; sourceTree = "<group>"; };
+		934094291ECE512B00B06C9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		93ACF7F41ECD8B620093432E /* Roomie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93ACF7F71ECD8B620093432E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93ACF7F91ECD8B630093432E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +112,11 @@
 				93ACF7F71ECD8B620093432E /* AppDelegate.swift */,
 				93ACF7F91ECD8B630093432E /* LoginViewController.swift */,
 				93ACF8251ECD8C610093432E /* HomeViewController.swift */,
+				934094211ECE50CF00B06C9E /* ChoresViewController.swift */,
+				934094231ECE50E400B06C9E /* BillsViewController.swift */,
+				934094251ECE50FE00B06C9E /* RoommateViewController.swift */,
+				934094271ECE511800B06C9E /* GroceriesViewController.swift */,
+				934094291ECE512B00B06C9E /* ProfileViewController.swift */,
 				93ACF7FB1ECD8B630093432E /* Main.storyboard */,
 				93ACF7FE1ECD8B630093432E /* Assets.xcassets */,
 				93ACF8001ECD8B630093432E /* LaunchScreen.storyboard */,
@@ -265,8 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934094261ECE50FE00B06C9E /* RoommateViewController.swift in Sources */,
+				934094281ECE511800B06C9E /* GroceriesViewController.swift in Sources */,
+				934094221ECE50CF00B06C9E /* ChoresViewController.swift in Sources */,
 				93ACF7FA1ECD8B630093432E /* LoginViewController.swift in Sources */,
+				934094241ECE50E400B06C9E /* BillsViewController.swift in Sources */,
 				93ACF7F81ECD8B620093432E /* AppDelegate.swift in Sources */,
+				9340942A1ECE512B00B06C9E /* ProfileViewController.swift in Sources */,
 				93ACF8261ECD8C610093432E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -407,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -421,6 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 74EN4ZDAGB;
 				INFOPLIST_FILE = Roomie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Drammeh.Roomie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 74EN4ZDAGB;
 				INFOPLIST_FILE = Roomie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Drammeh.Roomie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,6 +540,7 @@
 				93ACF81E1ECD8B630093432E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93ACF81F1ECD8B630093432E /* Build configuration list for PBXNativeTarget "RoomieTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +549,7 @@
 				93ACF8211ECD8B630093432E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93ACF8221ECD8B630093432E /* Build configuration list for PBXNativeTarget "RoomieUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +558,7 @@
 				93ACF8241ECD8B630093432E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
