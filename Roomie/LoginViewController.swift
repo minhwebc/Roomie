@@ -9,7 +9,24 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    let loginSignup:UISegmentedControl = {
+        let items = ["Login", "Join Now"]
+        let seg = UISegmentedControl(items: items)
+        seg.selectedSegmentIndex = 0
+        //seg.backgroundColor = UIColor.blue
+        seg.tintColor = UIColor.white
+        seg.layer.cornerRadius = 10
+        seg.translatesAutoresizingMaskIntoConstraints = false
+        return seg
+    }()
+    
+    func setupSegmentedControl() {
+        loginSignup.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginSignup.bottomAnchor.constraint(equalTo: inputContainer.topAnchor, constant: -12).isActive = true
+        loginSignup.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
+        loginSignup.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 1/2).isActive = true    }
+    
     let inputContainer:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -139,13 +156,16 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.lightGray
+        //view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.jpg")!)
         
         // add inputContainer as a subview
         view.addSubview(inputContainer)
         // Do any additional setup after loading the view.
         setupInputContainer()
         view.addSubview(loginButton)
+        view.addSubview(loginSignup)
+        setupSegmentedControl()
         setupLoginButton()
         loginButton.addTarget(self, action: #selector(loggedIn), for: .touchUpInside)
         
