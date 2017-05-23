@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let loginSignup:UISegmentedControl = {
-        let items = ["Login", "Join Now"]
+        let items = ["Login", "Register"]
         let seg = UISegmentedControl(items: items)
         seg.selectedSegmentIndex = 0
         //seg.backgroundColor = UIColor.blue
@@ -22,14 +22,23 @@ class LoginViewController: UIViewController {
     }()
     
     func setupSegmentedControl() {
+        loginSignup.addTarget(self, action: #selector (handleLoginRegisterChange), for: .valueChanged)
         loginSignup.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginSignup.bottomAnchor.constraint(equalTo: inputContainer.topAnchor, constant: -12).isActive = true
         loginSignup.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
-        loginSignup.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 1/2).isActive = true    }
+        loginSignup.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 1/2).isActive = true
+    }
+    
+    func handleLoginRegisterChange()  {
+        let title = loginSignup.titleForSegment(at: loginSignup.selectedSegmentIndex)
+        loginButton.setTitle(title, for: .normal)
+    }
     
     let inputContainer:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
+        //self.userEmailTextField.layer.mask = rectShape
+        //self.userEmailTextField.layer.backgroundColor = UIColor.clear.cgColor
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +51,7 @@ class LoginViewController: UIViewController {
         inputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputContainer.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        inputContainer.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        inputContainer.heightAnchor.constraint(equalToConstant: 200).isActive = true
         inputContainer.addSubview(name)
         setupName()
         inputContainer.addSubview(email)
@@ -57,7 +66,9 @@ class LoginViewController: UIViewController {
     
     let name:UITextField = {
         let name = UITextField()
-        name.placeholder = "Name"
+        name.attributedPlaceholder = NSAttributedString(string:"Full Name", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        name.tintColor = .white
+        name.textColor = UIColor.white
         name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()
@@ -66,12 +77,12 @@ class LoginViewController: UIViewController {
         name.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         name.topAnchor.constraint(equalTo: inputContainer.topAnchor).isActive = true
         name.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
-        name.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
+        name.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
     }
     
     let nameSeparator:UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor.lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -84,9 +95,44 @@ class LoginViewController: UIViewController {
     }
     
    
+    let groupName:UITextField = {
+        let groupName = UITextField()
+        groupName.attributedPlaceholder = NSAttributedString(string:"Group Name", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        groupName.tintColor = .white
+        groupName.textColor = UIColor.white
+        groupName.translatesAutoresizingMaskIntoConstraints = false
+        return groupName
+    }()
+    
+    func setupGroupName() {
+        groupName.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
+        groupName.topAnchor.constraint(equalTo: inputContainer.topAnchor).isActive = true
+        groupName.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
+        groupName.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
+    }
+    
+    let groupNameSeparator:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupGroupNameSeparator() {
+        groupNameSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
+        groupNameSeparator.topAnchor.constraint(equalTo: name.bottomAnchor).isActive = true
+        groupNameSeparator.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
+        groupNameSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+
+    
     let email:UITextField = {
         let email = UITextField()
-        email.placeholder = "Email"
+       // email.placeholder = "Email"
+        email.attributedPlaceholder = NSAttributedString(string:"Email", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        email.tintColor = .white
+        email.textColor = .white
         email.translatesAutoresizingMaskIntoConstraints = false
         return email
     }()
@@ -96,13 +142,13 @@ class LoginViewController: UIViewController {
         email.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         email.topAnchor.constraint(equalTo: name.bottomAnchor).isActive = true
         email.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
-        email.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
+        email.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
         
     }
     
     let emailSeparator:UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor.lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -117,7 +163,9 @@ class LoginViewController: UIViewController {
     
     let password:UITextField = {
         let pass = UITextField()
-        pass.placeholder = "Password"
+        pass.attributedPlaceholder = NSAttributedString(string:"Password", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        pass.tintColor = .white
+        pass.textColor = .white
         pass.translatesAutoresizingMaskIntoConstraints = false
         pass.isSecureTextEntry = true
         return pass
@@ -127,13 +175,17 @@ class LoginViewController: UIViewController {
         password.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         password.topAnchor.constraint(equalTo: email.bottomAnchor).isActive = true
         password.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
-        password.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
+        password.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
     }
     
     let loginButton:UIButton = {
         var button = UIButton()
-        button.backgroundColor = UIColor.red
-        button.setTitle("SIGN IN", for: .normal)
+        button.backgroundColor = UIColor.clear
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.cornerRadius = 20
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        button.setTitle("Login", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -143,7 +195,7 @@ class LoginViewController: UIViewController {
         loginButton.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
         loginButton.topAnchor.constraint(equalTo: inputContainer.bottomAnchor, constant: 12).isActive = true
         loginButton.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
-        loginButton.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/3).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func loggedIn() {
@@ -156,7 +208,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = UIColor.lightGray
+        UIApplication.shared.statusBarStyle = .lightContent
         view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.jpg")!)
         
         // add inputContainer as a subview
@@ -171,6 +223,9 @@ class LoginViewController: UIViewController {
         
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
