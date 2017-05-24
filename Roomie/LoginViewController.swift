@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     //////
     /// Defining elements in the login screen
     
+    // This is a view that contains the name,email,password,
+    // and Groupname textFields
     let inputContainer:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
@@ -24,6 +26,7 @@ class LoginViewController: UIViewController {
         
     }()
     
+    // This is the login/register button
     let loginSignup:UISegmentedControl = {
         let items = ["Login", "Register"]
         let seg = UISegmentedControl(items: items)
@@ -34,15 +37,13 @@ class LoginViewController: UIViewController {
         return seg
     }()
     
+    // Name TextField
     let name:UITextField = {
         let name = UITextField()
-        name.attributedPlaceholder = NSAttributedString(string:"Full Name", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
-        name.tintColor = .white
-        name.textColor = UIColor.white
-        name.translatesAutoresizingMaskIntoConstraints = false
         return name
     }()
     
+    // This is the line below the Name TextField
     let nameSeparator:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.lightGray
@@ -50,15 +51,13 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    // This is the groupName textField
     let groupName:UITextField = {
         let groupName = UITextField()
-        groupName.attributedPlaceholder = NSAttributedString(string:"Group Name", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
-        groupName.tintColor = .white
-        groupName.textColor = UIColor.white
-        groupName.translatesAutoresizingMaskIntoConstraints = false
         return groupName
     }()
     
+    // This is the line below the groupName TextField
     let groupNameSeparator:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.lightGray
@@ -66,16 +65,13 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    // Email TextField
     let email:UITextField = {
         let email = UITextField()
-        // email.placeholder = "Email"
-        email.attributedPlaceholder = NSAttributedString(string:"Email", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
-        email.tintColor = .white
-        email.textColor = .white
-        email.translatesAutoresizingMaskIntoConstraints = false
         return email
     }()
     
+    // This is the line below the email TextField
     let emailSeparator:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.lightGray
@@ -83,16 +79,14 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    // This is the password textField
     let password:UITextField = {
         let pass = UITextField()
-        pass.attributedPlaceholder = NSAttributedString(string:"Password", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
-        pass.tintColor = .white
-        pass.textColor = .white
-        pass.translatesAutoresizingMaskIntoConstraints = false
         pass.isSecureTextEntry = true
         return pass
     }()
     
+    // This is the login/register button
     let loginButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor.clear
@@ -110,6 +104,7 @@ class LoginViewController: UIViewController {
     //////
     /// Constraining elements in the login screen
     
+    // constraints for the segmented control
     func setupSegmentedControl() {
         loginSignup.addTarget(self, action: #selector (handleLoginRegisterChange), for: .valueChanged)
         loginSignup.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -118,6 +113,8 @@ class LoginViewController: UIViewController {
         loginSignup.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 1/2).isActive = true
     }
     
+    // constraints for the view that contains the textfields
+    // also adding the textfields as subviews
     func setupInputContainer() {
         // contraint inputContainer
         inputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -144,15 +141,18 @@ class LoginViewController: UIViewController {
         setupEmailSeparator()
     }
     
+    // constraints for the Name textfield
     func setupName() {
         name.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         name.topAnchor.constraint(equalTo: inputContainer.topAnchor).isActive = true
         name.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         name.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
+        
+        addPropertiesToTextFields(txtField: name, placeholder: "Name")
     }
     
     
-    
+    // constraints for the line below the Name textfield
     func setupNameSeparator() {
         nameSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
         nameSeparator.topAnchor.constraint(equalTo: name.bottomAnchor).isActive = true
@@ -160,17 +160,17 @@ class LoginViewController: UIViewController {
         nameSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    
-    
+    // constraints for the GroupName textfield
     func setupGroupName() {
         groupName.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         groupName.topAnchor.constraint(equalTo: name.bottomAnchor).isActive = true
         groupName.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         groupName.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
+        addPropertiesToTextFields(txtField: groupName, placeholder: "Group Name")
     }
     
     
-    
+    // constraints for the line below the groupName textfield
     func setupGroupNameSeparator() {
         groupNameSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
         groupNameSeparator.topAnchor.constraint(equalTo: groupName.bottomAnchor).isActive = true
@@ -178,20 +178,17 @@ class LoginViewController: UIViewController {
         groupNameSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    
-    
-    
+    // constraints for the Email textfield
     func setupEmail() {
-        // email Contraints
         email.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         email.topAnchor.constraint(equalTo: groupName.bottomAnchor).isActive = true
         email.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         email.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
+        addPropertiesToTextFields(txtField: email, placeholder: "Email")
         
     }
     
-    
-    
+    // constraints for the line below the email textfield
     func setupEmailSeparator() {
         emailSeparator.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
         emailSeparator.topAnchor.constraint(equalTo: email.bottomAnchor).isActive = true
@@ -199,21 +196,22 @@ class LoginViewController: UIViewController {
         emailSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    
-    
-    
+    // constraints for the password textField
     func setupPassword() {
         password.leftAnchor.constraint(equalTo: inputContainer.leftAnchor, constant: 12).isActive = true
         password.topAnchor.constraint(equalTo: email.bottomAnchor).isActive = true
         password.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         password.heightAnchor.constraint(equalTo: inputContainer.heightAnchor, multiplier: 1/4).isActive = true
+        addPropertiesToTextFields(txtField: password, placeholder: "Password")
     }
     
+    // constraints for the login/register button
     func setupLoginButton() {
         loginButton.leftAnchor.constraint(equalTo: inputContainer.leftAnchor).isActive = true
         loginButton.topAnchor.constraint(equalTo: inputContainer.bottomAnchor, constant: 12).isActive = true
         loginButton.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginButton.addTarget(self, action: #selector(loggedIn), for: .touchUpInside)
     }
     
     ///////////////////
@@ -221,34 +219,54 @@ class LoginViewController: UIViewController {
     /// Functions to handle button clicks and segmented control .valueChanged
     /// Also includes function to add properties to the textFields
     
+    // Function to know wheather the user is going to 
+    // login or register according to the segmented control
     func handleLoginRegisterChange()  {
         let title = loginSignup.titleForSegment(at: loginSignup.selectedSegmentIndex)
         loginButton.setTitle(title, for: .normal)
     }
     
+    // Function for when login/register button is clicked
     func loggedIn() {
+        // authentication need to happen here 
+        
+        // push to the home screen after login or registration
+        // has been authenticated
         let objVC: HomeViewController? = HomeViewController()
         let navController = UINavigationController(rootViewController: objVC!)
         self.present(navController, animated:true, completion: nil)
     }
     
+    // Function to add properties to uiTextFields
+    func addPropertiesToTextFields(txtField:UITextField,placeholder:String) {
+        txtField.attributedPlaceholder = NSAttributedString(string:placeholder, attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        txtField.tintColor = .white
+        txtField.textColor = .white
+        txtField.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    ///////////////////
+    //////
+    /// ViewDidLoad, where we call all the major functions
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
         view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.jpg")!)
-        
-        // add inputContainer as a subview
+        // Add segmented control, view containing textfields
+        // and login/register button to the main view
         view.addSubview(inputContainer)
-        // Do any additional setup after loading the view.
-        setupInputContainer()
         view.addSubview(loginButton)
         view.addSubview(loginSignup)
+        
+        // Constraint functions for th respective elements
+        setupInputContainer()
         setupSegmentedControl()
         setupLoginButton()
-        loginButton.addTarget(self, action: #selector(loggedIn), for: .touchUpInside)
         
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
