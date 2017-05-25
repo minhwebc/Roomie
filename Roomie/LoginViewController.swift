@@ -347,7 +347,7 @@ class LoginViewController: UIViewController {
             })
             
         }
-    }
+    }// end of login function
     
     // Function to add properties to uiTextFields
     func addPropertiesToTextFields(txtField:UITextField,placeholder:String) {

@@ -36,12 +36,12 @@
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeViewController" id="ma1-1P-gz1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91555601358413696" green="0.36120352149009705" blue="0.43528902530670166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.55294117647058827" green="0.67450980392156867" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rc-Kz-9qo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="38"/>
+            <point key="canvasLocation" x="841" y="127"/>
         </scene>
     </scenes>
 </document>

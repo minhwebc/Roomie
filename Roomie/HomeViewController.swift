@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     //////////////////////////////////////////
     /////////////////////////
-    ////// SET UP THE BUTTONS TO CLICK AND GO TO OTHER VIEWS
+    ////// Defining the blocks on the home screen
     
     let ButtonsContainer:UIView = {
         let view = UIView()
@@ -21,28 +21,6 @@ class HomeViewController: UIViewController {
         
     }()
     
-    func setupButtonsContainer() {
-        // contraint inputContainer
-        ButtonsContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        ButtonsContainer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        ButtonsContainer.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        ButtonsContainer.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        
-        ButtonsContainer.addSubview(choreButton)
-        ButtonsContainer.addSubview(billButton)
-        ButtonsContainer.addSubview(roommateButton)
-        ButtonsContainer.addSubview(groceriesButton)
-        ButtonsContainer.addSubview(profileButton)
-        ButtonsContainer.addSubview(blankButton)
-        setupBlankButton()
-        setupProfileButton()
-        setupGroceriesButton()
-        setupRoommateButton()
-        setupChoreButton()
-        setupBillButton()
-    }
-
-    
     let choreButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
@@ -51,6 +29,81 @@ class HomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    let billButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
+        button.setTitle("Bills", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let roommateButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor(red: 242/255.0, green:206/255.0 , blue: 176/255.0 ,alpha:1)
+        button.setTitle("Roommate", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let groceriesButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
+        button.setTitle("Groceries", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let blankButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
+        button.setTitle("Blank", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let profileButton:UIButton = {
+        var button = UIButton()
+        button.backgroundColor = UIColor(red: 45/255.0, green:35/255.0 , blue: 53/255.0 ,alpha:1)
+        button.setTitle("Profile", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    //////////////////////////////////////////
+    /////////////////////////
+    ////// Constraining and adding action to the blocks on the home screen
+    
+    func setupButtonsContainer() {
+        // contraint Buttons Container
+        ButtonsContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        ButtonsContainer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        ButtonsContainer.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ButtonsContainer.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
+        // adding the buttons as subviews
+        ButtonsContainer.addSubview(choreButton)
+        ButtonsContainer.addSubview(billButton)
+        ButtonsContainer.addSubview(roommateButton)
+        ButtonsContainer.addSubview(groceriesButton)
+        ButtonsContainer.addSubview(profileButton)
+        ButtonsContainer.addSubview(blankButton)
+        
+        // calling constrain methods for buttons
+        setupBlankButton()
+        setupProfileButton()
+        setupGroceriesButton()
+        setupRoommateButton()
+        setupChoreButton()
+        setupBillButton()
+    }
+    
+    // constrain chore button
     func setupChoreButton() {
         choreButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
         choreButton.topAnchor.constraint(equalTo: ButtonsContainer.topAnchor).isActive = true
@@ -63,14 +116,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(ChoresViewController(), animated: true)
     }
     
-    let billButton:UIButton = {
-        var button = UIButton()
-        button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
-        button.setTitle("Bills", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    // constrain bill button
     func setupBillButton() {
         billButton.leftAnchor.constraint(equalTo: choreButton.rightAnchor).isActive = true
         billButton.topAnchor.constraint(equalTo: ButtonsContainer.topAnchor).isActive = true
@@ -83,14 +129,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(BillsViewController(), animated: true)
     }
     
-    let roommateButton:UIButton = {
-        var button = UIButton()
-        button.backgroundColor = UIColor.gray
-        button.setTitle("Roommate", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    // constrain roommate button
     func setupRoommateButton() {
         roommateButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
         roommateButton.topAnchor.constraint(equalTo: choreButton.bottomAnchor).isActive = true
@@ -103,14 +142,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(RoommateViewController(), animated: true)
     }
     
-    let groceriesButton:UIButton = {
-        var button = UIButton()
-        button.backgroundColor = UIColor.black
-        button.setTitle("Groceries", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    // constrain groceries button
     func setupGroceriesButton() {
         groceriesButton.leftAnchor.constraint(equalTo: roommateButton.rightAnchor).isActive = true
         groceriesButton.topAnchor.constraint(equalTo: billButton.bottomAnchor).isActive = true
@@ -123,14 +155,15 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(GroceriesViewController(), animated: true)
     }
     
-    let profileButton:UIButton = {
-        var button = UIButton()
-        button.backgroundColor = UIColor.orange
-        button.setTitle("Profile", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    // constrain black button
+    func setupBlankButton() {
+        blankButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
+        blankButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
+        blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+    }
+    
+    // constrain profile button
     func setupProfileButton() {
         profileButton.rightAnchor.constraint(equalTo: ButtonsContainer.rightAnchor).isActive = true
         profileButton.topAnchor.constraint(equalTo: groceriesButton.bottomAnchor).isActive = true
@@ -143,20 +176,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
     
-    let blankButton:UIButton = {
-        var button = UIButton()
-        button.backgroundColor = UIColor.cyan
-        button.setTitle("Blank", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    func setupBlankButton() {
-        blankButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
-        blankButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
-        blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
-        blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
-    }
+    
+   
     
     ////// 
     // LOGOUT FUNCTION
