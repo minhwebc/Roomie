@@ -288,11 +288,35 @@ class LoginViewController: UIViewController {
     }
     
     ///////////////////
+    ///////////
+    ///// Moving view when typing in text fields and keyboard is covering textfields
+    
+    // dismiss keyboard when you tab on view
+    func dismissKeyboard() {
+        view.endEditing(true)
+        view.frame.origin.y = 0
+    }
+    
+    // move view when keyboard is shown
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 130
+            }
+        }
+    }
+    // move keyboard when keyboard is hidden
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height - 130
+            }
+        }
+    }
+    
+    ///////////////////
     //////
     /// ViewDidLoad, where we call all the major functions
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.jpg")!)
@@ -307,12 +331,23 @@ class LoginViewController: UIViewController {
         setupSegmentedControl()
         setupLoginButton()
         
-    }
+        // Getting notification for keyboard showing and hiding
+        NotificationCenter.default.addObserver(self, selector: #selector (keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Tag gesture to hide keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    
+    } // end of view did load
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
 
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
