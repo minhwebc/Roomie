@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     let ButtonsContainer:UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.green
+        view.backgroundColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     
     let choreButton:UIButton = {
         var button = UIButton()
-        button.backgroundColor = UIColor.red
+        button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         button.setTitle("Chores", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     
     let billButton:UIButton = {
         var button = UIButton()
-        button.backgroundColor = UIColor.blue
+        button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         button.setTitle("Bills", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
