@@ -24,54 +24,36 @@ class HomeViewController: UIViewController {
     let choreButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
-        button.setTitle("Chores", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let billButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
-        button.setTitle("Bills", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let roommateButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 242/255.0, green:206/255.0 , blue: 176/255.0 ,alpha:1)
-        button.setTitle("Roommate", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let groceriesButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
-        button.setTitle("Groceries", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let blankButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
-        button.setTitle("Blank", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let profileButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 45/255.0, green:35/255.0 , blue: 53/255.0 ,alpha:1)
-        button.setTitle("Profile", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -110,6 +92,7 @@ class HomeViewController: UIViewController {
         choreButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         choreButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
         choreButton.addTarget(self, action: #selector(choreButtonClicked), for: .touchUpInside)
+        btnProperties(btn: choreButton, name: "CHORES")
     }
     
     func choreButtonClicked() {
@@ -123,6 +106,7 @@ class HomeViewController: UIViewController {
         billButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         billButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
         billButton.addTarget(self, action: #selector(billButtonClicked), for: .touchUpInside)
+        btnProperties(btn: billButton, name: "BILLS")
     }
     
     func billButtonClicked() {
@@ -136,6 +120,7 @@ class HomeViewController: UIViewController {
         roommateButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         roommateButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
         roommateButton.addTarget(self, action: #selector(roommateButtonClicked), for: .touchUpInside)
+        btnProperties(btn: roommateButton, name: "GROUP")
     }
     
     func roommateButtonClicked() {
@@ -149,6 +134,7 @@ class HomeViewController: UIViewController {
         groceriesButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         groceriesButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
         groceriesButton.addTarget(self, action: #selector(groceriesButtonClicked), for: .touchUpInside)
+        btnProperties(btn: groceriesButton, name: "GROCERIES")
     }
     
     func groceriesButtonClicked()  {
@@ -161,6 +147,7 @@ class HomeViewController: UIViewController {
         blankButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
         blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        btnProperties(btn: blankButton, name: "BLANK")
     }
     
     // constrain profile button
@@ -170,6 +157,7 @@ class HomeViewController: UIViewController {
         profileButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
         profileButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
+        btnProperties(btn: profileButton, name: "PROFILE")
     }
     
     func profileButtonClicked() {
@@ -177,12 +165,16 @@ class HomeViewController: UIViewController {
     }
     
     
-   
-    
-    ////// 
     // LOGOUT FUNCTION
     func handleLogout() {
         present(LoginViewController(), animated: true, completion: nil)
+    }
+    
+    func btnProperties(btn:UIButton,name:String) {
+        btn.setTitle(name, for: .normal)
+        btn.titleLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
     }
     
     //////////////

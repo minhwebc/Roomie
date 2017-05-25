@@ -13,7 +13,7 @@ class BillsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         // Do any additional setup after loading the view.
     }
 

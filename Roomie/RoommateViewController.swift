@@ -13,7 +13,7 @@ class RoommateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(red: 242/255.0, green:206/255.0 , blue: 176/255.0 ,alpha:1)
         // Do any additional setup after loading the view.
     }
 

@@ -13,7 +13,7 @@ class ChoresViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         // Do any additional setup after loading the view.
     }
 

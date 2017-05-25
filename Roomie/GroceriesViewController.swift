@@ -13,7 +13,7 @@ class GroceriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
 
         // Do any additional setup after loading the view.
     }
