@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
+
 
 class LoginViewController: UIViewController {
     
@@ -17,6 +21,11 @@ class LoginViewController: UIViewController {
     var emailTextFieldHeightAnchor : NSLayoutConstraint?
     var passwordTextFieldHeightAnchor : NSLayoutConstraint?
     var groupNameTextFieldHeightAnchor : NSLayoutConstraint?
+    var logInAction : Bool = false;
+    var ref: DatabaseReference!
+    var sessionManager : SessionManager = SessionManager();
+    
+
     
     ///////////////////
     //////
@@ -237,6 +246,7 @@ class LoginViewController: UIViewController {
     // login or register according to the segmented control
     // and also to adjust the textFields to hide the nameTextField
     func handleLoginRegisterChange()  {
+        logInAction = true;
         //changing the title of the login/register button
         let title = loginSignup.titleForSegment(at: loginSignup.selectedSegmentIndex)
         loginButton.setTitle(title, for: .normal)
@@ -274,9 +284,69 @@ class LoginViewController: UIViewController {
         
         // push to the home screen after login or registration
         // has been authenticated
-        let objVC: HomeViewController? = HomeViewController()
-        let navController = UINavigationController(rootViewController: objVC!)
-        self.present(navController, animated:true, completion: nil)
+        
+        if(!logInAction){ //check if this is log in or register
+            let groupName = self.groupName.text!;
+
+            ref.child("groups").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild(groupName){
+                    
+                    print("group exist")
+                }else{
+                    print("false room doesn't exist")
+                    let usersRef = self.ref.child("groups/\(groupName)/users");
+                    let key : String = usersRef.childByAutoId().key;
+                    let userRef = self.ref.child("groups/\(groupName)/users/\(key)");
+                    let user = ["name": self.name.text!,
+                                "email": self.email.text!,
+                                "password": self.password.text!]
+                    userRef.updateChildValues(user);
+                    self.sessionManager.insertUserDetails(groupName, self.name.text!, self.email.text!, key)
+                    self.sessionManager.userLoggedIn()
+                    let objVC: HomeViewController? = HomeViewController()
+                    let navController = UINavigationController(rootViewController: objVC!)
+                    self.present(navController, animated:true, completion: nil)
+                }
+            })
+        }else{
+            let groupName = self.groupName.text!;
+            
+            ref.child("groups").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild(groupName){
+                    
+                    print("group exist")
+                    let groupRef = self.ref.child("groups/\(groupName)")
+                    
+                    groupRef.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                            
+                            guard let restDict = rest.value as? [String: Any] else { continue }
+                            let email = restDict["email"] as? String
+                            if(email == self.email.text!){
+                               let password = restDict["password"] as? String
+                                if(password == self.password.text!){
+                                    self.sessionManager.insertUserDetails(groupName, self.name.text!, self.email.text!, rest.key)
+                                    self.sessionManager.userLoggedIn()
+                                    let objVC: HomeViewController? = HomeViewController()
+                                    let navController = UINavigationController(rootViewController: objVC!)
+                                    self.present(navController, animated:true, completion: nil)
+                                }else{
+                                    print("wrong password");
+                                }
+                            }else{
+                                print("wrong email");
+                            }
+                        }
+                    })
+                }else{
+                    print("false room doesn't exist")
+                }
+            })
+            
+        }
     }
     
     // Function to add properties to uiTextFields
@@ -295,6 +365,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+
         view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.jpg")!)
         // Add segmented control, view containing textfields
         // and login/register button to the main view
@@ -302,6 +374,7 @@ class LoginViewController: UIViewController {
         view.addSubview(loginButton)
         view.addSubview(loginSignup)
         
+
         // Constraint functions for th respective elements
         setupInputContainer()
         setupSegmentedControl()
