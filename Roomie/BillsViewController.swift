@@ -7,19 +7,53 @@
 //
 
 import UIKit
+import Floaty
 
-class BillsViewController: UIViewController {
+class BillsViewController: UITabBarController, UITabBarControllerDelegate {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
+        
         // Do any additional setup after loading the view.
+        self.delegate = self;
+        let floaty = Floaty()
+        floaty.addItem("I got a handler", icon: UIImage(named: "backgroundImage.jpg")!, handler: { item in
+            let alert = UIAlertController(title: "Hey", message: "Add a bill", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            floaty.close()
+        })
+        self.view.addSubview(floaty)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        let tabOne = TabOneViewController()
+        let tabOneBarItem = UITabBarItem();
+        tabOne.tabBarItem = tabOneBarItem;
+        
+        // Create Tab two
+        let tabTwo = TabTwoViewController()
+        let tabTwoBarItem2 = UITabBarItem()
+        
+        tabTwo.tabBarItem = tabTwoBarItem2
+        
+        
+        self.viewControllers = [tabOne, tabTwo]
+    }
+    
+    // UITabBarControllerDelegate method
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("Selected \(viewController.title!)")
     }
     
 
@@ -33,4 +67,33 @@ class BillsViewController: UIViewController {
     }
     */
 
+}
+
+class TabOneViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
+        self.title = "Bills"
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+
+class TabTwoViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.red
+        self.title = "My Bills"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }

@@ -19,6 +19,6 @@ target 'Roomie' do
  
 pod 'Firebase/Core'
 pod 'Firebase/Database'
-
+pod "Floaty", "~> 3.0.0"
 
 end

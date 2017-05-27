@@ -15,6 +15,7 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
+  - Floaty (3.0.0)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
@@ -22,6 +23,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - Floaty (~> 3.0.0)
 
 SPEC CHECKSUMS:
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
@@ -29,8 +31,9 @@ SPEC CHECKSUMS:
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  Floaty: d1be5d323094f0de422bb615452d00ba26ac74dd
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
 
-PODFILE CHECKSUM: 993b75b3d4a78744c3db10db4917d0bab9f6fccd
+PODFILE CHECKSUM: e097533e5d43d7fb3ebeeb86e1c768bf1f4c2ae2
 
 COCOAPODS: 1.2.1
