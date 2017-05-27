@@ -8,8 +8,24 @@
 
 import UIKit
 
-class ChoresViewController: UIViewController {
+class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    ////////////////////////////
+    //////////////
+    //// Define UI Elements to add chores
+    
+    // Array to contain chores
+    var chores: [Dictionary<String,String>] = []
+    
+    // Table view to display chores
+    let choresTableView:UITableView = {
+        let view = UITableView()
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "choreCell")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // view to enter chore details
     let addChoreView:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -20,6 +36,7 @@ class ChoresViewController: UIViewController {
         
     }()
     
+    // button to cancel adding a chore
     let cancelButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor.blue
@@ -31,6 +48,7 @@ class ChoresViewController: UIViewController {
         return button
     }()
     
+    // button to save a chore
     let saveButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor.blue
@@ -42,7 +60,7 @@ class ChoresViewController: UIViewController {
         return button
     }()
     
-    // Title TextField
+    // Title of chore TextField
     let titleTextField:UITextField = {
         let txt = UITextField()
         txt.attributedPlaceholder = NSAttributedString(string:"Title", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
@@ -52,7 +70,7 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
-    // Description TextView
+    // Description of chore TextView
     let descTextField:UITextView = {
         let txt = UITextView()
         txt.layer.borderWidth = 1
@@ -61,6 +79,7 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
+    // label to describe adding a chore view
     let addChoreViewTitleLabel:UILabel = {
         let txt = UILabel()
         txt.text = "Add New Chore"
@@ -69,6 +88,7 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
+    // label to identify title of chore TextField
     let titleLabel:UILabel = {
         let txt = UILabel()
         txt.text = "Title:"
@@ -77,6 +97,7 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
+    // label to identify desc of chore TextField
     let descLabel:UILabel = {
         let txt = UILabel()
         txt.text = "Desc:"
@@ -85,6 +106,7 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
+    // label to identify due date of chore datePicker
     let dueDateLabel:UILabel = {
         let txt = UILabel()
         txt.text = "Due Date:"
@@ -93,40 +115,45 @@ class ChoresViewController: UIViewController {
         return txt
     }()
     
+    // date picker for due date
     let dueDatePicker:UIDatePicker = {
         let due = UIDatePicker()
         due.timeZone = NSTimeZone.local
         due.backgroundColor = UIColor.clear
         due.tintColor = UIColor.black
         due.datePickerMode = .date
-        
-        
         due.translatesAutoresizingMaskIntoConstraints = false
         return due
     }()
     
+    
+    ////////////////////////////
+    //////////////
+    //// Constrain UI elemnets to view and addchore view
     
     func constrainAddChoreView() {
         addChoreView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         addChoreView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5).isActive = true
         addChoreView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/2).isActive = true
         addChoreView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -3).isActive = true
+        
+        // adding subviews
         addChoreView.addSubview(cancelButton)
         addChoreView.addSubview(saveButton)
-        constrainSaveButton()
-        constrainCancelButton()
-        
-        // to be added
         addChoreView.addSubview(titleTextField)
-        constrainTitleTextField()
         addChoreView.addSubview(descTextField)
-        constrainDescTextField()
         addChoreView.addSubview(addChoreViewTitleLabel)
-        constrainAddChoreViewTitleLabel()
         addChoreView.addSubview(titleLabel)
         addChoreView.addSubview(descLabel)
         addChoreView.addSubview(dueDatePicker)
         addChoreView.addSubview(dueDateLabel)
+        
+        // constraining subviews
+        constrainSaveButton()
+        constrainCancelButton()
+        constrainDescTextField()
+        constrainTitleTextField()
+        constrainAddChoreViewTitleLabel()
         constrainDueDateLabel()
         constrainDescLabel()
         constrainTitleLabel()
@@ -191,28 +218,131 @@ class ChoresViewController: UIViewController {
         dueDatePicker.topAnchor.constraint(equalTo: dueDateLabel.bottomAnchor, constant: 10).isActive = true
     }
     
+    func constrainChoreTableView()  {
+        choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        choresTableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+    }
+    
+    ////////////////////////////
+    //////////////
+    //// Other functional functions to add a chore
+    
+    // function to add a subview to be able to add a chore
     func addChore()  {
         self.view.addSubview(addChoreView)
         constrainAddChoreView()
     }
     
+    // function for when the user cancels adding chore
     func handleCancel() {
+        titleTextField.text = ""
+        descTextField.text = ""
         self.addChoreView.removeFromSuperview()
     }
     
+    // function for when a user saves a chore
     func handleSave() {
-        print(titleTextField.text!)
-        print(descTextField.text!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let selectedDate = dateFormatter.string(from: dueDatePicker.date)
+        let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: ","assignee":"Assigned to: ","dueDate":"Due on: \(selectedDate)"]
+        chores.append(dict)
+        choresTableView.reloadData()
+        dueDatePicker.date = NSDate() as Date
+        titleTextField.text = ""
+        descTextField.text = ""
         self.addChoreView.removeFromSuperview()
     }
 
+    ////////////////////////////
+    //////////////
+    //// Setup table view to display chores added
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chores.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
+        
+        // extra labels to display on each cell
+        let AssignedToLabel:UILabel = {
+            let label = UILabel()
+            //label.text = "Assigned to: "+"username"
+            label.textAlignment = NSTextAlignment.right
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let dueDateLabelOnCell:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.right
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        // setup extra labels in each cell
+        AssignedToLabel.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        AssignedToLabel.text = chores[indexPath.row]["assignee"]!+"username"
+        dueDateLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        dueDateLabelOnCell.text = chores[indexPath.row]["dueDate"]!
+        
+        // add label as subviews in each cell
+        cell.addSubview(AssignedToLabel)
+        cell.addSubview(dueDateLabelOnCell)
+        
+        //contrain extra labels on cell
+        AssignedToLabel.bottomAnchor.constraint(equalTo: (cell.detailTextLabel?.bottomAnchor)!).isActive = true
+        AssignedToLabel.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        
+        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
+        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        
+        // cell setup
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.textLabel?.text = chores[indexPath.row]["title"]
+        cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!+"username"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // swipe to delete chore
+            self.choresTableView.beginUpdates()
+            self.chores.remove(at: indexPath.row)
+            self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.choresTableView.endUpdates()
+        }
+    }
 
+    ////////////////////////////
+    //////////////
+    //// ViewDidLoad to call all the major functions 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
+        choresTableView.dataSource = self
+        choresTableView.delegate = self
+        view.addSubview(choresTableView)
+        constrainChoreTableView()
+        self.choresTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+        self.choresTableView.tableFooterView = UIView()
         view.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
-        // Do any additional setup after loading the view.
     }
     
     
