@@ -287,15 +287,20 @@ class LoginViewController: UIViewController {
         
         if(!logInAction){ //check if this is log in or register
             let groupName = self.groupName.text!;
-
-            ref.child("groups").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                if snapshot.hasChild(groupName){
-                    
-                    print("group exist")
-                }else{
-                    print("false room doesn't exist")
-                    let usersRef = self.ref.child("groups/\(groupName)/users");
+            var foundUser : Bool = false;
+                let usersRef = self.ref.child("groups/\(groupName)/users");
+                usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                    guard let restDict = rest.value as? [String: Any] else { continue }
+                    let email = restDict["email"] as? String
+                    if(email != nil && email == self.email.text!){
+                        foundUser = true;
+                        let alert = UIAlertController(title: "Alert", message: "User is already existed in the specified group, you should login intead of register", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                if(!foundUser){
                     let key : String = usersRef.childByAutoId().key;
                     let userRef = self.ref.child("groups/\(groupName)/users/\(key)");
                     let user = ["name": self.name.text!,
@@ -304,9 +309,7 @@ class LoginViewController: UIViewController {
                     userRef.updateChildValues(user);
                     self.sessionManager.insertUserDetails(groupName, self.name.text!, self.email.text!, key)
                     self.sessionManager.userLoggedIn()
-                    let objVC: HomeViewController? = HomeViewController()
-                    let navController = UINavigationController(rootViewController: objVC!)
-                    self.present(navController, animated:true, completion: nil)
+                    self.moveToHomePage()
                 }
             })
         }else{
@@ -318,7 +321,7 @@ class LoginViewController: UIViewController {
                     
                     print("group exist")
                     let groupRef = self.ref.child("groups/\(groupName)")
-                    
+                    var foundUSer : Bool = false;
                     groupRef.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                         
                         for rest in snapshot.children.allObjects as! [DataSnapshot] {
@@ -328,6 +331,7 @@ class LoginViewController: UIViewController {
                             if(email == self.email.text!){
                                let password = restDict["password"] as? String
                                 if(password == self.password.text!){
+                                    foundUSer = true;
                                     self.sessionManager.insertUserDetails(groupName, self.name.text!, self.email.text!, rest.key)
                                     self.sessionManager.userLoggedIn()
                                     let objVC: HomeViewController? = HomeViewController()
@@ -340,14 +344,28 @@ class LoginViewController: UIViewController {
                                 print("wrong email");
                             }
                         }
+                        if(!foundUSer){
+                            let alert = UIAlertController(title: "Alert", message: "Wrong group, email and password combination", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     })
                 }else{
-                    print("false room doesn't exist")
+                    let alert = UIAlertController(title: "Alert", message: "No group with the provided name is found, you should register your group instead of login", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
             
         }
     }// end of login function
+    
+    //move to home page
+    func moveToHomePage(){
+        let objVC: HomeViewController? = HomeViewController()
+        let navController = UINavigationController(rootViewController: objVC!)
+        self.present(navController, animated:true, completion: nil)
+    }
     
     // Function to add properties to uiTextFields
     func addPropertiesToTextFields(txtField:UITextField,placeholder:String) {
@@ -411,7 +429,10 @@ class LoginViewController: UIViewController {
         // Tag gesture to hide keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-    
+        
+        if(self.sessionManager.isLoggedIn()){
+            moveToHomePage()
+        }
     } // end of view did load
     
     

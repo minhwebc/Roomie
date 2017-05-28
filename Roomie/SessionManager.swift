@@ -20,7 +20,7 @@ class SessionManager: NSObject {
     
     //return whether or not the user is logged in
     public func isLoggedIn() -> Bool{
-        return SessionManager.loggedIn;
+        return UserDefaults.standard.bool(forKey: "loggedIn");
     }
     
     
@@ -40,6 +40,7 @@ class SessionManager: NSObject {
         UserDefaults.standard.set(userName, forKey: self.userName)
         UserDefaults.standard.set(email, forKey: self.userEmail)
         UserDefaults.standard.set(id, forKey: self.userID)
+        UserDefaults.standard.set(true, forKey: "loggedIn")
     }
     
     //If user logged in, updated the state
