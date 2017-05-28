@@ -285,7 +285,7 @@ class LoginViewController: UIViewController {
         // push to the home screen after login or registration
         // has been authenticated
         
-        if(!logInAction){ //check if this is log in or register
+        if(loginButton.currentTitle == "Register"){ //check if this is log in or register
             let groupName = self.groupName.text!;
             var foundUser : Bool = false;
                 let usersRef = self.ref.child("groups/\(groupName)/users");
