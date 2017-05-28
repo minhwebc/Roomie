@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Roomie
@@ -425,6 +426,23 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // This is the login/register button
+//    let loginButton:UIButton = {
+//        var button = UIButton()
+//        button.backgroundColor = UIColor.clear
+//        button.layer.borderWidth = 1
+//        button.layer.borderColor = UIColor.white.cgColor
+//        button.layer.cornerRadius = 20
+//        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+//        button.setTitle("Register", for: .normal)
+//        button.setTitleColor(UIColor.white, for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+
+    
+    
 
 
 }

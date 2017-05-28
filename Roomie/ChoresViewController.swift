@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     ////////////////////////////
     //////////////
     //// Define UI Elements to add chores
+    
+    let rootRef = Database.database().reference()
+    let sessionManager = SessionManager()
+    let dateFormatter = DateFormatter()
     
     // Array to contain chores
     var chores: [Dictionary<String,String>] = []
@@ -242,16 +247,31 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     // function for when a user saves a chore
     func handleSave() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
         let selectedDate = dateFormatter.string(from: dueDatePicker.date)
-        let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: ","assignee":"Assigned to: ","dueDate":"Due on: \(selectedDate)"]
-        chores.append(dict)
-        choresTableView.reloadData()
-        dueDatePicker.date = NSDate() as Date
-        titleTextField.text = ""
-        descTextField.text = ""
-        self.addChoreView.removeFromSuperview()
+        
+        
+        if let title = titleTextField.text {
+            let desc = descTextField.text ?? ""
+            let userName = sessionManager.getUserDetails()["userName"]!
+            
+            let choresRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores")
+            let key : String = choresRef.childByAutoId().key
+            choresRef.child("\(key)/title").setValue(title)
+            choresRef.child("\(key)/description").setValue(desc)
+            choresRef.child("\(key)/create_on").setValue(dateFormatter.string(from: Date()))
+            choresRef.child("\(key)/due_on").setValue(selectedDate)
+            choresRef.child("\(key)/creator").setValue(userName)
+            print("add chore successfully!")
+            let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: \(userName)","assignee":"Assigned to: ","dueDate":"Due on: \(selectedDate)", "id": "\(key)"]
+            
+            chores.append(dict)
+            refreshTable()
+        }
+        else {
+            print("title field cannot be empty!")
+        }
+        
+        
     }
 
     ////////////////////////////
@@ -305,7 +325,7 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         // cell setup
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.textLabel?.text = chores[indexPath.row]["title"]
-        cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!+"username"
+        cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!
         return cell
     }
     
@@ -321,6 +341,10 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
     {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete chore
+            
+            rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores")
+            rootRef.child("tasks/\(chores[indexPath.row]["id"]!)").setValue(nil)
+            
             self.choresTableView.beginUpdates()
             self.chores.remove(at: indexPath.row)
             self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
@@ -337,7 +361,22 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         self.edgesForExtendedLayout = []
         choresTableView.dataSource = self
         choresTableView.delegate = self
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        initTable()
+        
+        // add the toolbar to the view.
+        self.view.addSubview(toolbar)
+        toolbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        toolbar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 5).isActive = true
+//        toolbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/2).isActive = true
+//        toolbar.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -3).isActive = true
+        
         view.addSubview(choresTableView)
+        
         constrainChoreTableView()
         self.choresTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         self.choresTableView.tableFooterView = UIView()
@@ -345,11 +384,56 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
     }
     
+    func initTable() {
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores").observeSingleEvent(of: .value, with: { (snap) in
+            let values = snap.value as! NSDictionary
+            for key in values.allKeys{
+                let value = values[key] as! NSDictionary
+                let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                self.chores.append(dict as! [String : String])
+                self.refreshTable()
+            }
+            
+        })
+    }
     
+    func refreshTable() {
+        choresTableView.reloadData()
+        dueDatePicker.date = NSDate() as Date
+        titleTextField.text = ""
+        descTextField.text = ""
+        self.addChoreView.removeFromSuperview()
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var toolbar: UIToolbar = {
+        // make uitoolbar instance
+        let myToolbar = UIToolbar()
+        
+        // set the color of the toolbar
+        //myToolbar.barStyle = .blackTranslucent
+        myToolbar.tintColor = UIColor.white
+        myToolbar.backgroundColor = UIColor.black
+        myToolbar.translatesAutoresizingMaskIntoConstraints = false
+        // make a button
+        let myUIBarButtonGreen: UIBarButtonItem = UIBarButtonItem(title: "Green", style:.plain, target: self, action: Selector(("onClickBarButton:")))
+        myUIBarButtonGreen.tag = 1
+        
+        let myUIBarButtonBlue: UIBarButtonItem = UIBarButtonItem(title: "Blue", style:.plain, target: self, action: Selector(("onClickBarButton:")))
+        myUIBarButtonBlue.tag = 2
+        
+        let myUIBarButtonRed: UIBarButtonItem = UIBarButtonItem(title: "Red", style:.plain, target: self, action: Selector(("onClickBarButton:")))
+        myUIBarButtonRed.tag = 3
+        
+        // add the buttons on the toolbar
+        myToolbar.items = [myUIBarButtonGreen, myUIBarButtonBlue, myUIBarButtonRed]
+        
+        return myToolbar
+    }()
 
 }
