@@ -243,12 +243,10 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     
     // function for when a user saves a chore
     func handleSave() {
-        let selectedDate = dateFormatter.string(from: dueDatePicker.date)
-        
+        let selectedDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!)
         
         if let title = titleTextField.text {
             let desc = descTextField.text ?? ""
-            let userName = sessionManager.getUserDetails()["userName"]!
             
             let choresRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores")
             let key : String = choresRef.childByAutoId().key
@@ -337,7 +335,6 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         
         let AssignToButtonOnCell: UIButton = {
             let button = UIButton()
-            button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
             button.setTitle("Assign To", for: .normal)
             button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 7)
             button.setTitleColor(UIColor.white, for: .normal)
@@ -404,6 +401,15 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         AssignToButtonOnCell.tag = indexPath.row
         AssignToButtonOnCell.addTarget(self, action: #selector(handleChoresAssignment(_:)), for: .touchUpInside)
         
+        if alreadyAssigned {
+            AssignToButtonOnCell.isEnabled = false
+            AssignToButtonOnCell.backgroundColor = UIColor.gray
+        }
+        else {
+            AssignToButtonOnCell.isEnabled = true
+            AssignToButtonOnCell.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+        }
+        
         if choresTableView.rectForRow(at: indexPath).height == EXPAND_HEIGHT {
             detailViewOnCell.isHidden = false
         }
@@ -458,13 +464,19 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete chore
+            if chores[indexPath.row]["creator"] == userName {
+                rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores/\(chores[indexPath.row]["id"]!)").setValue(nil)
+                
+                self.choresTableView.beginUpdates()
+                self.chores.remove(at: indexPath.row)
+                self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                self.choresTableView.endUpdates()
+            }
+            else {
+                chores.remove(at: indexPath.row)
+                choresTableView.reloadData()
+            }
             
-            rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores/\(chores[indexPath.row]["id"]!)").setValue(nil)
-            
-            self.choresTableView.beginUpdates()
-            self.chores.remove(at: indexPath.row)
-            self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            self.choresTableView.endUpdates()
         }
     }
 
@@ -497,20 +509,18 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         choresTableView.delegate = self
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        // add the Tabbar to the view.
+        // add and config the Tabbar to the view.
         view.addSubview(tabbar)
-        tabbar.delegate = self
-        tabbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//        tabbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/7).isActive = true
-        tabbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        configTabBar()
         
-        tabbar.backgroundColor = UIColor.gray
-        tabbar.items = [TodoItem, OverdueItem]
-        tabbar.selectedItem = TodoItem
-        
+        getUsername()
         
         view.addSubview(choresTableView)
-        
+        if #available(iOS 10.0, *) {
+            self.choresTableView.refreshControl?.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        } else {
+            // Fallback on earlier versions
+        }
         constrainChoreTableView()
         self.choresTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         self.choresTableView.tableFooterView = UIView()
@@ -518,6 +528,26 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
         
         refreshTable()
+    }
+    
+    var userName = ""
+    func getUsername() {
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users/\(sessionManager.getUserDetails()["userID"]!)").observeSingleEvent(of: .value, with: {
+            (snap) in
+            let value = snap.value as? NSDictionary
+            self.userName = value?["name"] as? String ?? ""
+        })
+    }
+    
+    func configTabBar() {
+        tabbar.delegate = self
+        tabbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        //        tabbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/7).isActive = true
+        tabbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+        tabbar.backgroundColor = UIColor.gray
+        tabbar.items = [TodoItem, OverdueItem]
+        tabbar.selectedItem = TodoItem
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -535,13 +565,21 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
             for key in values.allKeys{
                 let value = values[key] as! NSDictionary
                 let na = "N/A"
-                if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)! <= Date() {
+                
+                if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
+                    if value["assignTo"] == nil {
+                        self.alreadyAssigned = false
+                    }
+                    else {
+                        self.alreadyAssigned = true
+                    }
                     let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
                     self.chores.append(dict as! [String : String])
                 }
                 
-                if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)! > Date() {
-                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
+                    self.alreadyAssigned = true
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
                     self.chores.append(dict as! [String : String])
                 }
                 self.refreshTableData()
