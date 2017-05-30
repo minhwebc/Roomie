@@ -219,7 +219,15 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         dueDatePicker.topAnchor.constraint(equalTo: dueDateLabel.bottomAnchor, constant: 10).isActive = true
     }
     
+    let refreshControl: UIRefreshControl = {
+       return UIRefreshControl()
+    }()
+    
     func constrainChoreTableView()  {
+        // add pull to refresh
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
+        choresTableView.addSubview(refreshControl)
+        
         choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, constant: -60).isActive = true
         choresTableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
     }
@@ -516,11 +524,6 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         getUsername()
         
         view.addSubview(choresTableView)
-        if #available(iOS 10.0, *) {
-            self.choresTableView.refreshControl?.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
-        } else {
-            // Fallback on earlier versions
-        }
         constrainChoreTableView()
         self.choresTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         self.choresTableView.tableFooterView = UIView()
@@ -528,7 +531,36 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
         
         refreshTable()
+        
+        swipeLeft.addTarget(self, action: #selector(handleGesture(gesture:)))
+        swipeRight.addTarget(self, action: #selector(handleGesture(gesture:)))
+        self.view.addGestureRecognizer(swipeLeft)
+        self.view.addGestureRecognizer(swipeRight)
     }
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right && tabbar.selectedItem == OverdueItem {
+            print("Swipe Right")
+            self.tabBar(tabbar, didSelect: TodoItem)
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left && tabbar.selectedItem == TodoItem {
+            print("Swipe Left")
+            self.tabBar(tabbar, didSelect: OverdueItem)
+        }
+    }
+
+    
+    let swipeLeft: UISwipeGestureRecognizer = {
+        let recognizer = UISwipeGestureRecognizer()
+        recognizer.direction = .left
+        return recognizer
+    }()
+    
+    let swipeRight: UISwipeGestureRecognizer = {
+        let recognizer = UISwipeGestureRecognizer()
+        recognizer.direction = .right
+        return recognizer
+    }()
     
     var userName = ""
     func getUsername() {
@@ -556,7 +588,6 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     }
     
     var alreadyAssigned = false
-    
     func refreshTable() {
         chores.removeAll()
         
@@ -583,6 +614,7 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
                     self.chores.append(dict as! [String : String])
                 }
                 self.refreshTableData()
+                self.refreshControl.endRefreshing()
             }
         })
     }
