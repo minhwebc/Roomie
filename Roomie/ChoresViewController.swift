@@ -31,7 +31,7 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 30
-        view.layer.opacity = 0.5
+        view.layer.opacity = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
@@ -220,7 +220,7 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     }
     
     func constrainChoreTableView()  {
-        choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, constant: -60).isActive = true
         choresTableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
     }
     
@@ -266,7 +266,6 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         else {
             print("title field cannot be empty!")
         }
-        
         
     }
 
@@ -402,6 +401,9 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         AssignToButtonOnCell.leftAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -2.5).isActive = true
         AssignToButtonOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
         
+        AssignToButtonOnCell.tag = indexPath.row
+        AssignToButtonOnCell.addTarget(self, action: #selector(handleChoresAssignment(_:)), for: .touchUpInside)
+        
         if choresTableView.rectForRow(at: indexPath).height == EXPAND_HEIGHT {
             detailViewOnCell.isHidden = false
         }
@@ -410,6 +412,14 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         }
         
         return cell
+    }
+    
+    @objc func handleChoresAssignment(_ sender: UIButton) {
+        let vc = UserListViewController()
+        vc.choreID = chores[sender.tag]["id"]
+        vc.choreName = chores[sender.tag]["title"]
+        vc.vc = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -515,6 +525,8 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         refreshTable()
     }
     
+    var alreadyAssigned = false
+    
     func refreshTable() {
         chores.removeAll()
         
@@ -522,8 +534,9 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
             let values = snap.value as! NSDictionary
             for key in values.allKeys{
                 let value = values[key] as! NSDictionary
+                let na = "N/A"
                 if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)! <= Date() {
-                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
                     self.chores.append(dict as! [String : String])
                 }
                 
