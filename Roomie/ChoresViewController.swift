@@ -9,11 +9,7 @@
 import UIKit
 import Firebase
 
-class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    
-    ////////////////////////////
-    //////////////
-    //// Define UI Elements to add chores
+class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
     let rootRef = Database.database().reference()
     let sessionManager = SessionManager()
@@ -29,7 +25,7 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     // view to enter chore details
     let addChoreView:UIView = {
         let view = UIView()
@@ -278,15 +274,12 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //////////////
     //// Setup table view to display chores added
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
         
         // extra labels to display on each cell
@@ -294,6 +287,8 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let label = UILabel()
             //label.text = "Assigned to: "+"username"
             label.textAlignment = NSTextAlignment.right
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -301,32 +296,144 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         let dueDateLabelOnCell:UILabel = {
             let label = UILabel()
             label.textAlignment = NSTextAlignment.right
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
+        let TitleLabel:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let CreatorLabelOnCell:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let detailViewOnCell:UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.white
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+
+        let detailLabelOnCell: UILabel = {
+            let label = UILabel()
+            label.text = self.chores[indexPath.row]["desc"]
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 2
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let AssignToButtonOnCell: UIButton = {
+            let button = UIButton()
+            button.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+            button.setTitle("Assign To", for: .normal)
+            button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 7)
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.layer.cornerRadius = 10
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+        
         // setup extra labels in each cell
         AssignedToLabel.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
-        AssignedToLabel.text = chores[indexPath.row]["assignee"]!+"username"
+        AssignedToLabel.text = chores[indexPath.row]["assignee"]
         dueDateLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
         dueDateLabelOnCell.text = chores[indexPath.row]["dueDate"]!
+        TitleLabel.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        TitleLabel.text = chores[indexPath.row]["title"]!
+        CreatorLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        CreatorLabelOnCell.text = chores[indexPath.row]["creator"]!
         
         // add label as subviews in each cell
         cell.addSubview(AssignedToLabel)
         cell.addSubview(dueDateLabelOnCell)
+        cell.addSubview(TitleLabel)
+        cell.addSubview(CreatorLabelOnCell)
+        cell.addSubview(detailViewOnCell)
         
         //contrain extra labels on cell
-        AssignedToLabel.bottomAnchor.constraint(equalTo: (cell.detailTextLabel?.bottomAnchor)!).isActive = true
-        AssignedToLabel.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.topAnchor), constant: 5).isActive = true
+        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -2.5).isActive = true
+        dueDateLabelOnCell.leftAnchor.constraint(equalTo: TitleLabel.rightAnchor, constant: 2.5).isActive = true
         
-        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
-        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        AssignedToLabel.topAnchor.constraint(equalTo: (dueDateLabelOnCell.bottomAnchor), constant: 5).isActive = true
+        AssignedToLabel.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -2.5).isActive = true
+        AssignedToLabel.leftAnchor.constraint(equalTo: CreatorLabelOnCell.rightAnchor, constant: 2.5).isActive = true
+        
+        TitleLabel.topAnchor.constraint(equalTo: (cell.topAnchor), constant: 5).isActive = true
+        TitleLabel.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 2.5).isActive = true
+        TitleLabel.rightAnchor.constraint(equalTo: dueDateLabelOnCell.leftAnchor, constant: -2.5)
+        
+        CreatorLabelOnCell.topAnchor.constraint(equalTo: (TitleLabel.bottomAnchor), constant: 5).isActive = true
+        CreatorLabelOnCell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 2.5).isActive = true
+        CreatorLabelOnCell.rightAnchor.constraint(equalTo: AssignedToLabel.leftAnchor, constant: -2.5).isActive = true
         
         // cell setup
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.textLabel?.text = chores[indexPath.row]["title"]
-        cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!
+        
+        
+        detailViewOnCell.topAnchor.constraint(equalTo: (CreatorLabelOnCell.bottomAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.leftAnchor.constraint(equalTo: (cell.leftAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.bottomAnchor.constraint(equalTo: (cell.bottomAnchor), constant: -2.5).isActive = true
+        detailViewOnCell.rightAnchor.constraint(equalTo: (cell.rightAnchor), constant: -2.5).isActive = true
+        
+        detailLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!-2)
+        detailViewOnCell.addSubview(detailLabelOnCell)
+        detailViewOnCell.addSubview(AssignToButtonOnCell)
+        
+        detailLabelOnCell.leftAnchor.constraint(equalTo: detailViewOnCell.leftAnchor, constant: 2.5).isActive = true
+        detailLabelOnCell.rightAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -22.5).isActive = true
+        detailLabelOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+            //.topAnchor.constraint(equalTo: detailViewOnCell.topAnchor).isActive = true
+        AssignToButtonOnCell.rightAnchor.constraint(equalTo: detailViewOnCell.rightAnchor, constant: -2.5).isActive = true
+        AssignToButtonOnCell.leftAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -2.5).isActive = true
+        AssignToButtonOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+        
+        if choresTableView.rectForRow(at: indexPath).height == EXPAND_HEIGHT {
+            detailViewOnCell.isHidden = false
+        }
+        else {
+            detailViewOnCell.isHidden = true
+        }
+        
         return cell
+    }
+    
+    
+    var previousIndexPath: IndexPath?
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if previousIndexPath == indexPath {
+            previousIndexPath = nil
+        }
+        else {
+            previousIndexPath = indexPath
+        }
+        self.choresTableView.reloadData()
+    }
+    
+    let EXPAND_HEIGHT = CGFloat(70)
+    let COLLAPSE_HEIGHT = CGFloat(50)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if previousIndexPath == indexPath {
+            return EXPAND_HEIGHT
+        }
+        else {
+            return COLLAPSE_HEIGHT
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -342,8 +449,7 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete chore
             
-            rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores")
-            rootRef.child("tasks/\(chores[indexPath.row]["id"]!)").setValue(nil)
+            rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores/\(chores[indexPath.row]["id"]!)").setValue(nil)
             
             self.choresTableView.beginUpdates()
             self.chores.remove(at: indexPath.row)
@@ -352,9 +458,27 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
 
-    ////////////////////////////
-    //////////////
-    //// ViewDidLoad to call all the major functions 
+    
+    // ViewDidLoad to call all the major functions
+    let tabbar: UITabBar = {
+        let view = UITabBar(frame: CGRect(x: 100, y: 0, width: 40, height: 60))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let TodoItem: UITabBarItem = {
+        let item = UITabBarItem()
+        item.title = "To Do"
+        item.image = #imageLiteral(resourceName: "List-50")
+        return item
+    }()
+    
+    let OverdueItem: UITabBarItem = {
+        let item = UITabBarItem()
+        item.title = "Overdue"
+        item.image = #imageLiteral(resourceName: "Present-50")
+        return item
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -363,17 +487,17 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         choresTableView.delegate = self
         dateFormatter.dateFormat = "dd MMM yyyy"
         
-        initTable()
+        // add the Tabbar to the view.
+        view.addSubview(tabbar)
+        tabbar.delegate = self
+        tabbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//        tabbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/7).isActive = true
+        tabbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
-        // add the toolbar to the view.
-        self.view.addSubview(toolbar)
-        toolbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//        toolbar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 5).isActive = true
-//        toolbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/2).isActive = true
-//        toolbar.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -3).isActive = true
+        tabbar.backgroundColor = UIColor.gray
+        tabbar.items = [TodoItem, OverdueItem]
+        tabbar.selectedItem = TodoItem
+        
         
         view.addSubview(choresTableView)
         
@@ -382,28 +506,42 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         self.choresTableView.tableFooterView = UIView()
         view.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
+        
+        refreshTable()
     }
     
-    func initTable() {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabbar.selectedItem = item
+        refreshTable()
+    }
+    
+    func refreshTable() {
+        chores.removeAll()
+        
         rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores").observeSingleEvent(of: .value, with: { (snap) in
             let values = snap.value as! NSDictionary
             for key in values.allKeys{
                 let value = values[key] as! NSDictionary
-                let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
-                self.chores.append(dict as! [String : String])
-                self.refreshTable()
+                if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)! <= Date() {
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                    self.chores.append(dict as! [String : String])
+                }
+                
+                if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)! > Date() {
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: ","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                    self.chores.append(dict as! [String : String])
+                }
+                self.refreshTableData()
             }
-            
         })
     }
     
-    func refreshTable() {
+    func refreshTableData() {
         choresTableView.reloadData()
         dueDatePicker.date = NSDate() as Date
         titleTextField.text = ""
         descTextField.text = ""
         self.addChoreView.removeFromSuperview()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -411,29 +549,5 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
-    var toolbar: UIToolbar = {
-        // make uitoolbar instance
-        let myToolbar = UIToolbar()
-        
-        // set the color of the toolbar
-        //myToolbar.barStyle = .blackTranslucent
-        myToolbar.tintColor = UIColor.white
-        myToolbar.backgroundColor = UIColor.black
-        myToolbar.translatesAutoresizingMaskIntoConstraints = false
-        // make a button
-        let myUIBarButtonGreen: UIBarButtonItem = UIBarButtonItem(title: "Green", style:.plain, target: self, action: Selector(("onClickBarButton:")))
-        myUIBarButtonGreen.tag = 1
-        
-        let myUIBarButtonBlue: UIBarButtonItem = UIBarButtonItem(title: "Blue", style:.plain, target: self, action: Selector(("onClickBarButton:")))
-        myUIBarButtonBlue.tag = 2
-        
-        let myUIBarButtonRed: UIBarButtonItem = UIBarButtonItem(title: "Red", style:.plain, target: self, action: Selector(("onClickBarButton:")))
-        myUIBarButtonRed.tag = 3
-        
-        // add the buttons on the toolbar
-        myToolbar.items = [myUIBarButtonGreen, myUIBarButtonBlue, myUIBarButtonRed]
-        
-        return myToolbar
-    }()
 
 }
