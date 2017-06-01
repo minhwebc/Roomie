@@ -332,7 +332,7 @@ class LoginViewController: UIViewController {
                                let password = restDict["password"] as? String
                                 if(password == self.password.text!){
                                     foundUSer = true;
-                                    self.sessionManager.insertUserDetails(groupName, self.name.text!, self.email.text!, rest.key)
+                                    self.sessionManager.insertUserDetails(groupName, restDict["name"] as! String, self.email.text!, rest.key)
                                     self.sessionManager.userLoggedIn()
                                     let objVC: HomeViewController? = HomeViewController()
                                     let navController = UINavigationController(rootViewController: objVC!)
@@ -402,6 +402,13 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(self.sessionManager.isLoggedIn()){
+            let objVC: HomeViewController? = HomeViewController()
+            let navController = UINavigationController(rootViewController: objVC!)
+            self.present(navController, animated:true, completion: nil)
+        }
+    }
     ///////////////////
     //////
     /// ViewDidLoad, where we call all the major functions
@@ -429,10 +436,6 @@ class LoginViewController: UIViewController {
         // Tag gesture to hide keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        if(self.sessionManager.isLoggedIn()){
-            moveToHomePage()
-        }
     } // end of view did load
     
     
