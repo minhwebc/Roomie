@@ -119,6 +119,14 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    let logoImageView:UIImageView = {
+        let image = UIImageView()
+        image.backgroundColor = UIColor.white
+        image.contentMode = .scaleToFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     ///////////////////
     //////
     /// Constraining elements in the login screen
@@ -236,6 +244,14 @@ class LoginViewController: UIViewController {
         loginButton.widthAnchor.constraint(equalTo: inputContainer.widthAnchor).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         loginButton.addTarget(self, action: #selector(loggedIn), for: .touchUpInside)
+    }
+    
+    // constrain logo Image view
+    func contrainLogoImageView() {
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginSignup.topAnchor, constant: -12).isActive = true
+        logoImageView.widthAnchor.constraint(equalTo: inputContainer.widthAnchor,multiplier: 1/2).isActive = true
+        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: (UIApplication.shared.statusBarFrame.size.height)).isActive = true
     }
     
     ///////////////////
@@ -416,12 +432,14 @@ class LoginViewController: UIViewController {
         view.addSubview(inputContainer)
         view.addSubview(loginButton)
         view.addSubview(loginSignup)
+        view.addSubview(logoImageView)
         
 
         // Constraint functions for th respective elements
         setupInputContainer()
         setupSegmentedControl()
         setupLoginButton()
+        contrainLogoImageView()
         
         // Getting notification for keyboard showing and hiding
         NotificationCenter.default.addObserver(self, selector: #selector (keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
