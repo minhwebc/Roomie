@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
-class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
-    ////////////////////////////
-    //////////////
-    //// Define UI Elements to add chores
+    let rootRef = Database.database().reference()
+    let sessionManager = SessionManager()
+    let dateFormatter = DateFormatter()
     
     // Array to contain chores
     var chores: [Dictionary<String,String>] = []
@@ -24,13 +25,13 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     // view to enter chore details
     let addChoreView:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 30
-        view.layer.opacity = 0.5
+        view.layer.opacity = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
@@ -218,8 +219,16 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         dueDatePicker.topAnchor.constraint(equalTo: dueDateLabel.bottomAnchor, constant: 10).isActive = true
     }
     
+    let refreshControl: UIRefreshControl = {
+       return UIRefreshControl()
+    }()
+    
     func constrainChoreTableView()  {
-        choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        // add pull to refresh
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
+        choresTableView.addSubview(refreshControl)
+        
+        choresTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, constant: -60).isActive = true
         choresTableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
     }
     
@@ -242,31 +251,40 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     // function for when a user saves a chore
     func handleSave() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
-        let selectedDate = dateFormatter.string(from: dueDatePicker.date)
-        let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: ","assignee":"Assigned to: ","dueDate":"Due on: \(selectedDate)"]
-        chores.append(dict)
-        choresTableView.reloadData()
-        dueDatePicker.date = NSDate() as Date
-        titleTextField.text = ""
-        descTextField.text = ""
-        self.addChoreView.removeFromSuperview()
+        let selectedDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!)
+        
+        if let title = titleTextField.text {
+            let desc = descTextField.text ?? ""
+            
+            let choresRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores")
+            let key : String = choresRef.childByAutoId().key
+            choresRef.child("\(key)/title").setValue(title)
+            choresRef.child("\(key)/description").setValue(desc)
+            choresRef.child("\(key)/create_on").setValue(dateFormatter.string(from: Date()))
+            choresRef.child("\(key)/due_on").setValue(selectedDate)
+            choresRef.child("\(key)/creator").setValue(userName)
+            print("add chore successfully!")
+            let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: \(userName)","assignee":"Assigned to: ","dueDate":"Due on: \(selectedDate)", "id": "\(key)"]
+            
+            chores.append(dict)
+            refreshTable()
+        }
+        else {
+            print("title field cannot be empty!")
+        }
+        
     }
 
     ////////////////////////////
     //////////////
     //// Setup table view to display chores added
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
         
         // extra labels to display on each cell
@@ -274,6 +292,8 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let label = UILabel()
             //label.text = "Assigned to: "+"username"
             label.textAlignment = NSTextAlignment.right
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -281,32 +301,163 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
         let dueDateLabelOnCell:UILabel = {
             let label = UILabel()
             label.textAlignment = NSTextAlignment.right
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
+        let TitleLabel:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let CreatorLabelOnCell:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 1
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let detailViewOnCell:UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.white
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+
+        let detailLabelOnCell: UILabel = {
+            let label = UILabel()
+            label.text = self.chores[indexPath.row]["desc"]
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 2
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let AssignToButtonOnCell: UIButton = {
+            let button = UIButton()
+            button.setTitle("Assign To", for: .normal)
+            button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 7)
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.layer.cornerRadius = 10
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+        
         // setup extra labels in each cell
         AssignedToLabel.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
-        AssignedToLabel.text = chores[indexPath.row]["assignee"]!+"username"
+        AssignedToLabel.text = chores[indexPath.row]["assignee"]
         dueDateLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
         dueDateLabelOnCell.text = chores[indexPath.row]["dueDate"]!
+        TitleLabel.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        TitleLabel.text = chores[indexPath.row]["title"]!
+        CreatorLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+        CreatorLabelOnCell.text = chores[indexPath.row]["creator"]!
         
         // add label as subviews in each cell
         cell.addSubview(AssignedToLabel)
         cell.addSubview(dueDateLabelOnCell)
+        cell.addSubview(TitleLabel)
+        cell.addSubview(CreatorLabelOnCell)
+        cell.addSubview(detailViewOnCell)
         
         //contrain extra labels on cell
-        AssignedToLabel.bottomAnchor.constraint(equalTo: (cell.detailTextLabel?.bottomAnchor)!).isActive = true
-        AssignedToLabel.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.topAnchor), constant: 5).isActive = true
+        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -2.5).isActive = true
+        dueDateLabelOnCell.leftAnchor.constraint(equalTo: TitleLabel.rightAnchor, constant: 2.5).isActive = true
         
-        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
-        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        AssignedToLabel.topAnchor.constraint(equalTo: (dueDateLabelOnCell.bottomAnchor), constant: 5).isActive = true
+        AssignedToLabel.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -2.5).isActive = true
+        AssignedToLabel.leftAnchor.constraint(equalTo: CreatorLabelOnCell.rightAnchor, constant: 2.5).isActive = true
+        
+        TitleLabel.topAnchor.constraint(equalTo: (cell.topAnchor), constant: 5).isActive = true
+        TitleLabel.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 2.5).isActive = true
+        TitleLabel.rightAnchor.constraint(equalTo: dueDateLabelOnCell.leftAnchor, constant: -2.5)
+        
+        CreatorLabelOnCell.topAnchor.constraint(equalTo: (TitleLabel.bottomAnchor), constant: 5).isActive = true
+        CreatorLabelOnCell.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 2.5).isActive = true
+        CreatorLabelOnCell.rightAnchor.constraint(equalTo: AssignedToLabel.leftAnchor, constant: -2.5).isActive = true
         
         // cell setup
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.textLabel?.text = chores[indexPath.row]["title"]
-        cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!+"username"
+        
+        
+        detailViewOnCell.topAnchor.constraint(equalTo: (CreatorLabelOnCell.bottomAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.leftAnchor.constraint(equalTo: (cell.leftAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.bottomAnchor.constraint(equalTo: (cell.bottomAnchor), constant: -2.5).isActive = true
+        detailViewOnCell.rightAnchor.constraint(equalTo: (cell.rightAnchor), constant: -2.5).isActive = true
+        
+        detailLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!-2)
+        detailViewOnCell.addSubview(detailLabelOnCell)
+        detailViewOnCell.addSubview(AssignToButtonOnCell)
+        
+        detailLabelOnCell.leftAnchor.constraint(equalTo: detailViewOnCell.leftAnchor, constant: 2.5).isActive = true
+        detailLabelOnCell.rightAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -22.5).isActive = true
+        detailLabelOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+            //.topAnchor.constraint(equalTo: detailViewOnCell.topAnchor).isActive = true
+        AssignToButtonOnCell.rightAnchor.constraint(equalTo: detailViewOnCell.rightAnchor, constant: -2.5).isActive = true
+        AssignToButtonOnCell.leftAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -2.5).isActive = true
+        AssignToButtonOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+        
+        AssignToButtonOnCell.tag = indexPath.row
+        AssignToButtonOnCell.addTarget(self, action: #selector(handleChoresAssignment(_:)), for: .touchUpInside)
+        
+        if alreadyAssigned {
+            AssignToButtonOnCell.isEnabled = false
+            AssignToButtonOnCell.backgroundColor = UIColor.gray
+        }
+        else {
+            AssignToButtonOnCell.isEnabled = true
+            AssignToButtonOnCell.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+        }
+        
+        if choresTableView.rectForRow(at: indexPath).height == EXPAND_HEIGHT {
+            detailViewOnCell.isHidden = false
+        }
+        else {
+            detailViewOnCell.isHidden = true
+        }
+        
         return cell
+    }
+    
+    @objc func handleChoresAssignment(_ sender: UIButton) {
+        let vc = UserListViewController()
+        vc.choreID = chores[sender.tag]["id"]
+        vc.choreName = chores[sender.tag]["title"]
+        vc.vc = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    var previousIndexPath: IndexPath?
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if previousIndexPath == indexPath {
+            previousIndexPath = nil
+        }
+        else {
+            previousIndexPath = indexPath
+        }
+        self.choresTableView.reloadData()
+    }
+    
+    let EXPAND_HEIGHT = CGFloat(70)
+    let COLLAPSE_HEIGHT = CGFloat(50)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if previousIndexPath == indexPath {
+            return EXPAND_HEIGHT
+        }
+        else {
+            return COLLAPSE_HEIGHT
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -321,35 +472,165 @@ class ChoresViewController: UIViewController,UITableViewDelegate, UITableViewDat
     {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete chore
-            self.choresTableView.beginUpdates()
-            self.chores.remove(at: indexPath.row)
-            self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            self.choresTableView.endUpdates()
+            if chores[indexPath.row]["creator"] == userName {
+                rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores/\(chores[indexPath.row]["id"]!)").setValue(nil)
+                
+                self.choresTableView.beginUpdates()
+                self.chores.remove(at: indexPath.row)
+                self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                self.choresTableView.endUpdates()
+            }
+            else {
+                chores.remove(at: indexPath.row)
+                choresTableView.reloadData()
+            }
+            
         }
     }
 
-    ////////////////////////////
-    //////////////
-    //// ViewDidLoad to call all the major functions 
+    
+    // ViewDidLoad to call all the major functions
+    let tabbar: UITabBar = {
+        let view = UITabBar(frame: CGRect(x: 100, y: 0, width: 40, height: 60))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let TodoItem: UITabBarItem = {
+        let item = UITabBarItem()
+        item.title = "To Do"
+        item.image = #imageLiteral(resourceName: "List-50")
+        return item
+    }()
+    
+    let OverdueItem: UITabBarItem = {
+        let item = UITabBarItem()
+        item.title = "Overdue"
+        item.image = #imageLiteral(resourceName: "Present-50")
+        return item
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         choresTableView.dataSource = self
         choresTableView.delegate = self
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        // add and config the Tabbar to the view.
+        view.addSubview(tabbar)
+        configTabBar()
+        
+        getUsername()
+        
         view.addSubview(choresTableView)
         constrainChoreTableView()
         self.choresTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         self.choresTableView.tableFooterView = UIView()
         view.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChore))
+        
+        refreshTable()
+        
+        swipeLeft.addTarget(self, action: #selector(handleGesture(gesture:)))
+        swipeRight.addTarget(self, action: #selector(handleGesture(gesture:)))
+        self.view.addGestureRecognizer(swipeLeft)
+        self.view.addGestureRecognizer(swipeRight)
     }
     
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right && tabbar.selectedItem == OverdueItem {
+            print("Swipe Right")
+            self.tabBar(tabbar, didSelect: TodoItem)
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left && tabbar.selectedItem == TodoItem {
+            print("Swipe Left")
+            self.tabBar(tabbar, didSelect: OverdueItem)
+        }
+    }
+
     
+    let swipeLeft: UISwipeGestureRecognizer = {
+        let recognizer = UISwipeGestureRecognizer()
+        recognizer.direction = .left
+        return recognizer
+    }()
+    
+    let swipeRight: UISwipeGestureRecognizer = {
+        let recognizer = UISwipeGestureRecognizer()
+        recognizer.direction = .right
+        return recognizer
+    }()
+    
+    var userName = ""
+    func getUsername() {
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users/\(sessionManager.getUserDetails()["userID"]!)").observeSingleEvent(of: .value, with: {
+            (snap) in
+            let value = snap.value as? NSDictionary
+            self.userName = value?["name"] as? String ?? ""
+        })
+    }
+    
+    func configTabBar() {
+        tabbar.delegate = self
+        tabbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        //        tabbar.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/7).isActive = true
+        tabbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+        tabbar.backgroundColor = UIColor.gray
+        tabbar.items = [TodoItem, OverdueItem]
+        tabbar.selectedItem = TodoItem
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabbar.selectedItem = item
+        refreshTable()
+    }
+    
+    var alreadyAssigned = false
+    func refreshTable() {
+        chores.removeAll()
+        
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores").observeSingleEvent(of: .value, with: { (snap) in
+            let values = snap.value as! NSDictionary
+            for key in values.allKeys{
+                let value = values[key] as! NSDictionary
+                let na = "N/A"
+                
+                if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
+                    if value["assignTo"] == nil {
+                        self.alreadyAssigned = false
+                    }
+                    else {
+                        self.alreadyAssigned = true
+                    }
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                    self.chores.append(dict as! [String : String])
+                }
+                
+                if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
+                    self.alreadyAssigned = true
+                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                    self.chores.append(dict as! [String : String])
+                }
+                self.refreshTableData()
+                self.refreshControl.endRefreshing()
+            }
+        })
+    }
+    
+    func refreshTableData() {
+        choresTableView.reloadData()
+        dueDatePicker.date = NSDate() as Date
+        titleTextField.text = ""
+        descTextField.text = ""
+        self.addChoreView.removeFromSuperview()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }
