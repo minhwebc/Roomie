@@ -592,29 +592,31 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         chores.removeAll()
         
         rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores").observeSingleEvent(of: .value, with: { (snap) in
-            let values = snap.value as! NSDictionary
-            for key in values.allKeys{
-                let value = values[key] as! NSDictionary
-                let na = "N/A"
-                
-                if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
-                    if value["assignTo"] == nil {
-                        self.alreadyAssigned = false
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let na = "N/A"
+                    
+                    if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
+                        if value["assignTo"] == nil {
+                            self.alreadyAssigned = false
+                        }
+                        else {
+                            self.alreadyAssigned = true
+                        }
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                        self.chores.append(dict as! [String : String])
                     }
-                    else {
+                    
+                    if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
                         self.alreadyAssigned = true
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
+                        self.chores.append(dict as! [String : String])
                     }
-                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
-                    self.chores.append(dict as! [String : String])
+                    self.refreshTableData()
+                    self.refreshControl.endRefreshing()
                 }
-                
-                if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
-                    self.alreadyAssigned = true
-                    let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)"]
-                    self.chores.append(dict as! [String : String])
-                }
-                self.refreshTableData()
-                self.refreshControl.endRefreshing()
+
             }
         })
     }
