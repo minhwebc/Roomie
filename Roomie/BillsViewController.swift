@@ -15,6 +15,7 @@ import Firebase
 class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
     var ref: DatabaseReference!
+    let dateFormatter = DateFormatter()
 
     
 
@@ -107,7 +108,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         due.timeZone = NSTimeZone.local
         due.backgroundColor = UIColor.clear
         due.tintColor = UIColor.black
-        due.datePickerMode = .dateAndTime
+        due.datePickerMode = .date
         due.translatesAutoresizingMaskIntoConstraints = false
         return due
     }()
@@ -150,8 +151,10 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         addBillView.addSubview(amountLabel)
         addBillView.addSubview(titleLabel)
         addBillView.addSubview(dueDatePicker)
+        
         addBillView.addSubview(dropDownView)
         dropDownView.addSubview(dropDownResult)
+        addBillView.addSubview(dueDateLabel)
 
         
         constrainTitleLabel()
@@ -161,6 +164,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         constrainAmountTextField()
         constrainTitleTextField()
         constrainDueDatePicker()
+        constrainDueDateLabel()
         
         dropDownView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         dropDownView.widthAnchor.constraint(equalTo: addBillView.widthAnchor, constant: -24).isActive = true
@@ -229,17 +233,23 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
     func constrainDueDatePicker() {
         dueDatePicker.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        dueDatePicker.widthAnchor.constraint(equalTo: addBillView.widthAnchor, constant: -24).isActive = true
-        dueDatePicker.rightAnchor.constraint(equalTo: addBillView.rightAnchor, constant: -15).isActive = true
-        dueDatePicker.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 10).isActive = true
+        //dueDatePicker.widthAnchor.constraint(equalTo: addBillView.widthAnchor)
+        dueDatePicker.widthAnchor.constraint(equalTo: addBillView.widthAnchor, constant: -15).isActive = true
+        //dueDatePicker.rightAnchor.constraint(equalTo: addBillView.rightAnchor).isActive = true
+        dueDatePicker.topAnchor.constraint(equalTo: dueDateLabel.bottomAnchor, constant: 10).isActive = true
     }
-    
+    func constrainDueDateLabel() {
+        dueDateLabel.leftAnchor.constraint(equalTo: amountLabel.leftAnchor).isActive = true
+        
+        dueDateLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 10).isActive = true
+    }
     func handleCancel() {
         titleTextField.text = ""
         self.addBillView.removeFromSuperview()
     }
     
     func handleSave(){
+        let selectedDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!)
         let sessionManager : SessionManager = SessionManager()
         var userDetails : [String: String] = sessionManager.getUserDetails()
         let groupName : String = userDetails[sessionManager.groupName]!
@@ -248,8 +258,10 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         let billRef = self.ref.child("groups/\(groupName)/bills/\(key)");
         let bill = ["title": self.titleTextField.text!,
                     "amount": self.amountTextField.text!,
-                    "frequency": self.dropDownResult.text!]
+                    "frequency": self.dropDownResult.text!,
+                    "due": selectedDate]
         billRef.updateChildValues(bill);
+        addBillView.removeFromSuperview();
     }
     
     // function to add a subview to be able to add a chore
