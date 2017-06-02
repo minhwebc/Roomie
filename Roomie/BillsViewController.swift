@@ -273,7 +273,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        dateFormatter.dateFormat = "dd MMM yyyy";
         self.edgesForExtendedLayout = []
         
         // Do any additional setup after loading the view.
@@ -324,11 +324,15 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
 
 }
 
-class TabOneViewController: UIViewController {
+class TabOneViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var firebaseRef : DatabaseReference!
+    let sessionManager = SessionManager()
+    // Array to contain chores
+    var bills: [Dictionary<String,String>] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        // Do any additional setup after loading the view.
+        firebaseRef = Database.database().reference()
+                // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         self.title = "Current Bills"
     }
@@ -337,6 +341,26 @@ class TabOneViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    ////////////////////////////
+    //////////////
+    //// Setup table view to display added bills
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bills.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "billCell");
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
     
 }
 
