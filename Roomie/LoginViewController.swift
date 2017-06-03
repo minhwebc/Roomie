@@ -121,8 +121,9 @@ class LoginViewController: UIViewController {
     
     let logoImageView:UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = UIColor.white
-        image.contentMode = .scaleToFill
+        image.backgroundColor = UIColor.clear
+        image.image = UIImage(named: "logo.png")
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
