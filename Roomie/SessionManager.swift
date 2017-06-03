@@ -14,7 +14,7 @@ class SessionManager: NSObject {
     
     //public variable to have a uniform way of accessing user details
     public var groupName : String = "groupName";
-    public var userName : String = "userName";
+    public var userName : String = "name";
     public var userID : String = "userID";
     public var userEmail : String = "userEmail";
     
@@ -49,9 +49,9 @@ class SessionManager: NSObject {
     }
     
     public func userLoggedOut(){
-        SessionManager.loggedIn = false;
         let appDomain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
+        UserDefaults.standard.set(false, forKey: "loggedIn")
     }
 
 }

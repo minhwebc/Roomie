@@ -1,4 +1,5 @@
 PODS:
+  - DropDown (2)
   - Firebase/Core (4.0.0):
     - FirebaseAnalytics (= 4.0.0)
     - FirebaseCore (= 4.0.0)
@@ -22,12 +23,14 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
 
 DEPENDENCIES:
+  - DropDown (~> 2)
   - Firebase/Core
   - Firebase/Database
   - Floaty (~> 3.0.0)
   - FontAwesome.swift
 
 SPEC CHECKSUMS:
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
@@ -37,6 +40,6 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 60063e3f19ba4801155d4b0f2334ab7585763ab3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
 
-PODFILE CHECKSUM: 89743d44904dc4c916e4f8bb5f501aeb4d42510a
+PODFILE CHECKSUM: d7fae714fc1a6252505adbb6173461f2423e45fc
 
 COCOAPODS: 1.2.1

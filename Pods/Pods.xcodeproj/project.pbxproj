@@ -7,71 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECC2B91BDA7B912CE96C45B655B303A /* DropDown.swift */; };
 		08854A90872207C85BF94B752CADB265 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
-		0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C24B986A09616CC81C260F0FF905FF /* Floaty.swift */; };
+		098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3107235D4EC115060F46FF684C40CB /* DropDownCell.swift */; };
+		0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E1CB7419F2A1936AD2D9F07BFB0ADD /* Floaty.swift */; };
 		15D0B586C90FCD9168B37F705E0652E0 /* Pods-RoomieTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA91B47D2C52AEFC0546F0E2B52F6543 /* Pods-RoomieTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC8921F253F40B13EB28C5A05D6661A /* Floaty-dummy.m */; };
-		24065029085002EAC70A3422A7D39EC1 /* FontAwesome.swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B1F9010AFE3684E03696ECD81614CB0 /* FontAwesome.swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2AE0F58A0988D92438C1448C861A154C /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954516D853B9230F1A456786C2852F /* FontAwesomeImageView.swift */; };
+		1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB9742D5BD4E7F6D2CF98E86C5E7658 /* Floaty-dummy.m */; };
+		24065029085002EAC70A3422A7D39EC1 /* FontAwesome.swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 03BAE7647B3DF9A6C82E925D48E19841 /* FontAwesome.swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AE0F58A0988D92438C1448C861A154C /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237FC6D436C6FC9E92029C5714D08F9 /* FontAwesomeImageView.swift */; };
+		2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8733594EBC70F0C6101E051BDC7D51BB /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E9CD6F441E6B30601549781F5DB2D12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
 		2F30735E6BB3BB6DD455904BE0452769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
-		31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C3A40594C539228D1BDD242DD818 /* FloatyItem.swift */; };
-		41FAD1CDCD9272883A6CF33FE8FF44E0 /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8104444E4EAF682E5E96A5D2122717D /* FontAwesomeSegmentedControl.swift */; };
-		4EFA908CA9A3E9A800B618AC902F5990 /* FontAwesome.swift.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1ADE404BC081E359E319CF6A842C14E2 /* FontAwesome.swift.bundle */; };
-		522BEF444AEAA78D1747B62ED49C688E /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D53629A4E705B2B7ADF3FACEF01F34 /* FontAwesomeView.swift */; };
-		530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF2FE4E832798F068A2988472021EED /* FloatyWindow.swift */; };
-		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = AC354B7BD847CAD29C2F2CD999B7FF81 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28804FEC0876FFBBA53C664C96FC560C /* FloatyItem.swift */; };
+		37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DAB5C8D76410A3C4566BC4101D6FF92 /* DropDownCell.xib */; };
+		3E7B5703BA8BF8D248D7E12E1C3A52CF /* Pods-Roomie-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */; };
+		41FAD1CDCD9272883A6CF33FE8FF44E0 /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2AD04A5ED7413AA6FFFCF47910CF46 /* FontAwesomeSegmentedControl.swift */; };
+		442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5389A534B0A8615815385ED356DF41 /* DropDown+Appearance.swift */; };
+		4EFA908CA9A3E9A800B618AC902F5990 /* FontAwesome.swift.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DAB244EBF86AD678DEAFF6F8F471451 /* FontAwesome.swift.bundle */; };
+		522BEF444AEAA78D1747B62ED49C688E /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C90D2FDF5269140B832D86E9DA95C1C /* FontAwesomeView.swift */; };
+		530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9BF9AAB819554529AC8B27BC99146 /* FloatyWindow.swift */; };
+		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = EBBE7753EC8A06880CB91123A448F540 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55BF0408539FC3EB9624D8B311CE548B /* Pods-RoomieUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DE397CB4CB769E6F72433F941E10EE3 /* Pods-RoomieUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		589D19F8FC8F1E9D6360D950D26A7138 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17253D9CEFAF7B21193B6FE133C576D1 /* FontAwesome.swift */; };
-		5AD3E160E28F5EFC4D17A8668CA322BD /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809A6FA73BEE56CD62A94397AC37490F /* FontAwesomeBarButtonItem.swift */; };
+		589D19F8FC8F1E9D6360D950D26A7138 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB186AEDC01267787CB880BC3067B365 /* FontAwesome.swift */; };
+		5AD3E160E28F5EFC4D17A8668CA322BD /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8F55721C8FC92C4466431C7CF30D /* FontAwesomeBarButtonItem.swift */; };
 		61D5BCF933C9811260C648C581CFD196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
-		65D01C54FCF24BF6E6FBCD49F6E7CCB1 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD98AB2E7023CF79ACC56770062D0AC /* FontAwesomeTabBarItem.swift */; };
+		65D01C54FCF24BF6E6FBCD49F6E7CCB1 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DFCAFFA423D4FABF229400DB275626 /* FontAwesomeTabBarItem.swift */; };
 		684E126B8E890761BBB1A4EB590EA1F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BE1AF8CEE8818CBCFD0010AE8BEE51 /* UIKit.framework */; };
 		7060C75B128119AE663619DCED898CF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BE1AF8CEE8818CBCFD0010AE8BEE51 /* UIKit.framework */; };
-		7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6091D8E327652BF76C91DFB0789500F7 /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 913CE8C94DCC19B450976752ADCC49A2 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E995B8B8A38D5501B7E391E73C2C00 /* FloatyManager.swift */; };
-		9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3251F8DF09B172FFF073714DF6FC3E02 /* FloatyDelegate.swift */; };
-		919FFFEBE674D139DC5310CD431A5B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
-		92855AE36D851D3EE60AC01F8F2F2832 /* Pods-Roomie-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */; };
+		7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA01C020E88B62F9EB38202BA5774D4E /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 642B51D212C24CB10FF8D936B088D588 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8510C5093AE3AF2FC545926A271E3366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
+		8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E53E4A846952A4AE2DE4815E33B2E3 /* FloatyManager.swift */; };
+		9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A904696DF806F08FCABBBA94DC40C524 /* FloatyDelegate.swift */; };
 		93D51748565CFEB9490FBA7DA993C5C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
+		9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1248B52DD265B629DDE4DBD3F0E81E /* DPDKeyboardListener.swift */; };
+		A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89094930BD10CDCD9B06FC93584377 /* DPDUIView+Extension.swift */; };
+		A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD4FF1569E46FD4E13FAEB1625B251 /* DPDConstants.swift */; };
+		AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB055DA7EBABA80FBA3C403B0B896B98 /* DropDown-dummy.m */; };
 		AE2C5EF91CA12C7393B08ADB715282DF /* Pods-RoomieUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780BD3AEC7C137B37BDE10E88130BE2 /* Pods-RoomieUITests-dummy.m */; };
-		BA158509B4673EB6F8D0D12961169AB1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAE81D4C9E2F44979E92AFBDC5A45A /* Enum.swift */; };
-		C3079113A27F987B6889C2E9C05A10DD /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 931E09A347A45C000CDE1FEE887E47DC /* FontAwesome.otf */; };
+		B5F77C7E6C2ADFD8EA15EEB5A735843A /* Pods-Roomie-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA158509B4673EB6F8D0D12961169AB1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E291181B3197C7C29B8883D119D13 /* Enum.swift */; };
+		C3079113A27F987B6889C2E9C05A10DD /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C23C3C4F3DC18126DFCBBBBEE9DDBB9 /* FontAwesome.otf */; };
 		C4EDDFD00880AD17F1BB7D66948F1D21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */; };
-		C879A43B7C8CC16E986D40441C2F2878 /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B18B87AA3CC836D4885CCF63BF67A /* FontAwesomeImageRepresentable.swift */; };
-		CBD91B03AC387775166237F805EABC3A /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C31CD8B425B376F492506843166EC0 /* FontAwesomeStateRequirement.swift */; };
-		CFA71EC288CE67FB8F70E38753BD7555 /* Pods-Roomie-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C879A43B7C8CC16E986D40441C2F2878 /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15A9BEA4A37571B25E0F2BCD039B179 /* FontAwesomeImageRepresentable.swift */; };
+		CBD91B03AC387775166237F805EABC3A /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAA0E7BEF31C9CDEA9EDC73DEE83869 /* FontAwesomeStateRequirement.swift */; };
 		DAC2CACA22AE100EB261D377EC6FBE3C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55C580E1FC5B6E9F442FE42A9553FEA /* CoreText.framework */; };
-		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E1164BB394D65F367F66A45A1DCD5D3 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = B999E129ED036CFFE646683495E826BA /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9F8282BECE32D913096539112128683 /* Pods-RoomieTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6EA4109D70BD04A079589DAD9FDDFA /* Pods-RoomieTests-dummy.m */; };
-		F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA26C20B0A99A6D57CFAEEE60097E04 /* FloatyViewController.swift */; };
-		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5463FFD858AE3BE0A4DE2059701E5F75 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CE5783852DA1E6FAE501FC3720D8E2 /* GoogleToolboxForMac-dummy.m */; };
-		FB64A64BD408EE7BBD70A4B048315C7D /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5992185931C9DA0145459ED9231BDC /* FontAwesomeTextRepresentable.swift */; };
-		FD8C615CEC6F1EBDB63BF3240583D2F3 /* FontAwesome.swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6F08249EB8BEA5047A14FF29BC5F2 /* FontAwesome.swift-dummy.m */; };
+		F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC85B8E3E88AD097945DE56369F0253 /* FloatyViewController.swift */; };
+		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE37F7B9023673F03CF1B2FD98B6E0E /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68607BBE65064EFE8B826A115EAB1B45 /* GoogleToolboxForMac-dummy.m */; };
+		FB64A64BD408EE7BBD70A4B048315C7D /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C872725D20CD0E687282380D380649 /* FontAwesomeTextRepresentable.swift */; };
+		FD8C615CEC6F1EBDB63BF3240583D2F3 /* FontAwesome.swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 679B921FFB199BDEC600111C33036A6D /* FontAwesome.swift-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C389A9F7D687506C83592C418787B6B /* PBXContainerItemProxy */ = {
+		3C4A8611ED860D10424A556668C940B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
 			remoteInfo = GoogleToolboxForMac;
 		};
-		3C867B7E1FE1CAEBFE23F85D8DE2A213 /* PBXContainerItemProxy */ = {
+		65EBA6CD3FDE16E28427CCADCBC82FF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5C123A74CD9D6CDA27160800BA68B01A;
-			remoteInfo = Floaty;
-		};
-		3E52A6B6A4E754C83BD17FAC62DF1B48 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CD11672B6619C297B6AEE3DFB8213C59;
-			remoteInfo = FontAwesome.swift;
+			remoteGlobalIDString = 5168099F2EBFC99A707C03C9EADE01A5;
+			remoteInfo = DropDown;
 		};
 		A1E7ADA9414728070F39599079B02152 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -80,99 +83,135 @@
 			remoteGlobalIDString = 6991F49AED797519343B1F4591001691;
 			remoteInfo = "FontAwesome.swift-FontAwesome.swift";
 		};
+		C4A7C3061BD8889DE8F988D3385F23EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD11672B6619C297B6AEE3DFB8213C59;
+			remoteInfo = FontAwesome.swift;
+		};
+		C65DC0DDDB3195F7B9B0626298EA6834 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C123A74CD9D6CDA27160800BA68B01A;
+			remoteInfo = Floaty;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01A6F08249EB8BEA5047A14FF29BC5F2 /* FontAwesome.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesome.swift-dummy.m"; sourceTree = "<group>"; };
-		03C31CD8B425B376F492506843166EC0 /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeStateRequirement.swift; path = FontAwesome/FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		00D57521C7C55EEF8208D642AB239BA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03BAE7647B3DF9A6C82E925D48E19841 /* FontAwesome.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-umbrella.h"; sourceTree = "<group>"; };
+		04CD4A7BE9A1DD6831A59FDAE8BAE743 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		05E25F809123FC924BA8255EB7C53597 /* Pods-Roomie-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Roomie-frameworks.sh"; sourceTree = "<group>"; };
-		07AA7FA90A2E47D9AEB13C92F90ED9F6 /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Floaty.modulemap; sourceTree = "<group>"; };
+		0A89094930BD10CDCD9B06FC93584377 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		0C23C3C4F3DC18126DFCBBBBEE9DDBB9 /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = FontAwesome.otf; path = FontAwesome/FontAwesome.otf; sourceTree = "<group>"; };
 		0C78289F35FED667107D8220B63A811B /* Pods-RoomieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieUITests.release.xcconfig"; sourceTree = "<group>"; };
-		16B08938F36F8E6867274F1914CD5469 /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
-		17253D9CEFAF7B21193B6FE133C576D1 /* FontAwesome.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = FontAwesome/FontAwesome.swift; sourceTree = "<group>"; };
-		1AA7F9A479DFC65D17716C708BBD075A /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
-		1ADE404BC081E359E319CF6A842C14E2 /* FontAwesome.swift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FontAwesome.swift.bundle; path = FontAwesome.swift.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		2160BA2EEA8146287627D67B5F0B0DFD /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		22C1AFC446E09D77328081ECA97F68AD /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		0FD9BF9AAB819554529AC8B27BC99146 /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
+		17DFCAFFA423D4FABF229400DB275626 /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTabBarItem.swift; path = FontAwesome/FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		1C85C7134A7BBF9CFC2AB7F0D67ABDE6 /* FontAwesome.swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-prefix.pch"; sourceTree = "<group>"; };
+		1DAB5C8D76410A3C4566BC4101D6FF92 /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
+		1EC85B8E3E88AD097945DE56369F0253 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
+		21364F51F44AB6C3E77A33FFD20DEE0D /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		242E8F55721C8FC92C4466431C7CF30D /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeBarButtonItem.swift; path = FontAwesome/FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
 		269A836B3069F26D611A9F2CBD31B2FF /* Pods-Roomie.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Roomie.modulemap"; sourceTree = "<group>"; };
+		26C0B68969162FAE8EF147D9B56EDD31 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		27BE1AF8CEE8818CBCFD0010AE8BEE51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		2A2E05DF3CB4E8503D1A81B704ADB9C6 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontAwesome_swift.framework; path = FontAwesome.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BD98AB2E7023CF79ACC56770062D0AC /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTabBarItem.swift; path = FontAwesome/FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		28804FEC0876FFBBA53C664C96FC560C /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
+		2BECC4ABCEC087866AE5502CB4A85D82 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		2C2EA7088A672D4F8FCC77FBE33DC7AC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE37F7B9023673F03CF1B2FD98B6E0E /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
 		301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Roomie-dummy.m"; sourceTree = "<group>"; };
-		31954516D853B9230F1A456786C2852F /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageView.swift; path = FontAwesome/FontAwesomeImageView.swift; sourceTree = "<group>"; };
-		3251F8DF09B172FFF073714DF6FC3E02 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
 		344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Roomie.debug.xcconfig"; sourceTree = "<group>"; };
-		38F90743095892E33B64F133100F59EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39B9C8178B2D95053583965AFB51BCE5 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Frameworks/FirebaseNanoPB.framework; sourceTree = "<group>"; };
-		39CE5783852DA1E6FAE501FC3720D8E2 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
-		3BD506520A0AA5C259F39B377DA74D6C /* Pods_Roomie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Roomie.framework; path = "Pods-Roomie.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FF2FE4E832798F068A2988472021EED /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
+		354C7375535E83669F6FE6BAE603AFC9 /* DropDown.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.xcconfig; sourceTree = "<group>"; };
+		37C872725D20CD0E687282380D380649 /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTextRepresentable.swift; path = FontAwesome/FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		3E9C1B2B09593696DFBC669CB291418B /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Frameworks/FirebaseNanoPB.framework; sourceTree = "<group>"; };
 		436DC547AA54CC99810917C617AA23D4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43C24B986A09616CC81C260F0FF905FF /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
-		49685D4507E2A9869E68BE2A507046A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BDAE81D4C9E2F44979E92AFBDC5A45A /* Enum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = FontAwesome/Enum.swift; sourceTree = "<group>"; };
+		4443106FFE8219C9552BEE047FB3F4FA /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Floaty.modulemap; sourceTree = "<group>"; };
+		4542E40FEA0A6AC0B20466C7C525D582 /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C7E291181B3197C7C29B8883D119D13 /* Enum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = FontAwesome/Enum.swift; sourceTree = "<group>"; };
+		4E5389A534B0A8615815385ED356DF41 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		51E53E4A846952A4AE2DE4815E33B2E3 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
 		52512DD739530E9E29C6697464DC1646 /* Pods-RoomieUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RoomieUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		5463FFD858AE3BE0A4DE2059701E5F75 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
-		54D53629A4E705B2B7ADF3FACEF01F34 /* FontAwesomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeView.swift; path = FontAwesome/FontAwesomeView.swift; sourceTree = "<group>"; };
+		52CA751AEDC860516DAA255156CB1AB2 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontAwesome_swift.framework; path = FontAwesome.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FE73D4F96B5AFAD616F099EF396F80 /* Pods-RoomieTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieTests-frameworks.sh"; sourceTree = "<group>"; };
 		558888D952279FD093A839FD5EAB9CFA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		564AF13C43D487FEC50BE9071644BD2A /* Pods-RoomieUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RoomieUITests.modulemap"; sourceTree = "<group>"; };
+		59985542E78A07F0F6BBC6C0EC90C28A /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DropDown.modulemap; sourceTree = "<group>"; };
 		5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Roomie-umbrella.h"; sourceTree = "<group>"; };
-		6091D8E327652BF76C91DFB0789500F7 /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
-		615EC01A9D8877CD0A0A168C13FF45F5 /* ResourceBundle-FontAwesome.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FontAwesome.swift-Info.plist"; sourceTree = "<group>"; };
-		66E85F648BBA32D20675263FE09AB160 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
-		69963A0AE33C4814EF8335B1E9708AB0 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C2AD04A5ED7413AA6FFFCF47910CF46 /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeSegmentedControl.swift; path = FontAwesome/FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		61CB62389C4487F7B11EDAE2B9D1B37A /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		642B51D212C24CB10FF8D936B088D588 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
+		679B921FFB199BDEC600111C33036A6D /* FontAwesome.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesome.swift-dummy.m"; sourceTree = "<group>"; };
+		68607BBE65064EFE8B826A115EAB1B45 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
+		6C90D2FDF5269140B832D86E9DA95C1C /* FontAwesomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeView.swift; path = FontAwesome/FontAwesomeView.swift; sourceTree = "<group>"; };
 		6C9ED06AA1E65D1A74C6EC4273C0EA26 /* Pods-Roomie-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Roomie-resources.sh"; sourceTree = "<group>"; };
 		75FA35E1CBB8C8924D1DB5907BBBE4AB /* Pods-RoomieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7780BD3AEC7C137B37BDE10E88130BE2 /* Pods-RoomieUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RoomieUITests-dummy.m"; sourceTree = "<group>"; };
-		7AD81FAF6C3C579D4F0CA94AEBEC6391 /* Pods_RoomieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieTests.framework; path = "Pods-RoomieTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		809A6FA73BEE56CD62A94397AC37490F /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeBarButtonItem.swift; path = FontAwesome/FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
-		83152D07E42EC74AC82119F9033BB516 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		7CB9742D5BD4E7F6D2CF98E86C5E7658 /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
+		8733594EBC70F0C6101E051BDC7D51BB /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
 		89AD614B709CE9A9C09E197112760A7C /* Pods-RoomieTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RoomieTests.modulemap"; sourceTree = "<group>"; };
-		8B1F9010AFE3684E03696ECD81614CB0 /* FontAwesome.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-umbrella.h"; sourceTree = "<group>"; };
 		8DE397CB4CB769E6F72433F941E10EE3 /* Pods-RoomieUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RoomieUITests-umbrella.h"; sourceTree = "<group>"; };
-		8EB9B5241EEF0BB31AE9A180FCC484BE /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
-		913CE8C94DCC19B450976752ADCC49A2 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
-		91E995B8B8A38D5501B7E391E73C2C00 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
-		931E09A347A45C000CDE1FEE887E47DC /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = FontAwesome.otf; path = FontAwesome/FontAwesome.otf; sourceTree = "<group>"; };
+		9143B458AE238584E7942EBC6623A42E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		968A90FAAC3DA6C6CAB28F4F25C05544 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97D7BB1A6BAC1429FDF2E586A13C5AA7 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
-		9E1164BB394D65F367F66A45A1DCD5D3 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesome.swift.xcconfig; sourceTree = "<group>"; };
+		981998B1999B68AF137DE2FF583B15D6 /* Pods_Roomie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Roomie.framework; path = "Pods-Roomie.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1C15BF655A3D48A6C6BD22FBA215DC /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
+		9DAB244EBF86AD678DEAFF6F8F471451 /* FontAwesome.swift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FontAwesome.swift.bundle; path = FontAwesome.swift.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DBB843DD68D55AE085F975C980AA626 /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
+		9FCE58F82F6C68034723BE3BB2FB6C5C /* Pods_RoomieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieTests.framework; path = "Pods-RoomieTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34FCC691A5F0A50C19B4C68CD7A9C64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A378825C959D6595FC1C2302B9FFA1C8 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
 		A5D2EFA01BD0990C1E3055E2AB35B8D5 /* Pods-RoomieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieTests.release.xcconfig"; sourceTree = "<group>"; };
 		A7AF639F48630A369AAB591B5B339CC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A7C0BB6DBB7DA817B92AE87D031D748F /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		AAC8921F253F40B13EB28C5A05D6661A /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
+		A904696DF806F08FCABBBA94DC40C524 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
 		AAFFE4B02855C10F420503D04809AA19 /* Pods-RoomieTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RoomieTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ABA26C20B0A99A6D57CFAEEE60097E04 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
-		AC354B7BD847CAD29C2F2CD999B7FF81 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		AF5992185931C9DA0145459ED9231BDC /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTextRepresentable.swift; path = FontAwesome/FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		ACAD4FF1569E46FD4E13FAEB1625B251 /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
+		B0A3BB73F6299769CE5517590D9D3D4A /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
 		B1BA57BD4191B1519973BAD650C5424B /* Pods-RoomieUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RoomieUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B3257D084D7143A038BA2E797D6877B1 /* Pods-Roomie-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Roomie-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B5556371ECBD9D8CC739A03E6A8C791C /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
-		B5A576CD1D9A7E2C9ED007ADA2470DBE /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
-		BC085BD565A10A04B353EEB0DBE99C1E /* Pods_RoomieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieUITests.framework; path = "Pods-RoomieUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B999E129ED036CFFE646683495E826BA /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		BA01C020E88B62F9EB38202BA5774D4E /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
+		BAAA0E7BEF31C9CDEA9EDC73DEE83869 /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeStateRequirement.swift; path = FontAwesome/FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		BB055DA7EBABA80FBA3C403B0B896B98 /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
 		C12D774D96E711F74A7323A5A088D13A /* Pods-RoomieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C19B18B87AA3CC836D4885CCF63BF67A /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageRepresentable.swift; path = FontAwesome/FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
 		C282466FF60E2714137C78A9EE7A6F4F /* Pods-RoomieTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieTests-resources.sh"; sourceTree = "<group>"; };
-		C2CD75E64A3F2D13313888C49E78F8E5 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
 		C55C580E1FC5B6E9F442FE42A9553FEA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		C746A0303E930E9628B6425E1C61DD42 /* FontAwesome.swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-prefix.pch"; sourceTree = "<group>"; };
+		CB186AEDC01267787CB880BC3067B365 /* FontAwesome.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = FontAwesome/FontAwesome.swift; sourceTree = "<group>"; };
+		CC814E2A2716FEB5A4F7592B0150FEF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		CECC132C03A07DDE1A400D989933E801 /* Pods_RoomieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieUITests.framework; path = "Pods-RoomieUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24C2D88E3FCD9FDEBE08172801DE658 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D301A7940B65B3D6303A5B975C23F9AE /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
 		D3FAD3A923DE5D1EB38D177737781F2D /* Pods-Roomie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Roomie.release.xcconfig"; sourceTree = "<group>"; };
+		D6119AF3B19C0A2912DC12EA8DB17974 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98984E4F252F447F42C37E3995B033A /* Pods-RoomieUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieUITests-resources.sh"; sourceTree = "<group>"; };
 		DA91B47D2C52AEFC0546F0E2B52F6543 /* Pods-RoomieTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RoomieTests-umbrella.h"; sourceTree = "<group>"; };
-		DB80C3A40594C539228D1BDD242DD818 /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
+		DC1248B52DD265B629DDE4DBD3F0E81E /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		DECC2B91BDA7B912CE96C45B655B303A /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
+		DF0B31AE12D5BDC1E6D59C4EFFE5F193 /* FontAwesome.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FontAwesome.swift.modulemap; sourceTree = "<group>"; };
+		DF3107235D4EC115060F46FF684C40CB /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
+		E15A9BEA4A37571B25E0F2BCD039B179 /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageRepresentable.swift; path = FontAwesome/FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
 		E1A34AE1B93A6ED7B18F173DC73A7C32 /* Pods-RoomieTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RoomieTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesome.swift.xcconfig; sourceTree = "<group>"; };
-		E8104444E4EAF682E5E96A5D2122717D /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeSegmentedControl.swift; path = FontAwesome/FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		EA2B79E6CB009963235E9FA37CE34709 /* ResourceBundle-FontAwesome.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FontAwesome.swift-Info.plist"; sourceTree = "<group>"; };
+		EA7D6B2620F79924FE1A377C29E9B801 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBE7753EC8A06880CB91123A448F540 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		EE0D4544FF56091CA5460934856C1A5F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF6EA4109D70BD04A079589DAD9FDDFA /* Pods-RoomieTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RoomieTests-dummy.m"; sourceTree = "<group>"; };
-		FA96E2E0B172348568AF056F6250320B /* FontAwesome.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FontAwesome.swift.modulemap; sourceTree = "<group>"; };
+		F237FC6D436C6FC9E92029C5714D08F9 /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageView.swift; path = FontAwesome/FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		F8E1CB7419F2A1936AD2D9F07BFB0ADD /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
 		FCAF0B85EA3B6A082A7E32B440D36FB4 /* Pods-RoomieUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieUITests-frameworks.sh"; sourceTree = "<group>"; };
 		FEC04DA78BA595140B2FC3563B459EE5 /* Pods-Roomie-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Roomie-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3FE28484C632D94C9779E4E74AE0BD29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9CD6F441E6B30601549781F5DB2D12 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6384E4C1DBDFE6DB82E1EAD08B3F044A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +230,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86AC366009B2A373598F3CB5781694FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8510C5093AE3AF2FC545926A271E3366 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD4FEED21A7DB087F1224388AD2C12BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,14 +250,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF2E9D19586917642DDE78B25AE32CA0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				919FFFEBE674D139DC5310CD431A5B04 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,23 +291,22 @@
 			path = "Target Support Files/Pods-RoomieUITests";
 			sourceTree = "<group>";
 		};
-		01E29C2A64F35C195EF38DB2A68FAE6B /* Frameworks */ = {
+		10564C56FDA723C4A74F03033EB71304 /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
-				B5A576CD1D9A7E2C9ED007ADA2470DBE /* FirebaseCore.framework */,
-				66E85F648BBA32D20675263FE09AB160 /* FirebaseCoreDiagnostics.framework */,
-				39B9C8178B2D95053583965AFB51BCE5 /* FirebaseNanoPB.framework */,
+				B999E129ED036CFFE646683495E826BA /* GTMNSData+zlib.h */,
+				2FE37F7B9023673F03CF1B2FD98B6E0E /* GTMNSData+zlib.m */,
 			);
-			name = Frameworks;
+			name = "NSData+zlib";
 			sourceTree = "<group>";
 		};
-		09B3A1D84EEFA50BCB5372ACC0237872 /* Firebase */ = {
+		11937DC6FC2136A493DD8D443446E3F7 /* FirebaseDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				C454CC774AE1133ABE0489817798841B /* Core */,
+				D3773B954396EA94F471E9FF310892A8 /* Frameworks */,
 			);
-			name = Firebase;
-			path = Firebase;
+			name = FirebaseDatabase;
+			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
@@ -277,24 +315,6 @@
 				FF1CA95E532A8F990E19506982FA04EE /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1413BC6CFB878BA546063ACDE8997FD9 /* NSData+zlib */ = {
-			isa = PBXGroup;
-			children = (
-				9E1164BB394D65F367F66A45A1DCD5D3 /* GTMNSData+zlib.h */,
-				5463FFD858AE3BE0A4DE2059701E5F75 /* GTMNSData+zlib.m */,
-			);
-			name = "NSData+zlib";
-			sourceTree = "<group>";
-		};
-		24FE9081A0FD23DFE7C88A8A4DD3F104 /* FirebaseInstanceID */ = {
-			isa = PBXGroup;
-			children = (
-				882CB1707DFA4A459CCB55075FD67759 /* Frameworks */,
-			);
-			name = FirebaseInstanceID;
-			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
 		2A82BDD823EADDEB35F71EEB35E73531 /* Pods-RoomieTests */ = {
@@ -315,26 +335,60 @@
 			path = "Target Support Files/Pods-RoomieTests";
 			sourceTree = "<group>";
 		};
-		3EB806FD821282A2E6373477C5BFE0F6 /* Defines */ = {
+		2FCDB6E19D25FD074219FE70D0EC8CA3 /* Floaty */ = {
 			isa = PBXGroup;
 			children = (
-				AC354B7BD847CAD29C2F2CD999B7FF81 /* GTMDefines.h */,
+				F8E1CB7419F2A1936AD2D9F07BFB0ADD /* Floaty.swift */,
+				A904696DF806F08FCABBBA94DC40C524 /* FloatyDelegate.swift */,
+				28804FEC0876FFBBA53C664C96FC560C /* FloatyItem.swift */,
+				51E53E4A846952A4AE2DE4815E33B2E3 /* FloatyManager.swift */,
+				1EC85B8E3E88AD097945DE56369F0253 /* FloatyViewController.swift */,
+				0FD9BF9AAB819554529AC8B27BC99146 /* FloatyWindow.swift */,
+				B05B76B61F85C5C6FA81DE18B23E0DF8 /* Support Files */,
 			);
-			name = Defines;
+			name = Floaty;
+			path = Floaty;
 			sourceTree = "<group>";
 		};
-		5CE893233D1245CB94EE6408D6CA2B10 /* Support Files */ = {
+		33A790A353B59D0F0F7579DBAC1536BD /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				22C1AFC446E09D77328081ECA97F68AD /* GoogleToolboxForMac.modulemap */,
-				1AA7F9A479DFC65D17716C708BBD075A /* GoogleToolboxForMac.xcconfig */,
-				39CE5783852DA1E6FAE501FC3720D8E2 /* GoogleToolboxForMac-dummy.m */,
-				8EB9B5241EEF0BB31AE9A180FCC484BE /* GoogleToolboxForMac-prefix.pch */,
-				913CE8C94DCC19B450976752ADCC49A2 /* GoogleToolboxForMac-umbrella.h */,
-				968A90FAAC3DA6C6CAB28F4F25C05544 /* Info.plist */,
+				92A82CD74275D35A02811E6F086FF376 /* Core */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/GoogleToolboxForMac";
+			name = Firebase;
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		3512CAA086165F17C2F33BE981253EAF /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				ACAD4FF1569E46FD4E13FAEB1625B251 /* DPDConstants.swift */,
+				DC1248B52DD265B629DDE4DBD3F0E81E /* DPDKeyboardListener.swift */,
+				0A89094930BD10CDCD9B06FC93584377 /* DPDUIView+Extension.swift */,
+				DECC2B91BDA7B912CE96C45B655B303A /* DropDown.swift */,
+				4E5389A534B0A8615815385ED356DF41 /* DropDown+Appearance.swift */,
+				DF3107235D4EC115060F46FF684C40CB /* DropDownCell.swift */,
+				6A09DE8E172B2B26EA8384BCBBC6E3EF /* Resources */,
+				720667E73B4CC3ABD364C554B03DFFC8 /* Support Files */,
+			);
+			name = DropDown;
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		52F1220C7F38974D4C9E36759ABF9453 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC814E2A2716FEB5A4F7592B0150FEF4 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C1C5954CE3A3A22F66107ED58DF0461 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C23C3C4F3DC18126DFCBBBBEE9DDBB9 /* FontAwesome.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		6628E310F50C4542316D87AB5EF9ED2C /* Pods-Roomie */ = {
@@ -365,15 +419,35 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		70F921AF0EC8B9E36D8356342DD95B07 /* GoogleToolboxForMac */ = {
+		6A09DE8E172B2B26EA8384BCBBC6E3EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3EB806FD821282A2E6373477C5BFE0F6 /* Defines */,
-				1413BC6CFB878BA546063ACDE8997FD9 /* NSData+zlib */,
-				5CE893233D1245CB94EE6408D6CA2B10 /* Support Files */,
+				1DAB5C8D76410A3C4566BC4101D6FF92 /* DropDownCell.xib */,
 			);
-			name = GoogleToolboxForMac;
-			path = GoogleToolboxForMac;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6FDF558A9F0FBA722269F2DD47BB007A /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				52F1220C7F38974D4C9E36759ABF9453 /* Frameworks */,
+			);
+			name = FirebaseAnalytics;
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		720667E73B4CC3ABD364C554B03DFFC8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				59985542E78A07F0F6BBC6C0EC90C28A /* DropDown.modulemap */,
+				354C7375535E83669F6FE6BAE603AFC9 /* DropDown.xcconfig */,
+				BB055DA7EBABA80FBA3C403B0B896B98 /* DropDown-dummy.m */,
+				9DBB843DD68D55AE085F975C980AA626 /* DropDown-prefix.pch */,
+				8733594EBC70F0C6101E051BDC7D51BB /* DropDown-umbrella.h */,
+				EE0D4544FF56091CA5460934856C1A5F /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DropDown";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -381,167 +455,172 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				DC3AFF83B12E8B2B1820DD0AE4D09A6E /* Pods */,
-				E7D8DB0155802DAC553BB5843EE795CE /* Products */,
+				860D0C4EB701D6EBD2A1C5156AE141C0 /* Pods */,
+				F34F888A2BC73825A8809CA19723C600 /* Products */,
 				6655594E5A89B7456039F756DA5AFB92 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		882CB1707DFA4A459CCB55075FD67759 /* Frameworks */ = {
+		860D0C4EB701D6EBD2A1C5156AE141C0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				83152D07E42EC74AC82119F9033BB516 /* FirebaseInstanceID.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9B74385A6C43A45291C02F0A7098AB14 /* FirebaseDatabase */ = {
-			isa = PBXGroup;
-			children = (
-				BB77C15B13703998E7A7C850D3041597 /* Frameworks */,
-			);
-			name = FirebaseDatabase;
-			path = FirebaseDatabase;
-			sourceTree = "<group>";
-		};
-		B0535258D89A674DBD4B114D07B3EFE0 /* FirebaseAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				F154E1E3032BB8F8C02BDA848F50DE12 /* Frameworks */,
-			);
-			name = FirebaseAnalytics;
-			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		B2B1C484B04129A78EC9390879CBEF24 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				931E09A347A45C000CDE1FEE887E47DC /* FontAwesome.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		BB77C15B13703998E7A7C850D3041597 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				97D7BB1A6BAC1429FDF2E586A13C5AA7 /* FirebaseDatabase.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BD37E11CA6E1AD42628630FD48DA086B /* FirebaseCore */ = {
-			isa = PBXGroup;
-			children = (
-				01E29C2A64F35C195EF38DB2A68FAE6B /* Frameworks */,
-			);
-			name = FirebaseCore;
-			path = FirebaseCore;
-			sourceTree = "<group>";
-		};
-		C00E8B3C091C065D957B56AB2C07819D /* FontAwesome.swift */ = {
-			isa = PBXGroup;
-			children = (
-				4BDAE81D4C9E2F44979E92AFBDC5A45A /* Enum.swift */,
-				17253D9CEFAF7B21193B6FE133C576D1 /* FontAwesome.swift */,
-				809A6FA73BEE56CD62A94397AC37490F /* FontAwesomeBarButtonItem.swift */,
-				C19B18B87AA3CC836D4885CCF63BF67A /* FontAwesomeImageRepresentable.swift */,
-				31954516D853B9230F1A456786C2852F /* FontAwesomeImageView.swift */,
-				E8104444E4EAF682E5E96A5D2122717D /* FontAwesomeSegmentedControl.swift */,
-				03C31CD8B425B376F492506843166EC0 /* FontAwesomeStateRequirement.swift */,
-				2BD98AB2E7023CF79ACC56770062D0AC /* FontAwesomeTabBarItem.swift */,
-				AF5992185931C9DA0145459ED9231BDC /* FontAwesomeTextRepresentable.swift */,
-				54D53629A4E705B2B7ADF3FACEF01F34 /* FontAwesomeView.swift */,
-				B2B1C484B04129A78EC9390879CBEF24 /* Resources */,
-				F6A55652A8AF5759A6FA373F8D1D6F16 /* Support Files */,
-			);
-			name = FontAwesome.swift;
-			path = FontAwesome.swift;
-			sourceTree = "<group>";
-		};
-		C454CC774AE1133ABE0489817798841B /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				B5556371ECBD9D8CC739A03E6A8C791C /* Firebase.h */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		DC02EEF854AEEE9FA49061D35F39DCCD /* Floaty */ = {
-			isa = PBXGroup;
-			children = (
-				43C24B986A09616CC81C260F0FF905FF /* Floaty.swift */,
-				3251F8DF09B172FFF073714DF6FC3E02 /* FloatyDelegate.swift */,
-				DB80C3A40594C539228D1BDD242DD818 /* FloatyItem.swift */,
-				91E995B8B8A38D5501B7E391E73C2C00 /* FloatyManager.swift */,
-				ABA26C20B0A99A6D57CFAEEE60097E04 /* FloatyViewController.swift */,
-				3FF2FE4E832798F068A2988472021EED /* FloatyWindow.swift */,
-				ECAD64E68CA86E89520F19CD5C733A52 /* Support Files */,
-			);
-			name = Floaty;
-			path = Floaty;
-			sourceTree = "<group>";
-		};
-		DC3AFF83B12E8B2B1820DD0AE4D09A6E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				09B3A1D84EEFA50BCB5372ACC0237872 /* Firebase */,
-				B0535258D89A674DBD4B114D07B3EFE0 /* FirebaseAnalytics */,
-				BD37E11CA6E1AD42628630FD48DA086B /* FirebaseCore */,
-				9B74385A6C43A45291C02F0A7098AB14 /* FirebaseDatabase */,
-				24FE9081A0FD23DFE7C88A8A4DD3F104 /* FirebaseInstanceID */,
-				DC02EEF854AEEE9FA49061D35F39DCCD /* Floaty */,
-				C00E8B3C091C065D957B56AB2C07819D /* FontAwesome.swift */,
-				70F921AF0EC8B9E36D8356342DD95B07 /* GoogleToolboxForMac */,
+				3512CAA086165F17C2F33BE981253EAF /* DropDown */,
+				33A790A353B59D0F0F7579DBAC1536BD /* Firebase */,
+				6FDF558A9F0FBA722269F2DD47BB007A /* FirebaseAnalytics */,
+				E923C0CA0B593B46950377110C5D1DA0 /* FirebaseCore */,
+				11937DC6FC2136A493DD8D443446E3F7 /* FirebaseDatabase */,
+				A92AE23CB54629792375BAB140E96E16 /* FirebaseInstanceID */,
+				2FCDB6E19D25FD074219FE70D0EC8CA3 /* Floaty */,
+				FBDC7FB40A102EDECB773F82426343A1 /* FontAwesome.swift */,
+				8DDAF3AC29F59F735B2089F0CBC76A89 /* GoogleToolboxForMac */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E7D8DB0155802DAC553BB5843EE795CE /* Products */ = {
+		86D5DB42BD09A8CC1BF712D18AED1AEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2160BA2EEA8146287627D67B5F0B0DFD /* Floaty.framework */,
-				1ADE404BC081E359E319CF6A842C14E2 /* FontAwesome.swift.bundle */,
-				2A2E05DF3CB4E8503D1A81B704ADB9C6 /* FontAwesome_swift.framework */,
-				69963A0AE33C4814EF8335B1E9708AB0 /* GoogleToolboxForMac.framework */,
-				3BD506520A0AA5C259F39B377DA74D6C /* Pods_Roomie.framework */,
-				7AD81FAF6C3C579D4F0CA94AEBEC6391 /* Pods_RoomieTests.framework */,
-				BC085BD565A10A04B353EEB0DBE99C1E /* Pods_RoomieUITests.framework */,
+				61CB62389C4487F7B11EDAE2B9D1B37A /* FirebaseCore.framework */,
+				9143B458AE238584E7942EBC6623A42E /* FirebaseCoreDiagnostics.framework */,
+				3E9C1B2B09593696DFBC669CB291418B /* FirebaseNanoPB.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ECAD64E68CA86E89520F19CD5C733A52 /* Support Files */ = {
+		8DDAF3AC29F59F735B2089F0CBC76A89 /* GoogleToolboxForMac */ = {
 			isa = PBXGroup;
 			children = (
-				07AA7FA90A2E47D9AEB13C92F90ED9F6 /* Floaty.modulemap */,
-				16B08938F36F8E6867274F1914CD5469 /* Floaty.xcconfig */,
-				AAC8921F253F40B13EB28C5A05D6661A /* Floaty-dummy.m */,
-				C2CD75E64A3F2D13313888C49E78F8E5 /* Floaty-prefix.pch */,
-				6091D8E327652BF76C91DFB0789500F7 /* Floaty-umbrella.h */,
-				49685D4507E2A9869E68BE2A507046A4 /* Info.plist */,
+				CA8F863DC1BD6F5C5D955A830C72035E /* Defines */,
+				10564C56FDA723C4A74F03033EB71304 /* NSData+zlib */,
+				E79C4446567AA75C49A37DC67DA1B3B2 /* Support Files */,
+			);
+			name = GoogleToolboxForMac;
+			path = GoogleToolboxForMac;
+			sourceTree = "<group>";
+		};
+		92A82CD74275D35A02811E6F086FF376 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D301A7940B65B3D6303A5B975C23F9AE /* Firebase.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		A92AE23CB54629792375BAB140E96E16 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				B058A47376B3F221C97F30A9863F80BF /* Frameworks */,
+			);
+			name = FirebaseInstanceID;
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		B058A47376B3F221C97F30A9863F80BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BECC4ABCEC087866AE5502CB4A85D82 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B05B76B61F85C5C6FA81DE18B23E0DF8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4443106FFE8219C9552BEE047FB3F4FA /* Floaty.modulemap */,
+				B0A3BB73F6299769CE5517590D9D3D4A /* Floaty.xcconfig */,
+				7CB9742D5BD4E7F6D2CF98E86C5E7658 /* Floaty-dummy.m */,
+				A378825C959D6595FC1C2302B9FFA1C8 /* Floaty-prefix.pch */,
+				BA01C020E88B62F9EB38202BA5774D4E /* Floaty-umbrella.h */,
+				00D57521C7C55EEF8208D642AB239BA3 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Floaty";
 			sourceTree = "<group>";
 		};
-		F154E1E3032BB8F8C02BDA848F50DE12 /* Frameworks */ = {
+		CA8F863DC1BD6F5C5D955A830C72035E /* Defines */ = {
 			isa = PBXGroup;
 			children = (
-				A7C0BB6DBB7DA817B92AE87D031D748F /* FirebaseAnalytics.framework */,
+				EBBE7753EC8A06880CB91123A448F540 /* GTMDefines.h */,
+			);
+			name = Defines;
+			sourceTree = "<group>";
+		};
+		D3773B954396EA94F471E9FF310892A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21364F51F44AB6C3E77A33FFD20DEE0D /* FirebaseDatabase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F6A55652A8AF5759A6FA373F8D1D6F16 /* Support Files */ = {
+		E79C4446567AA75C49A37DC67DA1B3B2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA96E2E0B172348568AF056F6250320B /* FontAwesome.swift.modulemap */,
-				E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */,
-				01A6F08249EB8BEA5047A14FF29BC5F2 /* FontAwesome.swift-dummy.m */,
-				C746A0303E930E9628B6425E1C61DD42 /* FontAwesome.swift-prefix.pch */,
-				8B1F9010AFE3684E03696ECD81614CB0 /* FontAwesome.swift-umbrella.h */,
-				38F90743095892E33B64F133100F59EF /* Info.plist */,
-				615EC01A9D8877CD0A0A168C13FF45F5 /* ResourceBundle-FontAwesome.swift-Info.plist */,
+				26C0B68969162FAE8EF147D9B56EDD31 /* GoogleToolboxForMac.modulemap */,
+				9C1C15BF655A3D48A6C6BD22FBA215DC /* GoogleToolboxForMac.xcconfig */,
+				68607BBE65064EFE8B826A115EAB1B45 /* GoogleToolboxForMac-dummy.m */,
+				04CD4A7BE9A1DD6831A59FDAE8BAE743 /* GoogleToolboxForMac-prefix.pch */,
+				642B51D212C24CB10FF8D936B088D588 /* GoogleToolboxForMac-umbrella.h */,
+				2C2EA7088A672D4F8FCC77FBE33DC7AC /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleToolboxForMac";
+			sourceTree = "<group>";
+		};
+		E923C0CA0B593B46950377110C5D1DA0 /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				86D5DB42BD09A8CC1BF712D18AED1AEB /* Frameworks */,
+			);
+			name = FirebaseCore;
+			path = FirebaseCore;
+			sourceTree = "<group>";
+		};
+		F34F888A2BC73825A8809CA19723C600 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6119AF3B19C0A2912DC12EA8DB17974 /* DropDown.framework */,
+				4542E40FEA0A6AC0B20466C7C525D582 /* Floaty.framework */,
+				9DAB244EBF86AD678DEAFF6F8F471451 /* FontAwesome.swift.bundle */,
+				52CA751AEDC860516DAA255156CB1AB2 /* FontAwesome_swift.framework */,
+				EA7D6B2620F79924FE1A377C29E9B801 /* GoogleToolboxForMac.framework */,
+				981998B1999B68AF137DE2FF583B15D6 /* Pods_Roomie.framework */,
+				9FCE58F82F6C68034723BE3BB2FB6C5C /* Pods_RoomieTests.framework */,
+				CECC132C03A07DDE1A400D989933E801 /* Pods_RoomieUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBDC7FB40A102EDECB773F82426343A1 /* FontAwesome.swift */ = {
+			isa = PBXGroup;
+			children = (
+				4C7E291181B3197C7C29B8883D119D13 /* Enum.swift */,
+				CB186AEDC01267787CB880BC3067B365 /* FontAwesome.swift */,
+				242E8F55721C8FC92C4466431C7CF30D /* FontAwesomeBarButtonItem.swift */,
+				E15A9BEA4A37571B25E0F2BCD039B179 /* FontAwesomeImageRepresentable.swift */,
+				F237FC6D436C6FC9E92029C5714D08F9 /* FontAwesomeImageView.swift */,
+				5C2AD04A5ED7413AA6FFFCF47910CF46 /* FontAwesomeSegmentedControl.swift */,
+				BAAA0E7BEF31C9CDEA9EDC73DEE83869 /* FontAwesomeStateRequirement.swift */,
+				17DFCAFFA423D4FABF229400DB275626 /* FontAwesomeTabBarItem.swift */,
+				37C872725D20CD0E687282380D380649 /* FontAwesomeTextRepresentable.swift */,
+				6C90D2FDF5269140B832D86E9DA95C1C /* FontAwesomeView.swift */,
+				5C1C5954CE3A3A22F66107ED58DF0461 /* Resources */,
+				FD300A194E2B59084931895E10413CD3 /* Support Files */,
+			);
+			name = FontAwesome.swift;
+			path = FontAwesome.swift;
+			sourceTree = "<group>";
+		};
+		FD300A194E2B59084931895E10413CD3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF0B31AE12D5BDC1E6D59C4EFFE5F193 /* FontAwesome.swift.modulemap */,
+				97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */,
+				679B921FFB199BDEC600111C33036A6D /* FontAwesome.swift-dummy.m */,
+				1C85C7134A7BBF9CFC2AB7F0D67ABDE6 /* FontAwesome.swift-prefix.pch */,
+				03BAE7647B3DF9A6C82E925D48E19841 /* FontAwesome.swift-umbrella.h */,
+				D24C2D88E3FCD9FDEBE08172801DE658 /* Info.plist */,
+				EA2B79E6CB009963235E9FA37CE34709 /* ResourceBundle-FontAwesome.swift-Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FontAwesome.swift";
@@ -568,19 +647,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1904CD5E5CEA9226AFC355E19C3EB159 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C5BD4C70EF5C40A85EAB668B32EBD2F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F77C7E6C2ADFD8EA15EEB5A735843A /* Pods-Roomie-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25E0772F87878D34BE9C9F522910F6B2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				24065029085002EAC70A3422A7D39EC1 /* FontAwesome.swift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A4676A3F2A9EE9F9987A731839324F99 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFA71EC288CE67FB8F70E38753BD7555 /* Pods-Roomie-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +714,7 @@
 			);
 			name = GoogleToolboxForMac;
 			productName = GoogleToolboxForMac;
-			productReference = 69963A0AE33C4814EF8335B1E9708AB0 /* GoogleToolboxForMac.framework */;
+			productReference = EA7D6B2620F79924FE1A377C29E9B801 /* GoogleToolboxForMac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		39C54651ACA43133FCDDA17C1F94755E /* Pods-RoomieUITests */ = {
@@ -644,27 +731,25 @@
 			);
 			name = "Pods-RoomieUITests";
 			productName = "Pods-RoomieUITests";
-			productReference = BC085BD565A10A04B353EEB0DBE99C1E /* Pods_RoomieUITests.framework */;
+			productReference = CECC132C03A07DDE1A400D989933E801 /* Pods_RoomieUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5533A7406C222AAA8331870B6F5FCC9A /* Pods-Roomie */ = {
+		5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27A98E431B041BFC3B4CB9A439A43C19 /* Build configuration list for PBXNativeTarget "Pods-Roomie" */;
+			buildConfigurationList = 45143614893062803984DA50AB90C1D5 /* Build configuration list for PBXNativeTarget "DropDown" */;
 			buildPhases = (
-				3BBE4B76F3C963DB4C55B9E002D2B20C /* Sources */,
-				DF2E9D19586917642DDE78B25AE32CA0 /* Frameworks */,
-				A4676A3F2A9EE9F9987A731839324F99 /* Headers */,
+				ED45CA897A4B81CB8204042001D7AEE8 /* Sources */,
+				3FE28484C632D94C9779E4E74AE0BD29 /* Frameworks */,
+				D7D924A57BC65B5D41E46B156A8DCF2B /* Resources */,
+				1904CD5E5CEA9226AFC355E19C3EB159 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C2C96628D94A3B81DF44329BA3959B16 /* PBXTargetDependency */,
-				E3CB3A6D1B58D8D115815DFC70ACE618 /* PBXTargetDependency */,
-				5396FE85D41E2836982A07E700BE74DC /* PBXTargetDependency */,
 			);
-			name = "Pods-Roomie";
-			productName = "Pods-Roomie";
-			productReference = 3BD506520A0AA5C259F39B377DA74D6C /* Pods_Roomie.framework */;
+			name = DropDown;
+			productName = DropDown;
+			productReference = D6119AF3B19C0A2912DC12EA8DB17974 /* DropDown.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5C123A74CD9D6CDA27160800BA68B01A /* Floaty */ = {
@@ -681,7 +766,7 @@
 			);
 			name = Floaty;
 			productName = Floaty;
-			productReference = 2160BA2EEA8146287627D67B5F0B0DFD /* Floaty.framework */;
+			productReference = 4542E40FEA0A6AC0B20466C7C525D582 /* Floaty.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */ = {
@@ -698,8 +783,29 @@
 			);
 			name = "FontAwesome.swift-FontAwesome.swift";
 			productName = "FontAwesome.swift-FontAwesome.swift";
-			productReference = 1ADE404BC081E359E319CF6A842C14E2 /* FontAwesome.swift.bundle */;
+			productReference = 9DAB244EBF86AD678DEAFF6F8F471451 /* FontAwesome.swift.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		8508C88D0B49F89E40BE845368A74343 /* Pods-Roomie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF51300AE48C24423F8F6C975D13910E /* Build configuration list for PBXNativeTarget "Pods-Roomie" */;
+			buildPhases = (
+				0B0A14864E775C2AD00B936AC1A32F91 /* Sources */,
+				86AC366009B2A373598F3CB5781694FF /* Frameworks */,
+				1C5BD4C70EF5C40A85EAB668B32EBD2F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E7F0F66772965853A614DF15DC2E21D /* PBXTargetDependency */,
+				DA0B162E7557535244F35CF2C83B3705 /* PBXTargetDependency */,
+				C1A7DC4C4EE11300AF9191A756AC46F4 /* PBXTargetDependency */,
+				3C989FEDD74B31F502A7CA818B57C3CB /* PBXTargetDependency */,
+			);
+			name = "Pods-Roomie";
+			productName = "Pods-Roomie";
+			productReference = 981998B1999B68AF137DE2FF583B15D6 /* Pods_Roomie.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		951839CB1DF9CB36DBB67BE4140E7219 /* Pods-RoomieTests */ = {
 			isa = PBXNativeTarget;
@@ -715,7 +821,7 @@
 			);
 			name = "Pods-RoomieTests";
 			productName = "Pods-RoomieTests";
-			productReference = 7AD81FAF6C3C579D4F0CA94AEBEC6391 /* Pods_RoomieTests.framework */;
+			productReference = 9FCE58F82F6C68034723BE3BB2FB6C5C /* Pods_RoomieTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */ = {
@@ -734,7 +840,7 @@
 			);
 			name = FontAwesome.swift;
 			productName = FontAwesome.swift;
-			productReference = 2A2E05DF3CB4E8503D1A81B704ADB9C6 /* FontAwesome_swift.framework */;
+			productReference = 52CA751AEDC860516DAA255156CB1AB2 /* FontAwesome_swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -754,15 +860,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E7D8DB0155802DAC553BB5843EE795CE /* Products */;
+			productRefGroup = F34F888A2BC73825A8809CA19723C600 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */,
 				5C123A74CD9D6CDA27160800BA68B01A /* Floaty */,
 				CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */,
 				6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */,
 				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
-				5533A7406C222AAA8331870B6F5FCC9A /* Pods-Roomie */,
+				8508C88D0B49F89E40BE845368A74343 /* Pods-Roomie */,
 				951839CB1DF9CB36DBB67BE4140E7219 /* Pods-RoomieTests */,
 				39C54651ACA43133FCDDA17C1F94755E /* Pods-RoomieUITests */,
 			);
@@ -778,6 +885,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7D924A57BC65B5D41E46B156A8DCF2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F276D87ECE642BAF9150EB9FD4E7269A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -789,6 +904,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B0A14864E775C2AD00B936AC1A32F91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E7B5703BA8BF8D248D7E12E1C3A52CF /* Pods-Roomie-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		30237CD8FFC618019ADDBFF6AF503934 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,14 +927,6 @@
 				65D01C54FCF24BF6E6FBCD49F6E7CCB1 /* FontAwesomeTabBarItem.swift in Sources */,
 				FB64A64BD408EE7BBD70A4B048315C7D /* FontAwesomeTextRepresentable.swift in Sources */,
 				522BEF444AEAA78D1747B62ED49C688E /* FontAwesomeView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3BBE4B76F3C963DB4C55B9E002D2B20C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92855AE36D851D3EE60AC01F8F2F2832 /* Pods-Roomie-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +961,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED45CA897A4B81CB8204042001D7AEE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */,
+				9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */,
+				A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */,
+				442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */,
+				AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */,
+				02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */,
+				098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFDD05B792A1A2DB330508032AD5AC07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -870,23 +999,29 @@
 			target = 6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */;
 			targetProxy = A1E7ADA9414728070F39599079B02152 /* PBXContainerItemProxy */;
 		};
-		5396FE85D41E2836982A07E700BE74DC /* PBXTargetDependency */ = {
+		3C989FEDD74B31F502A7CA818B57C3CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleToolboxForMac;
 			target = 00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */;
-			targetProxy = 2C389A9F7D687506C83592C418787B6B /* PBXContainerItemProxy */;
+			targetProxy = 3C4A8611ED860D10424A556668C940B3 /* PBXContainerItemProxy */;
 		};
-		C2C96628D94A3B81DF44329BA3959B16 /* PBXTargetDependency */ = {
+		4E7F0F66772965853A614DF15DC2E21D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Floaty;
-			target = 5C123A74CD9D6CDA27160800BA68B01A /* Floaty */;
-			targetProxy = 3C867B7E1FE1CAEBFE23F85D8DE2A213 /* PBXContainerItemProxy */;
+			name = DropDown;
+			target = 5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */;
+			targetProxy = 65EBA6CD3FDE16E28427CCADCBC82FF8 /* PBXContainerItemProxy */;
 		};
-		E3CB3A6D1B58D8D115815DFC70ACE618 /* PBXTargetDependency */ = {
+		C1A7DC4C4EE11300AF9191A756AC46F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FontAwesome.swift;
 			target = CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */;
-			targetProxy = 3E52A6B6A4E754C83BD17FAC62DF1B48 /* PBXContainerItemProxy */;
+			targetProxy = C4A7C3061BD8889DE8F988D3385F23EA /* PBXContainerItemProxy */;
+		};
+		DA0B162E7557535244F35CF2C83B3705 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Floaty;
+			target = 5C123A74CD9D6CDA27160800BA68B01A /* Floaty */;
+			targetProxy = C65DC0DDDB3195F7B9B0626298EA6834 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -929,7 +1064,7 @@
 		};
 		0FDFD0914F226F60E35F5088944B6E30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -946,7 +1081,7 @@
 		};
 		161ED49E920B24005D08317AD0766C16 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16B08938F36F8E6867274F1914CD5469 /* Floaty.xcconfig */;
+			baseConfigurationReference = B0A3BB73F6299769CE5517590D9D3D4A /* Floaty.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1017,7 +1152,7 @@
 		};
 		3908D004F813917DBE3F38897949B70E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1052,7 +1187,7 @@
 		};
 		4E3BB37312E5D4518EDFAD78B7C89440 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AA7F9A479DFC65D17716C708BBD075A /* GoogleToolboxForMac.xcconfig */;
+			baseConfigurationReference = 9C1C15BF655A3D48A6C6BD22FBA215DC /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1131,48 +1266,9 @@
 			};
 			name = Debug;
 		};
-		57B19955F05B4B9011B5F11D676E394F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Roomie;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5985138FAB15F070B451C28E4EB13FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16B08938F36F8E6867274F1914CD5469 /* Floaty.xcconfig */;
+			baseConfigurationReference = B0A3BB73F6299769CE5517590D9D3D4A /* Floaty.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1240,7 +1336,42 @@
 			};
 			name = Debug;
 		};
-		AA89FE7790D7D576D4037A963C6131EA /* Release */ = {
+		7D9CF2A8F360170BB840BB40EF7CC4FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 354C7375535E83669F6FE6BAE603AFC9 /* DropDown.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = DropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		904D044CCF883660BE986180E7E09487 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3FAD3A923DE5D1EB38D177737781F2D /* Pods-Roomie.release.xcconfig */;
 			buildSettings = {
@@ -1360,7 +1491,7 @@
 		};
 		BE9B55DCDA299EAE202F6DB76CAA485A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AA7F9A479DFC65D17716C708BBD075A /* GoogleToolboxForMac.xcconfig */;
+			baseConfigurationReference = 9C1C15BF655A3D48A6C6BD22FBA215DC /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1393,7 +1524,7 @@
 		};
 		C026723B06B94482BAA318DB129038E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1427,7 +1558,7 @@
 		};
 		E0721897CFC7A1D36B4C8FA9C5BBB934 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C12EE144602C067F483F17CB6D1F0B /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 97635A0263BD05C370F47F3D6B426539 /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1441,6 +1572,79 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
+		};
+		E43CFE4DBF39EF6F6578BAD1246BC43C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Roomie;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F031A80BACE40595BD74CA9AB53A2EEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 354C7375535E83669F6FE6BAE603AFC9 /* DropDown.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = DropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1472,20 +1676,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		27A98E431B041BFC3B4CB9A439A43C19 /* Build configuration list for PBXNativeTarget "Pods-Roomie" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				57B19955F05B4B9011B5F11D676E394F /* Debug */,
-				AA89FE7790D7D576D4037A963C6131EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E487F173E6C9664F4E9E26B9635D23C /* Debug */,
 				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45143614893062803984DA50AB90C1D5 /* Build configuration list for PBXNativeTarget "DropDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D9CF2A8F360170BB840BB40EF7CC4FE /* Debug */,
+				F031A80BACE40595BD74CA9AB53A2EEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1504,6 +1708,15 @@
 			buildConfigurations = (
 				E0721897CFC7A1D36B4C8FA9C5BBB934 /* Debug */,
 				0FDFD0914F226F60E35F5088944B6E30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF51300AE48C24423F8F6C975D13910E /* Build configuration list for PBXNativeTarget "Pods-Roomie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E43CFE4DBF39EF6F6578BAD1246BC43C /* Debug */,
+				904D044CCF883660BE986180E7E09487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -167,6 +167,7 @@ class HomeViewController: UIViewController {
     
     // LOGOUT FUNCTION
     func handleLogout() {
+        SessionManager().userLoggedOut();
         present(LoginViewController(), animated: true, completion: nil)
     }
     
