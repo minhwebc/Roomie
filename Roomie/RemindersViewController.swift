@@ -10,7 +10,7 @@ import UIKit
 
 class RemindersViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    let bills = [["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"tv","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"internet","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"phone","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
+    var bills = [["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"tv","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"internet","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"phone","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
     
     let chores = [["title":"clean","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"dog","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"bro","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"sis","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
     
@@ -101,6 +101,36 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         self.reminderTableView.tableFooterView = UIView()
         reminderTableView.delegate = self
         reminderTableView.dataSource = self
+        
+        // sorting by date
+        var array:[Date] = []
+        var array2 : [String] = []
+        for i in bills{
+            let isoDate = i["dueDate"]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            let date = dateFormatter.date(from:isoDate!)!
+            array.append(date)
+            
+        }
+        let ready = array.sorted(by: { $0.compare($1) == .orderedAscending })
+        for i in ready{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            let now = dateFormatter.string(from: i)
+            array2.append(now)
+        }
+        
+        for i in 0...array2.count-1{
+            for j in 0...bills.count-1{
+                if bills[j]["dueDate"] == array2[i]{
+                    let bill = bills[j]
+                    bills.remove(at: j)
+                    bills.insert(bill, at: i)
+                }
+            }
+        }
+        //end of sorting
     }
 
     override func didReceiveMemoryWarning() {
