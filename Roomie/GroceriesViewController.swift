@@ -8,7 +8,10 @@
 
 import UIKit
 
-class GroceriesViewController: UIViewController {
+class GroceriesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    // Array to contain Groceries
+    var groceries: [Dictionary<String,String>] = []
     
     let addGroceriesView:UIView = {
         let view = UIView()
@@ -18,6 +21,14 @@ class GroceriesViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
+    }()
+    
+    // Table view to display Groceries
+    let groceriesTableView:UITableView = {
+        let view = UITableView()
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // Save Button
@@ -47,7 +58,7 @@ class GroceriesViewController: UIViewController {
     // Title TextField
     let titleTextField:UITextField = {
         let txt = UITextField()
-        txt.attributedPlaceholder = NSAttributedString(string:"Title", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        txt.attributedPlaceholder = NSAttributedString(string:"Item", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
         txt.layer.borderWidth = 1
         txt.layer.borderColor = UIColor.lightGray.cgColor
         txt.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +77,7 @@ class GroceriesViewController: UIViewController {
     // Title Label
     let addGroceriesViewTitleLabel:UILabel = {
         let txt = UILabel()
-        txt.text = "Add New Groceries List"
+        txt.text = "Add New Groceries"
         txt.font = UIFont.boldSystemFont(ofSize: 24)
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
@@ -75,7 +86,7 @@ class GroceriesViewController: UIViewController {
     // Title Label
     let titleLabel:UILabel = {
         let txt = UILabel()
-        txt.text = "Title:"
+        txt.text = "Item Bought:"
         txt.font = UIFont.boldSystemFont(ofSize: 20)
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
@@ -159,6 +170,12 @@ class GroceriesViewController: UIViewController {
         titleLabel.leftAnchor.constraint(equalTo: addGroceriesView.leftAnchor, constant: 20).isActive = true
     }
     
+    func constrainGroceriesTableView() {
+        groceriesTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        groceriesTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        groceriesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
     func addGroceries()  {
         self.view.addSubview(addGroceriesView)
         constrainaddGroceriesView()
@@ -172,21 +189,46 @@ class GroceriesViewController: UIViewController {
         print(titleTextField.text!)
         print(ownerTextField.text!)
         self.addGroceriesView.removeFromSuperview()
+        let gro = ["item":titleTextField.text]
+        groceries.append(gro as! [String : String])
+        print(groceries)
+        groceriesTableView.reloadData()
     }
-
-
+    
+    
+    // table view setup
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groceries.count
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = groceries[indexPath.row]["item"]
+        print(groceries[indexPath.row]["item"]!)
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
-         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGroceries))
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGroceries))
+        view.addSubview(groceriesTableView)
+        constrainGroceriesTableView()
+        groceriesTableView.tableFooterView = UIView()
+        groceriesTableView.delegate = self
+        groceriesTableView.dataSource = self
+        self.groceriesTableView.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
