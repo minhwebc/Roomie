@@ -10,10 +10,14 @@ import UIKit
 
 class RemindersViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    ////////////////////
+    //////
+    // Sample data to display
     var bills = [["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"tv","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"internet","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"phone","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
     
     var chores = [["title":"clean","dueDate":"10 Jun 2017","creator":"show","assignee":"Bro"],["title":"dog","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"],["title":"bro","dueDate":"09 Jun 2017","creator":"show","assignee":"Bro"],["title":"sis","dueDate":"11 Jun 2017","creator":"show","assignee":"Bro"],["title":"extra","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"]]
     
+    // table view to display data
     let reminderTableView:UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -21,6 +25,9 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         return table
     }()
 
+    ////////////////////
+    //////
+    // Setup TableVieew
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -37,7 +44,6 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
             return chores.count
         }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -56,11 +62,13 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
         dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -5).isActive = true
         
+        // cells for bills
         if indexPath.section == 0{
             dueDateLabelOnCell.text = "Due on: " + bills[indexPath.row]["dueDate"]!
             cell.textLabel?.text = bills[indexPath.row]["title"]
             cell.detailTextLabel?.text = "$"+bills[indexPath.row]["amountDue"]!
         }
+        // cells for chores
         if indexPath.section == 1{
             let assigneeLabelOnCell:UILabel = {
                 let label = UILabel()
@@ -96,32 +104,13 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         
     }
     
+    // constrain table view
     func constrainRemindersTableView() {
         reminderTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         reminderTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
 
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        self.edgesForExtendedLayout = []
-        view.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
-        view.addSubview(reminderTableView)
-        constrainRemindersTableView()
-        self.reminderTableView.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
-        self.reminderTableView.tableFooterView = UIView()
-        reminderTableView.delegate = self
-        reminderTableView.dataSource = self
-        
-        // sorting by date
-        sortArrayByDueDate(arrayObj: &bills)
-        sortArrayByDueDate(arrayObj: &chores)
-        //end of sorting
-    }
-    //dfghjklknbv
+    // Method to sort the an Array by dueDate
     func sortArrayByDueDate(arrayObj:inout [ Dictionary<String, String>]) {
         var array:[Date] = []
         var array2 : [String] = []
@@ -144,15 +133,35 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         for i in 0...array2.count-1{
             for j in 0...arrayObj.count-1{
                 if arrayObj[j]["dueDate"] == array2[i]{
-                    let bill = arrayObj[j]
+                    let obj = arrayObj[j]
                     arrayObj.remove(at: j)
-                    arrayObj.insert(bill, at: i)
+                    arrayObj.insert(obj, at: i)
                 }
             }
         }
-
+        
     }
 
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = []
+        view.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
+        view.addSubview(reminderTableView)
+        constrainRemindersTableView()
+        self.reminderTableView.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
+        self.reminderTableView.tableFooterView = UIView()
+        reminderTableView.delegate = self
+        reminderTableView.dataSource = self
+        
+        // sorting by date
+        sortArrayByDueDate(arrayObj: &bills)
+        sortArrayByDueDate(arrayObj: &chores)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
