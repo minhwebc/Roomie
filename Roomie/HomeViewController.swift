@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    let blankButton:UIButton = {
+    let remindersButton:UIButton = {
         var button = UIButton()
         button.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
         return button
@@ -74,10 +74,10 @@ class HomeViewController: UIViewController {
         ButtonsContainer.addSubview(roommateButton)
         ButtonsContainer.addSubview(groceriesButton)
         ButtonsContainer.addSubview(profileButton)
-        ButtonsContainer.addSubview(blankButton)
+        ButtonsContainer.addSubview(remindersButton)
         
         // calling constrain methods for buttons
-        setupBlankButton()
+        setupRemindersButton()
         setupProfileButton()
         setupGroceriesButton()
         setupRoommateButton()
@@ -142,12 +142,17 @@ class HomeViewController: UIViewController {
     }
     
     // constrain black button
-    func setupBlankButton() {
-        blankButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
-        blankButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
-        blankButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
-        blankButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
-        btnProperties(btn: blankButton, name: "BLANK")
+    func setupRemindersButton() {
+        remindersButton.leftAnchor.constraint(equalTo: ButtonsContainer.leftAnchor).isActive = true
+        remindersButton.topAnchor.constraint(equalTo: roommateButton.bottomAnchor).isActive = true
+        remindersButton.widthAnchor.constraint(equalTo: ButtonsContainer.widthAnchor, multiplier: 1/2).isActive = true
+        remindersButton.heightAnchor.constraint(equalTo: ButtonsContainer.heightAnchor, multiplier: 1/3).isActive = true
+        remindersButton.addTarget(self, action: #selector(remindersButtonClicked), for: .touchUpInside)
+        btnProperties(btn: remindersButton, name: "REMINDERS")
+    }
+    
+    func remindersButtonClicked() {
+        self.navigationController?.pushViewController(RemindersViewController(), animated: true)
     }
     
     // constrain profile button
