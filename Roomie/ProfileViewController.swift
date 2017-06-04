@@ -21,7 +21,10 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     let groceries = ["Cereal","chicken","beef","veggies"]
     let bills = ["rent","light","water","sewage","tv","internet"]
     
-    
+    let base_url = "gs://checkmateios-d1800.appspot.com"
+    let storageRef = Storage.storage(url: "gs://checkmateios-d1800.appspot.com").reference()
+    let sessionManager = SessionManager()
+    var userID: String = ""
     
     
     let profileImageView:UIImageView = {
@@ -194,11 +197,27 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     // after image has been selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var selectedImageFromPicker: UIImage?
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            profileImageView.image = image
-        }else{
-            //
+            selectedImageFromPicker = image
+        }else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectedImageFromPicker = image
         }
+        
+        if let selectImage = selectedImageFromPicker {
+            profileImageView.image = selectImage
+            
+            let imgRef = storageRef.child("image/\(userID).jpg")
+            let imageData = UIImagePNGRepresentation(selectImage)!
+            
+            imgRef.putData(imageData, metadata: nil) { metadata, error in
+                if let _ = error {
+                    print("Error happened while uploading!")
+                }
+            }
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -209,11 +228,18 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userID = sessionManager.getUserDetails()["userID"]!
+        nameLabel.text = sessionManager.getUserDetails()["name"]
+        
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 45/255.0, green:35/255.0 , blue: 53/255.0 ,alpha:1)
         self.profileTableView.backgroundColor = UIColor(red: 45/255.0, green:35/255.0 , blue: 53/255.0 ,alpha:1)
         self.view.addSubview(profileImageView)
         self.view.addSubview(nameLabel)
+        
+        configProfileImage()
+        
         constrainProfileImageView()
         constrainNameLabel()
         profileTableView.delegate = self
@@ -222,6 +248,35 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(profileTableView)
         constrainProfileTableView()
     }
-
-       
+    
+    func configProfileImage() {
+        // Create a reference to the file you want to download
+        let starsRef = storageRef.child("image/\(userID).jpg")
+        
+        // Fetch the download URL
+        starsRef.downloadURL { url, error in
+            if let error = error {
+                // Handle any errors
+                print(error)
+                return
+            }
+            self.loadImageUsingCacheWithUrlString(urlString: (url?.absoluteString)!)
+        }
+        
+    }
+    
+    func loadImageUsingCacheWithUrlString(urlString: String) {
+        let url = NSURL(string: urlString)
+        URLSession.shared.dataTask(with: url! as URL, completionHandler: {
+            (data, response, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            DispatchQueue.main.async(execute: {
+                self.profileImageView.image = UIImage(data: data!)
+            })
+        }).resume()
+    }
+    
 }
