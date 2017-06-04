@@ -432,6 +432,8 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         let vc = UserListViewController()
         vc.choreID = chores[sender.tag]["id"]
         vc.choreName = chores[sender.tag]["title"]
+        vc.creator = chores[sender.tag]["creator"]
+        vc.due_on = chores[sender.tag]["dueDate"]
         vc.vc = self
         self.navigationController?.pushViewController(vc, animated: true)
     }

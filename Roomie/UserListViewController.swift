@@ -16,6 +16,8 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     var users: [Dictionary<String,String>] = []
     var choreID: String?
     var choreName: String?
+    var creator: String?
+    var due_on: String?
     var vc: ChoresViewController?
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -26,7 +28,9 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         
         groupRef.child("chores/\(id)/assignTo").setValue(users[indexPath.row]["name"]!)
         
-        userRef.child("chores/\(id)").setValue(name)
+        userRef.child("chores/\(id)/title").setValue(name)
+        userRef.child("chores/\(id)/creator").setValue(creator)
+        userRef.child("chores/\(id)/due_on").setValue(due_on)
         print("Successfully assign the chore(id=\(id)) to the user(id=\(users[indexPath.row]["id"]!))!")
         
         //////////////////////////////////////////////

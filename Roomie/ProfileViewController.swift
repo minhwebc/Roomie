@@ -16,12 +16,12 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     //// Define UI elements
    
     // this is just sample data for testing purposes
-    let chores: [Dictionary<String,String>] = [["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath","creator":"Mo","dueDate":"29 May 2017"],["title":"clean room","creator":"Mo","dueDate":"29 May 2017"],["title":"bath room","creator":"Mo","dueDate":"29 May 2017"]]
-    let group = ["Mo","Quan","Fan","Victoria"]
-    let groceries = ["Cereal","chicken","beef","veggies"]
-    let bills = ["rent","light","water","sewage","tv","internet"]
+    var chores: [Dictionary<String,String>] = [["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath","creator":"Mo","dueDate":"29 May 2017"],["title":"clean room","creator":"Mo","dueDate":"29 May 2017"],["title":"bath room","creator":"Mo","dueDate":"29 May 2017"]]
+    var group = ["Mo","Quan","Fan","Victoria"]
+    var groceries = ["Cereal","chicken","beef","veggies"]
+    var bills = ["rent","light","water","sewage","tv","internet"]
     
-    let base_url = "gs://checkmateios-d1800.appspot.com"
+    let rootRef = Database.database().reference()
     let storageRef = Storage.storage(url: "gs://checkmateios-d1800.appspot.com").reference()
     let sessionManager = SessionManager()
     var userID: String = ""
@@ -238,6 +238,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(profileImageView)
         self.view.addSubview(nameLabel)
         
+        initData()
         configProfileImage()
         
         constrainProfileImageView()
@@ -247,6 +248,39 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         profileTableView.tableFooterView = UIView()
         self.view.addSubview(profileTableView)
         constrainProfileTableView()
+    }
+    
+    func initData() {
+        let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+        
+        // fetch user data
+        groupRef.child("users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                self.group.removeAll()
+                self.chores.removeAll()
+                for key in values.allKeys{
+                    if let value = values[key] as? NSDictionary {
+                        if let name = value["name"] as? String {
+                            self.group.append(name)
+                        }
+                        // fetch chore data
+                        if key as! String == self.userID, let chores = value["chores"] as? NSDictionary{
+                            // ["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"]
+                            for ckey in chores.allKeys {
+                                let chore = chores[ckey] as! NSDictionary
+                                let dict = ["title": chore["title"] ?? "","creator":chore["creator"] ?? "","dueDate":chore["due_on"] ?? ""]
+                                self.chores.append(dict as! [String: String])
+                            }
+                        }
+                    }
+                }
+                self.profileTableView.reloadData()
+            }
+            else {
+                print("user list is empty!")
+                return
+            }
+        })
     }
     
     func configProfileImage() {
