@@ -12,7 +12,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
     
     var bills = [["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"tv","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"internet","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"phone","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
     
-    let chores = [["title":"clean","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"dog","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"bro","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"sis","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
+    var chores = [["title":"clean","dueDate":"10 Jun 2017","creator":"show","assignee":"Bro"],["title":"dog","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"],["title":"bro","dueDate":"09 Jun 2017","creator":"show","assignee":"Bro"],["title":"sis","dueDate":"11 Jun 2017","creator":"show","assignee":"Bro"],["title":"extra","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"]]
     
     let reminderTableView:UITableView = {
         let table = UITableView()
@@ -43,27 +43,41 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.textColor = UIColor.white
         cell.detailTextLabel?.textColor = UIColor.white
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        let dueDateLabelOnCell:UILabel = {
+            let label = UILabel()
+            label.textAlignment = NSTextAlignment.right
+            label.textColor = UIColor.white
+            label.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        cell.addSubview(dueDateLabelOnCell)
+        dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
+        dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -5).isActive = true
+        
         if indexPath.section == 0{
-            let dueDateLabelOnCell:UILabel = {
-                let label = UILabel()
-                label.textAlignment = NSTextAlignment.right
-                label.textColor = UIColor.white
-                label.translatesAutoresizingMaskIntoConstraints = false
-                return label
-            }()
-            dueDateLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
             dueDateLabelOnCell.text = "Due on: " + bills[indexPath.row]["dueDate"]!
-            cell.addSubview(dueDateLabelOnCell)
-            dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
-            dueDateLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -5).isActive = true
-            
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.textLabel?.text = bills[indexPath.row]["title"]
             cell.detailTextLabel?.text = "$"+bills[indexPath.row]["amountDue"]!
         }
         if indexPath.section == 1{
-//            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            let assigneeLabelOnCell:UILabel = {
+                let label = UILabel()
+                label.textAlignment = NSTextAlignment.right
+                label.textColor = UIColor.white
+                label.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            cell.addSubview(assigneeLabelOnCell)
+            assigneeLabelOnCell.topAnchor.constraint(equalTo: (cell.detailTextLabel?.topAnchor)!).isActive = true
+            assigneeLabelOnCell.rightAnchor.constraint(equalTo: dueDateLabelOnCell.rightAnchor).isActive = true
+            
             cell.textLabel?.text = chores[indexPath.row]["title"]
+            dueDateLabelOnCell.text = "Due on: " + chores[indexPath.row]["dueDate"]!
+            assigneeLabelOnCell.text = "Assigned to : " + chores[indexPath.row]["assignee"]!
+            cell.detailTextLabel?.text = "Created by: "+chores[indexPath.row]["creator"]!
         }
 
         return cell
@@ -103,9 +117,15 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         reminderTableView.dataSource = self
         
         // sorting by date
+        sortArrayByDueDate(arrayObj: &bills)
+        sortArrayByDueDate(arrayObj: &chores)
+        //end of sorting
+    }
+    //dfghjklknbv
+    func sortArrayByDueDate(arrayObj:inout [ Dictionary<String, String>]) {
         var array:[Date] = []
         var array2 : [String] = []
-        for i in bills{
+        for i in arrayObj{
             let isoDate = i["dueDate"]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
@@ -122,15 +142,15 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         }
         
         for i in 0...array2.count-1{
-            for j in 0...bills.count-1{
-                if bills[j]["dueDate"] == array2[i]{
-                    let bill = bills[j]
-                    bills.remove(at: j)
-                    bills.insert(bill, at: i)
+            for j in 0...arrayObj.count-1{
+                if arrayObj[j]["dueDate"] == array2[i]{
+                    let bill = arrayObj[j]
+                    arrayObj.remove(at: j)
+                    arrayObj.insert(bill, at: i)
                 }
             }
         }
-        //end of sorting
+
     }
 
     override func didReceiveMemoryWarning() {
