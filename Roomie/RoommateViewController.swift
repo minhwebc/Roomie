@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import Firebase
 
 class RoommateViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    let rootRef = Database.database().reference()
+    let storageRef = Storage.storage(url: "gs://checkmateios-d1800.appspot.com").reference()
+    let sessionManager = SessionManager()
+    
     // Array to the users in a group
-    var roommate: [Dictionary<String,String>] = [["name":"Mo","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"quan","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"fan","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"victoria","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"sam","email":"nvkf@gmail.com","profileImage":"jklfckedc"]]
+    var roommate: [Dictionary<String,String>] = []
+    //["name":"Mo","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"quan","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"fan","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"victoria","email":"nvkf@gmail.com","profileImage":"jklfckedc"],["name":"sam","email":"nvkf@gmail.com","profileImage":"jklfckedc"]
     
     // Table view to display roommates
     let roommateTableView:UITableView = {
@@ -62,14 +68,15 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
             return imageView
         }()
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text = roommate[indexPath.row]["name"]
-        cell.imageView?.image = imageWithImage(image: UIImage(named: "User.png")!, scaledToSize: CGSize(width: 30, height: 30))
+        let cell = RoommateTableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = roommate[indexPath.row]["name"] ?? ""
+        cell.configImage(userID: roommate[indexPath.row]["id"]!)
+//        cell.imageView?.image = imageWithImage(image: UIImage(named: "User.png")!, scaledToSize: CGSize(width: 30, height: 30))
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.layer.borderWidth = 1
         cell.imageView?.layer.borderColor = UIColor.white.cgColor
         cell.imageView?.layer.cornerRadius = 5
-        cell.detailTextLabel?.text = roommate[indexPath.row]["email"]
+        cell.detailTextLabel?.text = roommate[indexPath.row]["email"] ?? ""
         cell.addSubview(emailImageView)
         // constrain email image view
         emailImageView.heightAnchor.constraint(equalTo: (cell.imageView?.heightAnchor)!).isActive = true
@@ -87,7 +94,7 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 242/255.0, green:206/255.0 , blue: 176/255.0 ,alpha:1)
         // Do any additional setup after loading the view.
-        
+        initData()
         view.addSubview(roommateTableView)
         constrainRoommateTableView()
         roommateTableView.tableFooterView = UIView()
@@ -96,11 +103,30 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         self.roommateTableView.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func initData() {
+        let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+        
+        // fetch user data
+        groupRef.child("users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                self.roommate.removeAll()
+                // ["name":"Mo","email":"nvkf@gmail.com","profileImage":"jklfckedc"]
+                for key in values.allKeys{
+                    if let value = values[key] as? NSDictionary {
+                        let dict = ["name":"\(value["name"]!)","email":"\(value["email"]!)", "id": key as! String]
+                        self.roommate.append(dict)
+                    }
+                }
+                self.roommateTableView.reloadData()
+            }
+            else {
+                print("user list is empty!")
+                return
+            }
+        })
     }
+    
     
 
     /*

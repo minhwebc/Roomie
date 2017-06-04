@@ -26,6 +26,7 @@
 		93ACF8181ECD8B630093432E /* RoomieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ACF8171ECD8B630093432E /* RoomieUITests.swift */; };
 		93ACF8261ECD8C610093432E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ACF8251ECD8C610093432E /* HomeViewController.swift */; };
 		9DA96CF71EDD128D00CBFF21 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA96CF61EDD128D00CBFF21 /* UserListViewController.swift */; };
+		9DD51B3D1EE3ADA700DBFE5A /* RoommateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD51B3C1EE3ADA700DBFE5A /* RoommateTableViewCell.swift */; };
 		A80546DC1ED6A9B3005F3ACB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80546DB1ED6A9B3005F3ACB /* User.swift */; };
 		A80546DE1ED6B61E005F3ACB /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80546DD1ED6B61E005F3ACB /* SessionManager.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		93ACF8191ECD8B630093432E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93ACF8251ECD8C610093432E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9DA96CF61EDD128D00CBFF21 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		9DD51B3C1EE3ADA700DBFE5A /* RoommateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoommateTableViewCell.swift; sourceTree = "<group>"; };
 		A80546DB1ED6A9B3005F3ACB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A80546DD1ED6B61E005F3ACB /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		BA0686BF95471186BCCFD829 /* Pods-Roomie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roomie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roomie/Pods-Roomie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				93ACF8001ECD8B630093432E /* LaunchScreen.storyboard */,
 				93ACF8031ECD8B630093432E /* Info.plist */,
 				9DA96CF61EDD128D00CBFF21 /* UserListViewController.swift */,
+				9DD51B3C1EE3ADA700DBFE5A /* RoommateTableViewCell.swift */,
 			);
 			path = Roomie;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				934094281ECE511800B06C9E /* GroceriesViewController.swift in Sources */,
 				934094221ECE50CF00B06C9E /* ChoresViewController.swift in Sources */,
 				93ACF7FA1ECD8B630093432E /* LoginViewController.swift in Sources */,
+				9DD51B3D1EE3ADA700DBFE5A /* RoommateTableViewCell.swift in Sources */,
 				934094241ECE50E400B06C9E /* BillsViewController.swift in Sources */,
 				A80546DC1ED6A9B3005F3ACB /* User.swift in Sources */,
 				93ACF7F81ECD8B620093432E /* AppDelegate.swift in Sources */,
