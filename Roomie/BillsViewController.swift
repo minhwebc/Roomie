@@ -16,9 +16,10 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
     var ref: DatabaseReference!
     let dateFormatter = DateFormatter()
-
+    let tabOne = TabOneViewController()
+    let tabOneBarItem = UITabBarItem();
     
-
+    
     // view to enter bill details
     let addBillView:UIView = {
         let view = UIView()
@@ -155,7 +156,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         addBillView.addSubview(dropDownView)
         dropDownView.addSubview(dropDownResult)
         addBillView.addSubview(dueDateLabel)
-
+        
         
         constrainTitleLabel()
         constrainAmountLabel()
@@ -176,9 +177,9 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         dropDownResult.widthAnchor.constraint(equalTo: dropDownView.widthAnchor, multiplier: 1/2).isActive = true
         dropDownResult.rightAnchor.constraint(equalTo: dropDownView.rightAnchor, constant: -15).isActive = true
         dropDownResult.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10).isActive = true
-
         
-        dropDown.dataSource = ["every day", "every month", "every week", "every two weeks"]
+        
+        dropDown.dataSource = ["every month", "every 2 months"]
         dropDown.width = 100
         
         // Action triggered on selection
@@ -189,7 +190,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         
     }
     
-
+    
     func constrainAmountLabel(){
         amountLabel.topAnchor.constraint(equalTo: amountTextField.topAnchor).isActive = true
         amountLabel.leftAnchor.constraint(equalTo: addBillView.leftAnchor, constant: 20).isActive = true
@@ -261,6 +262,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
                     "frequency": self.dropDownResult.text!,
                     "due": selectedDate]
         billRef.updateChildValues(bill);
+        tabOne.refreshTable()
         addBillView.removeFromSuperview();
     }
     
@@ -281,7 +283,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         
         
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -291,17 +293,16 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         ref = Database.database().reference()
-        let tabOne = TabOneViewController()
-        let tabOneBarItem = UITabBarItem();
+        
         tabOneBarItem.image = UIImage.fontAwesomeIcon(name: .money, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
-
+        
         tabOne.tabBarItem = tabOneBarItem;
         
         // Create Tab two
         let tabTwo = TabTwoViewController()
         let tabTwoBarItem2 = UITabBarItem()
         tabTwoBarItem2.image = UIImage.fontAwesomeIcon(name: .history, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
-
+        
         tabTwo.tabBarItem = tabTwoBarItem2
         
         let floaty = Floaty()
@@ -321,20 +322,26 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         print("Selected \(viewController.title!)")
     }
     
-
+    
 }
 
-class TabOneViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+class TabOneViewController: UITableViewController {
     var firebaseRef : DatabaseReference!
     let sessionManager = SessionManager()
     // Array to contain chores
-    var bills: [Dictionary<String,String>] = []
+    var bills: [Bill] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseRef = Database.database().reference()
-                // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         self.title = "Current Bills"
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        refreshTable()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -344,32 +351,189 @@ class TabOneViewController: UIViewController, UITableViewDelegate, UITableViewDa
     ////////////////////////////
     //////////////
     //// Setup table view to display added bills
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bills.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.bills.count
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "billCell");
-        return cell;
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
+        
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
+        }
+        
+        cell!.textLabel?.text = bills[indexPath.row].title
+        cell!.detailTextLabel?.text = bills[indexPath.row].amount
+        // Title Label
+        let label:UILabel = {
+            let txt = UILabel()
+            txt.text = bills[indexPath.row].dueDate
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        cell!.contentView.addSubview(label)
+        
+        label.rightAnchor.constraint(equalTo: (cell?.rightAnchor)!).isActive = true
+        label.topAnchor.constraint(equalTo: (cell?.textLabel?.bottomAnchor)!,constant:1 ).isActive = true
+        return cell!;
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func refreshTable() {
+        self.bills.removeAll()
+        firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String)
+                    self.bills.append(bill);
+                }
+            }
+            self.tableView.reloadData()
+        })
+    }
 }
 
-class TabTwoViewController: UIViewController {
+public class Bill{
+    public var dueDate : String;
+    public var amount : String;
+    public var frequency : String;
+    public var title : String;
+    public var overdue : Bool;
+    init(dueDate : String, amount : String, frequency : String, title : String) {
+        self.dueDate = dueDate;
+        self.amount = amount;
+        self.frequency = frequency;
+        self.title = title;
+        self.overdue = false;
+    }
+}
+
+class TabTwoViewController: UITableViewController {
+    var firebaseRef : DatabaseReference!
+    let sessionManager = SessionManager()
+    let dateFormatter = DateFormatter()
+    
+    
+    // Array to contain bills
+    var bills: [Bill] = []
+    
+    
+    func refreshTable() {
+        self.bills.removeAll()
+        firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String)
+                    let calendar = NSCalendar.current
+                    if(bill.frequency == "every month"){
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        var currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        let distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 1, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            print("overdue");
+                            bill.overdue = true;
+                        }
+                        if(bill.overdue){
+                            self.bills.append(bill);
+                        }
+                    }else{
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        var currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        var distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            distance = distance % 2;
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 2, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            print("overdue");
+                            bill.overdue = true;
+                        }
+                        if(bill.overdue){
+                            self.bills.append(bill);
+                        }
+                    }
+                }
+            }
+            
+            self.tableView.reloadData()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.red
         self.title = "Past Due Bills"
+        firebaseRef = Database.database().reference()
+        dateFormatter.dateFormat = "dd MMM yyyy";
+        refreshTable();
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.bills.count
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
+        
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
+        }
+        
+        cell!.textLabel?.text = bills[indexPath.row].title
+        cell!.detailTextLabel?.text = bills[indexPath.row].amount
+        // Title Label
+        let label:UILabel = {
+            let txt = UILabel()
+            txt.text = bills[indexPath.row].dueDate
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        cell!.contentView.addSubview(label)
+        
+        label.rightAnchor.constraint(equalTo: (cell?.rightAnchor)!).isActive = true
+        label.topAnchor.constraint(equalTo: (cell?.textLabel?.bottomAnchor)!,constant:1 ).isActive = true
+        return cell!;
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     override func didReceiveMemoryWarning() {
@@ -377,3 +541,5 @@ class TabTwoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
+
