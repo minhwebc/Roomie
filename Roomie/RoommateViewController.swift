@@ -14,6 +14,7 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
     let rootRef = Database.database().reference()
     let storageRef = Storage.storage(url: "gs://checkmateios-d1800.appspot.com").reference()
     let sessionManager = SessionManager()
+    let storage = "gs://checkmateios-d1800.appspot.com"
     
     // Array to the users in a group
     var roommate: [Dictionary<String,String>] = []
@@ -54,6 +55,10 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         return newImage!.withRenderingMode(.alwaysTemplate)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //image view for email
         let emailImageView:UIImageView = {
@@ -70,7 +75,9 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         
         let cell = RoommateTableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = roommate[indexPath.row]["name"] ?? ""
-        cell.configImage(userID: roommate[indexPath.row]["id"]!)
+
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: roommate[indexPath.row]["profileURL"]!)
+//        cell.configImage(userID: roommate[indexPath.row]["id"]!)
 //        cell.imageView?.image = imageWithImage(image: UIImage(named: "User.png")!, scaledToSize: CGSize(width: 30, height: 30))
         cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.layer.borderWidth = 1
@@ -104,6 +111,7 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
 
     }
     
+    let na = "N/A"
     func initData() {
         let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
         
@@ -114,7 +122,7 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
                 // ["name":"Mo","email":"nvkf@gmail.com","profileImage":"jklfckedc"]
                 for key in values.allKeys{
                     if let value = values[key] as? NSDictionary {
-                        let dict = ["name":"\(value["name"]!)","email":"\(value["email"]!)", "id": key as! String]
+                        let dict = ["name":"\(value["name"]!)","email":"\(value["email"]!)", "id": key as! String, "profileURL": "\(value["profileImageURL"] ?? "")"]
                         self.roommate.append(dict)
                     }
                 }
@@ -126,17 +134,38 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
             }
         })
     }
-    
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+class RoommateTableViewCell: UITableViewCell {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        textLabel?.frame =  CGRect(x: 56, y: (textLabel?.frame.origin.y)!, width: (textLabel?.frame.width)!, height: (textLabel?.frame.height)!)
+        detailTextLabel?.frame =  CGRect(x: 56, y: (detailTextLabel?.frame.origin.y)!, width: (detailTextLabel?.frame.width)!, height: (detailTextLabel?.frame.height)!)
     }
-    */
-
+    
+    let profileImageView: UIImageView = {
+        let profileimage = UIImageView()
+        profileimage.layer.cornerRadius = 20
+        profileimage.layer.masksToBounds = true
+        profileimage.translatesAutoresizingMaskIntoConstraints = false
+//        profileimage.layer.cornerRadius 
+        return profileimage
+    }()
+    
+    @available(iOS 3.0, *)
+    override public init(style: UITableViewCellStyle, reuseIdentifier: String?){
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(profileImageView)
+        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    required public init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+    }
 }

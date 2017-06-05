@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     let profileImageView:UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.white
+        imageView.backgroundColor = UIColor.clear
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -195,6 +195,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true)
     }
+    
     // after image has been selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var selectedImageFromPicker: UIImage?
@@ -216,9 +217,22 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
                     print("Error happened while uploading!")
                 }
             }
+            
+            imgRef.downloadURL { url, error in
+                if let error = error {
+                    // Handle any errors
+                    print(error)
+                    return
+                }
+                self.saveProfileURL(url: (url?.absoluteString)!)
+            }
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveProfileURL(url: String) {
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users/\(userID)/profileImageURL").setValue(url)
     }
     
     
@@ -239,7 +253,6 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(nameLabel)
         
         initData()
-        configProfileImage()
         
         constrainProfileImageView()
         constrainNameLabel()
@@ -265,6 +278,10 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
                         }
                         // fetch chore data
                         if key as! String == self.userID, let chores = value["chores"] as? NSDictionary{
+                            
+                            // fetch profile image
+                            self.profileImageView.loadImageUsingCacheWithUrlString(urlString:  "\(value["profileImageURL"] ?? "")")
+                            
                             // ["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"]
                             for ckey in chores.allKeys {
                                 let chore = chores[ckey] as! NSDictionary
@@ -281,36 +298,6 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 return
             }
         })
-    }
-    
-    func configProfileImage() {
-        // Create a reference to the file you want to download
-        let starsRef = storageRef.child("image/\(userID).jpg")
-        
-        // Fetch the download URL
-        starsRef.downloadURL { url, error in
-            if let error = error {
-                // Handle any errors
-                print(error)
-                return
-            }
-            self.loadImageUsingCacheWithUrlString(urlString: (url?.absoluteString)!)
-        }
-        
-    }
-    
-    func loadImageUsingCacheWithUrlString(urlString: String) {
-        let url = NSURL(string: urlString)
-        URLSession.shared.dataTask(with: url! as URL, completionHandler: {
-            (data, response, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            DispatchQueue.main.async(execute: {
-                self.profileImageView.image = UIImage(data: data!)
-            })
-        }).resume()
     }
     
 }
