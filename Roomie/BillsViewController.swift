@@ -11,9 +11,18 @@ import Floaty
 import FontAwesome_swift
 import DropDown
 import Firebase
+import ChameleonFramework
+
+extension UILabel {
+    
+    var ssubstituteFontName : String {
+        get { return self.font.fontName }
+        set { self.font = UIFont(name: newValue, size: self.font.pointSize) }
+    }
+    
+}
 
 class BillsViewController: UITabBarController, UITabBarControllerDelegate{
-    
     var ref: DatabaseReference!
     let dateFormatter = DateFormatter()
     var tabOne = TabOneViewController()
@@ -342,6 +351,7 @@ class TabOneViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UILabel.appearance().ssubstituteFontName = "San Francisco"
         firebaseRef = Database.database().reference()
         self.title = "Current Bills"
         self.tableView.separatorStyle = .none
@@ -471,12 +481,11 @@ extension TabOneViewController {
             print("\(name) $\(average)");
         }
         cell.containerView.layer.cornerRadius = 10;
-        cell.containerView.backgroundColor = UIColor.
         cell.containerView.addSubview(stackView)
+        cell.containerView.backgroundColor = UIColor(hexString:"#e74c3c");
         stackView.topAnchor.constraint(equalTo: cell.containerView.topAnchor, constant: 5).isActive = true;
         stackView.leftAnchor.constraint(equalTo: cell.containerView.leftAnchor, constant: 5).isActive = true;
         stackView.rightAnchor.constraint(equalTo: cell.containerView.rightAnchor, constant: 5).isActive = true;
-
         
         return cell
     }

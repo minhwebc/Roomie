@@ -7,86 +7,120 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FB910815F117ACFF464E4DB8B7267 /* DropDown.swift */; };
-		07340F15BACBA601736DBB2ABF1ABC35 /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = D0035D71C420FCAF8A633BCBF1D251F9 /* GTMSessionFetcherLogging.m */; };
-		08854A90872207C85BF94B752CADB265 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32E9786CF2B75728CA63A73EC63A55D /* DropDownCell.swift */; };
-		0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742C4E95E4AAD6A05A60B6A52FE003C0 /* Floaty.swift */; };
+		02CAE638EF1CEEBD6F5740498F9CA3F8 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271B8122DA9D22266079ABDC27029F /* DropDown.swift */; };
+		03DCD393DF69EE6DE4AD424B1192DD02 /* UIViewController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 140C6F2396A470ED29B1EFC73012AFFB /* UIViewController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07340F15BACBA601736DBB2ABF1ABC35 /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB208ACB72D52CF72282BCCAFC2C641 /* GTMSessionFetcherLogging.m */; };
+		08854A90872207C85BF94B752CADB265 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		098F056D90AF9CD3FD60D8A81DF043B6 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FEF70DBDECC2414DF9E919247A3A43 /* DropDownCell.swift */; };
+		0A113A2FC5F91269AB55DF9FA683015F /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437616F5078150CA8AA87731519BA04 /* Floaty.swift */; };
+		0D7F425CFB628271BFB6FCFF8201BF4F /* UIButton+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7B312311F2F2567400EB25F163D885 /* UIButton+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		139A9CEDE5163F58CBB1A3A135DAD6A3 /* UIImage+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D60D3A6DE59F3AA0507369BFF47E2B /* UIImage+ChameleonPrivate.m */; };
 		15D0B586C90FCD9168B37F705E0652E0 /* Pods-RoomieTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA91B47D2C52AEFC0546F0E2B52F6543 /* Pods-RoomieTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4961BFEA29E0BDDA05E2F2BF97155E /* Floaty-dummy.m */; };
-		1ED67707C258751E7888DAC2AB3D8501 /* GTMSessionFetcherLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = E0A3BD38405BD7F6E4551831FE304ABA /* GTMSessionFetcherLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24065029085002EAC70A3422A7D39EC1 /* FontAwesome.swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 185A6C14208A418F13423B30B3B58BE9 /* FontAwesome.swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2AE0F58A0988D92438C1448C861A154C /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE663C1C6282B70B8F7200C80ADB62 /* FontAwesomeImageView.swift */; };
-		2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E807DBE59FE13DF0AC8F0589BB6F81DB /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E9CD6F441E6B30601549781F5DB2D12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		2F30735E6BB3BB6DD455904BE0452769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F6139CE243536A4C26C84A485F041 /* FloatyItem.swift */; };
-		36C3AC1E19E9BCCA968A1B7BC3C82C8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6A48FEB12B929AE3C048A1D531242 /* DropDownCell.xib */; };
-		41FAD1CDCD9272883A6CF33FE8FF44E0 /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F6D7F6B12F3A9470D877CEF3AD843 /* FontAwesomeSegmentedControl.swift */; };
-		442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613845B40E3492F0A7772A1910A7F54E /* DropDown+Appearance.swift */; };
-		4BF5EDEBBEFED3C1F4CE82AB7FE12D45 /* Pods-Roomie-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4EFA908CA9A3E9A800B618AC902F5990 /* FontAwesome.swift.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADAAA7EB47A4B90A429D2023EB9D3E08 /* FontAwesome.swift.bundle */; };
-		522BEF444AEAA78D1747B62ED49C688E /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D23E6186FC0CEA41055F5B7566E801 /* FontAwesomeView.swift */; };
-		530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C9D2EA38E24946741B8A6986D760D /* FloatyWindow.swift */; };
-		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAF9D6616B1AB11F9418090049E82B7 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17BC6225D5D1680D27E0ECED9CD85E25 /* Pods-Roomie-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1982E7ED9231E948A558799362FEA8B3 /* Floaty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2732AC9779AF6BA8871A895F1C9DB3A /* Floaty-dummy.m */; };
+		1B704F3C816C4532F9B7FDFE0625732E /* ChameleonFramework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 50E2F450ACC263514186485BC4C5FBBE /* ChameleonFramework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1ED67707C258751E7888DAC2AB3D8501 /* GTMSessionFetcherLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 108DD54ED29834B97AF24F38C13C6DEF /* GTMSessionFetcherLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24065029085002EAC70A3422A7D39EC1 /* FontAwesome.swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2E6A559B3B7243D6BD56D27C6F6590 /* FontAwesome.swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29F74E8A334254C68C6720E3B247CE32 /* NSArray+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = A8130AC07D964E2F2AE27DEC1E19C7BE /* NSArray+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AE0F58A0988D92438C1448C861A154C /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745B90FB459F66E06E7E2740AB4E2B0 /* FontAwesomeImageView.swift */; };
+		2DDDE2C06FB4DCC639CFD100F224D6FD /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7E8DD82E3D4087B46C518D8038309D /* UIColor+Chameleon.m */; };
+		2E7E74DF0C455B0BC43BFDD1D0163E64 /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 906CCFC86147974A0B4547133F8A72BB /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E9CD6F441E6B30601549781F5DB2D12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		2F30735E6BB3BB6DD455904BE0452769 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		31DEB9C293D974C0014F52E7853C3E0B /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257B0963B6043B7C07C06AF29F269F43 /* FloatyItem.swift */; };
+		34D751AECD252A6F375328CB8BB48D4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ADB436880E499174FE45FEC316D0DB /* QuartzCore.framework */; };
+		37C293AEA575D6E5186739D1B07805F2 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8EE29F5ECE9CF1E4698C62AD581022 /* DropDownCell.xib */; };
+		3D08C4F4E2E65D192D317AED0A8237B3 /* UIColor+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EB46AEBA57DAF9BC6BE8ACDFCC1848 /* UIColor+ChameleonPrivate.m */; };
+		41FAD1CDCD9272883A6CF33FE8FF44E0 /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A048A692E18A1D71D5A9F2678A0CD /* FontAwesomeSegmentedControl.swift */; };
+		44117424757A5E62D87B8BF4B41A4207 /* UIColor+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 445DEDE5E1B73A1E7EEDB68AC3F0131F /* UIColor+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		442ADADA3215E1E5CA1557E708D4228C /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37AE816347BDA456A2B4EB3FAB8AAC /* DropDown+Appearance.swift */; };
+		459048ECD9FAA42B77566EC56ECAD793 /* UINavigationController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 041C093C79C128FBE872B3BE834BBD57 /* UINavigationController+Chameleon.m */; };
+		480E63B4BD4FAC5697709F373137E1F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		4EFA908CA9A3E9A800B618AC902F5990 /* FontAwesome.swift.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69AB3EFC02BCF4217302E0742C8DBA3B /* FontAwesome.swift.bundle */; };
+		522BEF444AEAA78D1747B62ED49C688E /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F56280C54A9554FB37A533DBF112ED /* FontAwesomeView.swift */; };
+		530356FC11C4F4A1F641A30F65C5684F /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5C08F788F9371281823DC705683677 /* FloatyWindow.swift */; };
+		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F421D26FD5CA20F69B4BFC5FB7CE7FE /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55BF0408539FC3EB9624D8B311CE548B /* Pods-RoomieUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DE397CB4CB769E6F72433F941E10EE3 /* Pods-RoomieUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		589D19F8FC8F1E9D6360D950D26A7138 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257726145BEFD9B7AA9ECF43C6917D9 /* FontAwesome.swift */; };
-		5AD3E160E28F5EFC4D17A8668CA322BD /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA533941E6117F4E6FDA1BFFEF8742E /* FontAwesomeBarButtonItem.swift */; };
-		61D5BCF933C9811260C648C581CFD196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		64F31B70A6E5E6963518A01C285B435F /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F4615744B0AF49AEB7BC9A6311137A /* GTMSessionFetcher.m */; };
-		65D01C54FCF24BF6E6FBCD49F6E7CCB1 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9495E7EA70FCC3E92DA42F54F46E539A /* FontAwesomeTabBarItem.swift */; };
-		684E126B8E890761BBB1A4EB590EA1F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBFFC707FDA77582BFB4DB23B4FE1B7 /* UIKit.framework */; };
-		6EA6DFC4473A9B2DB6B8A42EA986BA5B /* GTMSessionFetcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 657F4D388F07940ABFBB17F6799CD344 /* GTMSessionFetcher-dummy.m */; };
-		7060C75B128119AE663619DCED898CF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBFFC707FDA77582BFB4DB23B4FE1B7 /* UIKit.framework */; };
-		7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6057C998D8DF1AEF7391EC91E0D8F3DB /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EDCFCDB06AF94DBD7D1701FDA2C42807 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8852FD9AFC242520924D98BE9C4E2477 /* GTMSessionFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C55458B1BB3B681793BFC93CA2A38 /* GTMSessionFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E76A39A57BD72BD743BF168537D13F2 /* FloatyManager.swift */; };
-		9024F4774BD8DDE03700B223CF7F8164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63963A5FCED6DF6CC304510871D091 /* FloatyDelegate.swift */; };
-		93D51748565CFEB9490FBA7DA993C5C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C8F314548D5083C9F388F3DBB480B4 /* GTMSessionFetcherService.m */; };
-		9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB9E8846B3CFC69FB683C591A98ECFF /* DPDKeyboardListener.swift */; };
-		9DA28C3544749A7DB9AB129BEC773550 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004C59800A3CBDD311E09A62522D1432 /* Security.framework */; };
-		A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504211825538C15850D7DF29432A806 /* DPDUIView+Extension.swift */; };
-		A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD07106EF01F31D173803368A1A787A /* DPDConstants.swift */; };
-		AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8156F95CF41AE0211AEA2FF98B59F4 /* DropDown-dummy.m */; };
+		589D19F8FC8F1E9D6360D950D26A7138 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30535BCEBF07184FBC1D64476B2AD03E /* FontAwesome.swift */; };
+		5AD3E160E28F5EFC4D17A8668CA322BD /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB2156FFEFC2EDCA40B3B18C1C6694 /* FontAwesomeBarButtonItem.swift */; };
+		5EA9F0ED011B06DEFA8542EEE72508C3 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D2686C3C37F23F9BB705ABFDBCD37 /* UIViewController+Chameleon.m */; };
+		604286A8F8A2ACB063BDF97B09D4987C /* UILabel+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = C140D065B3909DC1FDE34B34F9566970 /* UILabel+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61D5BCF933C9811260C648C581CFD196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		64F31B70A6E5E6963518A01C285B435F /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E5661353C7F2234B853D6E9D13200580 /* GTMSessionFetcher.m */; };
+		65D01C54FCF24BF6E6FBCD49F6E7CCB1 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D689436BE05A543F15D64E50AF5E67 /* FontAwesomeTabBarItem.swift */; };
+		6712100A2CCB9B987281A02F6778473C /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F34A21BD5D1BD39A4C3AD199A7022D /* NSArray+Chameleon.m */; };
+		684E126B8E890761BBB1A4EB590EA1F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD3B8B5C7BE9EE2894EFC266D4A48F3 /* UIKit.framework */; };
+		6D9F0C77C6996D7FBC0F03AF8E706276 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD3B8B5C7BE9EE2894EFC266D4A48F3 /* UIKit.framework */; };
+		6EA6DFC4473A9B2DB6B8A42EA986BA5B /* GTMSessionFetcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 175804940A0E3B29C2ACD340BE9C7D2D /* GTMSessionFetcher-dummy.m */; };
+		7060C75B128119AE663619DCED898CF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD3B8B5C7BE9EE2894EFC266D4A48F3 /* UIKit.framework */; };
+		7067387FF3974A5BA87F204F718C33F5 /* Floaty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E71C9F9DEA271ADCAFB2C77ABC0326A /* Floaty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78281D8673FC507089FCFDC439DEDC16 /* Chameleon_.h in Headers */ = {isa = PBXBuildFile; fileRef = F92A41E413F8DA4D0155AD6F9C76AC44 /* Chameleon_.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 983438742463C78761EAF44A299C6DFA /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		833F15A28A0D562548517BCA8EAF23B6 /* ChameleonShorthand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31613295416F3C869CEDE9F53ABF16A1 /* ChameleonShorthand.swift */; };
+		83CFC8F573AD5B75191E162E64C7D039 /* UIButton+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = D504A37BF27C8ED8B72369D777472EEE /* UIButton+Chameleon.m */; };
+		86F7D970F220974A0E26C3B632C5C74F /* UIImage+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A9137FE6C8DA3ECB337849189EE81C3 /* UIImage+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8852FD9AFC242520924D98BE9C4E2477 /* GTMSessionFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2D6AF2F74CFB0FB26B93E809E8C398 /* GTMSessionFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E96697B51D3FD3DB5EB1BE3EF02B411 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44770D69255FC6FA59B11DD00F70DEA1 /* FloatyManager.swift */; };
+		8ECF929AC5E737EBEB542283886D5E07 /* UIView+ChameleonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5965230B33C5F3DB1DC40CD12562EF /* UIView+ChameleonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9024F4774BD8DDE03700B223CF7F8164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		9054A1CA64F47D0BEE3744D146CD26A2 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CC5DA75A6DE1EA805D79C3141CBFE0 /* FloatyDelegate.swift */; };
+		93D51748565CFEB9490FBA7DA993C5C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7734C89CD9984BB25396AEACC5CD18 /* GTMSessionFetcherService.m */; };
+		95E542740750F827BE2EBE3DE6F62D0E /* ChameleonFramework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC720D694F09A865C10C47733B8D328E /* ChameleonFramework-dummy.m */; };
+		9A3EAF15D3C58FD56A552FD703A9154C /* ChameleonConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = A70263ABDE611DB89D82F4D64FD31F3E /* ChameleonConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B6AD39C81FAF37861FC0FEC41022146 /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 009B62747E5ECA71EB90268BB9748B96 /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D0221E27E37CDA9DF26DD3CFA56D75B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA4EDF00BB50F410834DF103DB3F2F /* DPDKeyboardListener.swift */; };
+		9DA28C3544749A7DB9AB129BEC773550 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57847DA74C7D0343A40EA819A72E311 /* Security.framework */; };
+		A401CF18D15DF246F40FAC4E8F06CBC7 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A33C0174C662BB45F6E740D0EEA6D78 /* DPDUIView+Extension.swift */; };
+		A664D0A12D5F3DBD08A7E8DFE3AE83E2 /* UIView+ChameleonPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AFF4E8269B056EEC4F8DD5D60F36D5 /* UIView+ChameleonPrivate.m */; };
+		A812E7811821F66B3B7499F6F1B513BA /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFE3B1382664561DAA8D84EC62433E /* DPDConstants.swift */; };
+		AC6581D9387744158B44BE683403C3BC /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F94FCD0C24978DF27FCDD4DFCDE8A88B /* DropDown-dummy.m */; };
 		AE2C5EF91CA12C7393B08ADB715282DF /* Pods-RoomieUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780BD3AEC7C137B37BDE10E88130BE2 /* Pods-RoomieUITests-dummy.m */; };
-		BA158509B4673EB6F8D0D12961169AB1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF328403BBEF86996EF93041F9DE3D4 /* Enum.swift */; };
-		C3079113A27F987B6889C2E9C05A10DD /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1D4533E4A92144FBE05D5753663CC5D /* FontAwesome.otf */; };
-		C4EDDFD00880AD17F1BB7D66948F1D21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */; };
-		C879A43B7C8CC16E986D40441C2F2878 /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26462298C0984A76639E637703BA12AC /* FontAwesomeImageRepresentable.swift */; };
-		CBD91B03AC387775166237F805EABC3A /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDB607BB3C90D5B083B65B4C90AAF9D /* FontAwesomeStateRequirement.swift */; };
-		D3F381B45ADFDDE51CA31F1E141236CA /* GTMSessionFetcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F6EDE1631F198DFDBED1D37150930803 /* GTMSessionFetcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D823D79B3940446A59240F5F40E86628 /* Pods-Roomie-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */; };
-		DAC2CACA22AE100EB261D377EC6FBE3C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604AE415720BA873268812ACE1146FE /* CoreText.framework */; };
-		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = ADC9C11483FD52FE396775AF1C96D527 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF9559C3822E3C6119BE43E4EDFD7EEE /* GTMSessionFetcherService.h in Headers */ = {isa = PBXBuildFile; fileRef = 63740C091A5BFB39A5C9D744200B09D8 /* GTMSessionFetcherService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B26038F91C7C4CC322D7F25C5D16FE9E /* ChameleonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDDCC47FB39EEDFA8EB907B44A32CAD /* ChameleonConstants.m */; };
+		B4EA53699AA19822E674188743266B2B /* ChameleonMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A976FDEA0504980711C3A2A27279240 /* ChameleonMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA158509B4673EB6F8D0D12961169AB1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76C4387B56784F5A5403E3CCC2B0D2 /* Enum.swift */; };
+		BFA97401155C4E14893D9AA1E0D1EC80 /* UINavigationController+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = ADCD4E0885745A8DCF5EFAAC83F3A8AF /* UINavigationController+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3079113A27F987B6889C2E9C05A10DD /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF5D4742E2938C9E327E47E6C1CEE4 /* FontAwesome.otf */; };
+		C3C8BB46937DD0BBC7FBE25E298052F8 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCA3915C3C304A7F1C2D7C0A53A2FDD /* UIAppearance+Swift.m */; };
+		C4EDDFD00880AD17F1BB7D66948F1D21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		C879A43B7C8CC16E986D40441C2F2878 /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A30B89AB9F1804AD79913BAF2EE46 /* FontAwesomeImageRepresentable.swift */; };
+		CBD91B03AC387775166237F805EABC3A /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD11D21918748BA7A425696FD91F062 /* FontAwesomeStateRequirement.swift */; };
+		D20C7A808B589AF279D6D53C9FBE0E25 /* Pods-Roomie-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */; };
+		D3F381B45ADFDDE51CA31F1E141236CA /* GTMSessionFetcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA8F182C10EE9A1274400D1A07D7E9F /* GTMSessionFetcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAC2CACA22AE100EB261D377EC6FBE3C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DA8DB8D61CB67D994DC545EFBF1818 /* CoreText.framework */; };
+		DB5FB611FB6EBF2F2BA7B78FE0CED535 /* UIColor+Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AEE9DEF39EE7104136A96C4E77DDD9 /* UIColor+Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBFECCB0BBE3F11CC41A3C1A8C4879D3 /* GTMNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8A67EB3BD1567721DCB39D85A4BA43 /* GTMNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF9559C3822E3C6119BE43E4EDFD7EEE /* GTMSessionFetcherService.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D8F991A0C13B5176AF9E9DBFF7B8C58 /* GTMSessionFetcherService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7FA38FEAF957D69E92153FBAFB3DB40 /* Chameleon_.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E692D3BFB5D306ECDDCDDAB30B847C /* Chameleon_.m */; };
+		E87D2FB41E6EB857013EB020297C08DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */; };
+		E91202612969D2BDB5A801F81AE96FFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A832CF7E22BEFDC53D90BACD595410 /* CoreGraphics.framework */; };
 		E9F8282BECE32D913096539112128683 /* Pods-RoomieTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6EA4109D70BD04A079589DAD9FDDFA /* Pods-RoomieTests-dummy.m */; };
-		F09EDD53B94234F5F8DAC4DCD5CD969E /* GTMSessionUploadFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E4D432B1775C3B99689EC225D2914D2 /* GTMSessionUploadFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F4E294C07EE32FFCDCF7FF4D71D850BD /* GTMSessionUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5EF18D7E60C5262CFDEC2D26EE47BF /* GTMSessionUploadFetcher.m */; };
-		F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D2C7416BE766A9F6765FC498C203 /* FloatyViewController.swift */; };
-		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 8989F1ECDAA1E312181E3BCACDAC4674 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3B8BFEB7FB7DED4497D2B3196CB5C /* GoogleToolboxForMac-dummy.m */; };
-		FB64A64BD408EE7BBD70A4B048315C7D /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90C2B19A79CF8BFED53C275360ADDBA /* FontAwesomeTextRepresentable.swift */; };
-		FD8C615CEC6F1EBDB63BF3240583D2F3 /* FontAwesome.swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 467D4358E28C501AA56A3DA42CC23059 /* FontAwesome.swift-dummy.m */; };
+		EC786817C5CEBCD51A4C9EC9B883ED6F /* ChameleonEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = C99ED48E26555C2559F010DB8C49924D /* ChameleonEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED4DBD1E13182AA813DC1237FA6E3A42 /* Chameleon.h in Headers */ = {isa = PBXBuildFile; fileRef = AF50C2737ED2AC5F10B1DC1C8C33D9FF /* Chameleon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F09EDD53B94234F5F8DAC4DCD5CD969E /* GTMSessionUploadFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1901AEF9C35C69733DF5A9652AF8C8ED /* GTMSessionUploadFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4E294C07EE32FFCDCF7FF4D71D850BD /* GTMSessionUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 06274E91FD9844B44D383B56C8C256E6 /* GTMSessionUploadFetcher.m */; };
+		F5B4C3EE44C285ACF24E077895435175 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C3D7CB80D9B177CD9276031239B7B3 /* FloatyViewController.swift */; };
+		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624F45DB5F93E96F4CDC64EB0868A34 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FAC3F3CAABA60EF76069431C5BB5032A /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 614BD50E83B22A88CDC38657E992BCD4 /* GoogleToolboxForMac-dummy.m */; };
+		FB64A64BD408EE7BBD70A4B048315C7D /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E1EC3BFCD09F99257F699C5EAF10B /* FontAwesomeTextRepresentable.swift */; };
+		FB82C1293D7DDE0D3E2E6D68CDD5852C /* UILabel+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 6915C1C907FCCA7E5EBCC06CBE93CBA5 /* UILabel+Chameleon.m */; };
+		FD8C615CEC6F1EBDB63BF3240583D2F3 /* FontAwesome.swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4C98820938115C6FBA862DCD9B7679 /* FontAwesome.swift-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44FB09C95AA54ED35D6FA399A8A0D280 /* PBXContainerItemProxy */ = {
+		2D90F6BA6232425A2E38D8FDD23DDE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
-			remoteInfo = GoogleToolboxForMac;
+			remoteGlobalIDString = 5168099F2EBFC99A707C03C9EADE01A5;
+			remoteInfo = DropDown;
 		};
-		75EF5168F0C516BEFFD83D716BAE5FBE /* PBXContainerItemProxy */ = {
+		A1405B5CD23A49FDEA87FB048BD0BF65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CD11672B6619C297B6AEE3DFB8213C59;
-			remoteInfo = FontAwesome.swift;
+			remoteGlobalIDString = 5C123A74CD9D6CDA27160800BA68B01A;
+			remoteInfo = Floaty;
 		};
 		A1E7ADA9414728070F39599079B02152 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -95,147 +129,191 @@
 			remoteGlobalIDString = 6991F49AED797519343B1F4591001691;
 			remoteInfo = "FontAwesome.swift-FontAwesome.swift";
 		};
-		C4D6D0C62BFC02936B4042A62BDEE1B1 /* PBXContainerItemProxy */ = {
+		AB1DF19F0057FE35CB035CE066277F30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C052BEBFBD0AB5218CC64BA3450F6547;
 			remoteInfo = GTMSessionFetcher;
 		};
-		CE8DD28291078CA54AED99D511519B5B /* PBXContainerItemProxy */ = {
+		B83E9F3947A00DEA3615E96B95C15DA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5C123A74CD9D6CDA27160800BA68B01A;
-			remoteInfo = Floaty;
+			remoteGlobalIDString = CD11672B6619C297B6AEE3DFB8213C59;
+			remoteInfo = FontAwesome.swift;
 		};
-		E2BC8E8CCC826729FD4AEEA9C62409AE /* PBXContainerItemProxy */ = {
+		F9B5DF8CF422D20848A16A1BF27C22EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5168099F2EBFC99A707C03C9EADE01A5;
-			remoteInfo = DropDown;
+			remoteGlobalIDString = 76BD4592010354D6C23D6ECCA20D83A8;
+			remoteInfo = ChameleonFramework;
+		};
+		FB2320D732F9CB7E3D296656098081A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00103D6C821BE85971C563025527BA5D;
+			remoteInfo = GoogleToolboxForMac;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		004C59800A3CBDD311E09A62522D1432 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		0504211825538C15850D7DF29432A806 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		009B62747E5ECA71EB90268BB9748B96 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAppearance+Swift.h"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		01AEE9DEF39EE7104136A96C4E77DDD9 /* UIColor+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+Chameleon.h"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.h"; sourceTree = "<group>"; };
+		0354AE18FC62A08E44BE6084B8B0FAB7 /* GTMSessionFetcher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GTMSessionFetcher.xcconfig; sourceTree = "<group>"; };
+		041C093C79C128FBE872B3BE834BBD57 /* UINavigationController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Chameleon.m"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.m"; sourceTree = "<group>"; };
 		05E25F809123FC924BA8255EB7C53597 /* Pods-Roomie-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Roomie-frameworks.sh"; sourceTree = "<group>"; };
-		065ABF79E27FF648B52D74FA8C177365 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Frameworks/FirebaseNanoPB.framework; sourceTree = "<group>"; };
-		08935D4EE92B771DFFE78261DD60952B /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
+		06274E91FD9844B44D383B56C8C256E6 /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = Source/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
+		0A33C0174C662BB45F6E740D0EEA6D78 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
 		0C78289F35FED667107D8220B63A811B /* Pods-RoomieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieUITests.release.xcconfig"; sourceTree = "<group>"; };
-		0D1EE46C7985FE859D85B67D88D2D589 /* Pods_Roomie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Roomie.framework; path = "Pods-Roomie.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F68A3E83F5FBC9DEE99CF486FBDB26E /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FBB741A976A6ECB8BE1B77FC7F78454 /* DropDown.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.xcconfig; sourceTree = "<group>"; };
-		185A6C14208A418F13423B30B3B58BE9 /* FontAwesome.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-umbrella.h"; sourceTree = "<group>"; };
-		1CDE93A514F003B10CAF94276CB944F2 /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DropDown.modulemap; sourceTree = "<group>"; };
-		211434043304329493DECF50FDA62B28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2257726145BEFD9B7AA9ECF43C6917D9 /* FontAwesome.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = FontAwesome/FontAwesome.swift; sourceTree = "<group>"; };
-		26462298C0984A76639E637703BA12AC /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageRepresentable.swift; path = FontAwesome/FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
+		0DB208ACB72D52CF72282BCCAFC2C641 /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = Source/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
+		0DDDCC47FB39EEDFA8EB907B44A32CAD /* ChameleonConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ChameleonConstants.m; path = "Pod/Classes/Objective-C/ChameleonConstants.m"; sourceTree = "<group>"; };
+		0FCF5D4742E2938C9E327E47E6C1CEE4 /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = FontAwesome.otf; path = FontAwesome/FontAwesome.otf; sourceTree = "<group>"; };
+		108DD54ED29834B97AF24F38C13C6DEF /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = Source/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
+		12A832CF7E22BEFDC53D90BACD595410 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		140C6F2396A470ED29B1EFC73012AFFB /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Chameleon.h"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.h"; sourceTree = "<group>"; };
+		175804940A0E3B29C2ACD340BE9C7D2D /* GTMSessionFetcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTMSessionFetcher-dummy.m"; sourceTree = "<group>"; };
+		18A0E1A89D22EC5CB3196C6D9B55D911 /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
+		1901AEF9C35C69733DF5A9652AF8C8ED /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = Source/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
+		1A2D6AF2F74CFB0FB26B93E809E8C398 /* GTMSessionFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = Source/GTMSessionFetcher.h; sourceTree = "<group>"; };
+		1CDA4EDF00BB50F410834DF103DB3F2F /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesome.swift.xcconfig; sourceTree = "<group>"; };
+		20BB2156FFEFC2EDCA40B3B18C1C6694 /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeBarButtonItem.swift; path = FontAwesome/FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
+		2145978B92B8F037DC3C9AF4E66392F1 /* Pods_RoomieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieTests.framework; path = "Pods-RoomieTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FEDE827F058228C2EA8EA7CBE48ADE /* GTMSessionFetcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-prefix.pch"; sourceTree = "<group>"; };
+		257B0963B6043B7C07C06AF29F269F43 /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
+		25F43E08665CCB60CE75FF0EA4552263 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		269A836B3069F26D611A9F2CBD31B2FF /* Pods-Roomie.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Roomie.modulemap"; sourceTree = "<group>"; };
-		285BE19A4D479F2F46D5E826125163C8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2AF328403BBEF86996EF93041F9DE3D4 /* Enum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = FontAwesome/Enum.swift; sourceTree = "<group>"; };
-		2C829745B79D999BC289E3CFB3D9740F /* Floaty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-prefix.pch"; sourceTree = "<group>"; };
-		2D8C05F1F5152D5E9547A76957DCC170 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
-		2E4D432B1775C3B99689EC225D2914D2 /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = Source/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
 		301C85863D1286036309CA80FD889E98 /* Pods-Roomie-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Roomie-dummy.m"; sourceTree = "<group>"; };
+		30535BCEBF07184FBC1D64476B2AD03E /* FontAwesome.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = FontAwesome/FontAwesome.swift; sourceTree = "<group>"; };
+		31613295416F3C869CEDE9F53ABF16A1 /* ChameleonShorthand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChameleonShorthand.swift; path = Pod/Classes/Swift/ChameleonShorthand.swift; sourceTree = "<group>"; };
 		344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Roomie.debug.xcconfig"; sourceTree = "<group>"; };
-		3582D010D1DA33A1578B4CC989319B85 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
-		366F6139CE243536A4C26C84A485F041 /* FloatyItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyItem.swift; path = Sources/FloatyItem.swift; sourceTree = "<group>"; };
-		391EBDDD318700FF6ECB0E2E18EC3CB5 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		3BE6A48FEB12B929AE3C048A1D531242 /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
+		34D689436BE05A543F15D64E50AF5E67 /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTabBarItem.swift; path = FontAwesome/FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		3745B90FB459F66E06E7E2740AB4E2B0 /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageView.swift; path = FontAwesome/FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		3C0D2686C3C37F23F9BB705ABFDBCD37 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Chameleon.m"; path = "Pod/Classes/Objective-C/UIViewController+Chameleon.m"; sourceTree = "<group>"; };
 		436DC547AA54CC99810917C617AA23D4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4541514874A9187D1B776B6F4D840AD1 /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		467D4358E28C501AA56A3DA42CC23059 /* FontAwesome.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesome.swift-dummy.m"; sourceTree = "<group>"; };
-		4B5E9586F239555B7B837BAA69CF91C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CB9E8846B3CFC69FB683C591A98ECFF /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		445DEDE5E1B73A1E7EEDB68AC3F0131F /* UIColor+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		44770D69255FC6FA59B11DD00F70DEA1 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
+		47ADB436880E499174FE45FEC316D0DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		49DA8DB8D61CB67D994DC545EFBF1818 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		4A976FDEA0504980711C3A2A27279240 /* ChameleonMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonMacros.h; path = "Pod/Classes/Objective-C/ChameleonMacros.h"; sourceTree = "<group>"; };
+		4C2E6A559B3B7243D6BD56D27C6F6590 /* FontAwesome.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-umbrella.h"; sourceTree = "<group>"; };
+		4CA8F182C10EE9A1274400D1A07D7E9F /* GTMSessionFetcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-umbrella.h"; sourceTree = "<group>"; };
+		4D8F991A0C13B5176AF9E9DBFF7B8C58 /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherService.h; path = Source/GTMSessionFetcherService.h; sourceTree = "<group>"; };
+		4E045B6BB4A7720AE7F1688BFF71D2C5 /* DropDown.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.xcconfig; sourceTree = "<group>"; };
+		4E71C9F9DEA271ADCAFB2C77ABC0326A /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
+		4F421D26FD5CA20F69B4BFC5FB7CE7FE /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		50E2F450ACC263514186485BC4C5FBBE /* ChameleonFramework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-umbrella.h"; sourceTree = "<group>"; };
+		518B099F6CB2AE000FB1513E8382D73A /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52512DD739530E9E29C6697464DC1646 /* Pods-RoomieUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RoomieUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5264D14E0BC29AB64FC45D32DD979B2F /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		54FE73D4F96B5AFAD616F099EF396F80 /* Pods-RoomieTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieTests-frameworks.sh"; sourceTree = "<group>"; };
 		558888D952279FD093A839FD5EAB9CFA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		564AF13C43D487FEC50BE9071644BD2A /* Pods-RoomieUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RoomieUITests.modulemap"; sourceTree = "<group>"; };
-		5658D298139BE8049072730ADD92098E /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
-		5783D53815B047DBAF40EA144868A0E3 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontAwesome_swift.framework; path = FontAwesome.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59276E44BFE93E8ED0237C7751CD9C2F /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
+		580796258B17A24201AB6F21CE80621B /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFA87313537553A32B72FA33A6BC3B4 /* Pods-Roomie-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Roomie-umbrella.h"; sourceTree = "<group>"; };
-		5CAE663C1C6282B70B8F7200C80ADB62 /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageView.swift; path = FontAwesome/FontAwesomeImageView.swift; sourceTree = "<group>"; };
-		5E76A39A57BD72BD743BF168537D13F2 /* FloatyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyManager.swift; path = Sources/FloatyManager.swift; sourceTree = "<group>"; };
-		6057C998D8DF1AEF7391EC91E0D8F3DB /* Floaty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Floaty-umbrella.h"; sourceTree = "<group>"; };
-		60C8F314548D5083C9F388F3DBB480B4 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = Source/GTMSessionFetcherService.m; sourceTree = "<group>"; };
-		613845B40E3492F0A7772A1910A7F54E /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
-		62807B165C761AF37EE44C6C8A03E745 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
-		628FB910815F117ACFF464E4DB8B7267 /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
-		63740C091A5BFB39A5C9D744200B09D8 /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherService.h; path = Source/GTMSessionFetcherService.h; sourceTree = "<group>"; };
-		64D804554623CDBF04B8853CF9F26D1F /* GTMSessionFetcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-prefix.pch"; sourceTree = "<group>"; };
-		657F4D388F07940ABFBB17F6799CD344 /* GTMSessionFetcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTMSessionFetcher-dummy.m"; sourceTree = "<group>"; };
-		6604AE415720BA873268812ACE1146FE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		6BDB607BB3C90D5B083B65B4C90AAF9D /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeStateRequirement.swift; path = FontAwesome/FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		5B1CB29F3FE7716E402354457108EA55 /* FontAwesome.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FontAwesome.swift.modulemap; sourceTree = "<group>"; };
+		5C5C08F788F9371281823DC705683677 /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
+		5E32D6A44988ED51A3ACB6F53D084B51 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		5EC285E61F2930A769151EAB39FE9E4A /* ChameleonFramework.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ChameleonFramework.xcconfig; sourceTree = "<group>"; };
+		5F005F6892A4D20AD23EC8F6E605A426 /* FontAwesome.swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-prefix.pch"; sourceTree = "<group>"; };
+		5F8A67EB3BD1567721DCB39D85A4BA43 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		614BD50E83B22A88CDC38657E992BCD4 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
+		62D60D3A6DE59F3AA0507369BFF47E2B /* UIImage+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		65A8F5420B2CDE8493D86DAA5D917A7F /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		65D6BEB0544C93E68883DA9B53D4C1CC /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Floaty.modulemap; sourceTree = "<group>"; };
+		65E692D3BFB5D306ECDDCDDAB30B847C /* Chameleon_.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Chameleon_.m; path = "Pod/Classes/Objective-C/Chameleon_.m"; sourceTree = "<group>"; };
+		66098BB1632C4F7BDAE71084E1819AA5 /* ResourceBundle-FontAwesome.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FontAwesome.swift-Info.plist"; sourceTree = "<group>"; };
+		6624F45DB5F93E96F4CDC64EB0868A34 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		66C9FD20A31506AC26A2865EAD33C390 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
+		673E1EC3BFCD09F99257F699C5EAF10B /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTextRepresentable.swift; path = FontAwesome/FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		67B42377F1A2F0EA92360293FD0BCC55 /* ChameleonFramework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ChameleonFramework-prefix.pch"; sourceTree = "<group>"; };
+		68F34A21BD5D1BD39A4C3AD199A7022D /* NSArray+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Chameleon.m"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.m"; sourceTree = "<group>"; };
+		6915C1C907FCCA7E5EBCC06CBE93CBA5 /* UILabel+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Chameleon.m"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.m"; sourceTree = "<group>"; };
+		6951F31BEB94CCF286BCA70E4427DA36 /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
+		69AB3EFC02BCF4217302E0742C8DBA3B /* FontAwesome.swift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FontAwesome.swift.bundle; path = FontAwesome.swift.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C9ED06AA1E65D1A74C6EC4273C0EA26 /* Pods-Roomie-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Roomie-resources.sh"; sourceTree = "<group>"; };
-		742C4E95E4AAD6A05A60B6A52FE003C0 /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
+		742B422579D6D8479FF0D7D0D18B3672 /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ChameleonFramework.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		755ABC3180316507B7B45D68EA4BA151 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75FA35E1CBB8C8924D1DB5907BBBE4AB /* Pods-RoomieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		76E734AC54CD01294B034C7696A0B851 /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
 		7780BD3AEC7C137B37BDE10E88130BE2 /* Pods-RoomieUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RoomieUITests-dummy.m"; sourceTree = "<group>"; };
-		7BA533941E6117F4E6FDA1BFFEF8742E /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeBarButtonItem.swift; path = FontAwesome/FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
-		7BF7900D17F8AD713D87BF017BC8F3C2 /* ResourceBundle-FontAwesome.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FontAwesome.swift-Info.plist"; sourceTree = "<group>"; };
-		7C2891DE04553DE513047BD83ACCD893 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
-		7E5EF18D7E60C5262CFDEC2D26EE47BF /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = Source/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
-		7EE3B8BFEB7FB7DED4497D2B3196CB5C /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
-		80D23E6186FC0CEA41055F5B7566E801 /* FontAwesomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeView.swift; path = FontAwesome/FontAwesomeView.swift; sourceTree = "<group>"; };
-		82A5B5FB732FA83FF1FC46806C7E2B10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85BA42C1A76948142C783D732FF8B53C /* Pods_RoomieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieUITests.framework; path = "Pods-RoomieUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8989F1ECDAA1E312181E3BCACDAC4674 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		77EB46AEBA57DAF9BC6BE8ACDFCC1848 /* UIColor+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIColor+ChameleonPrivate.m"; sourceTree = "<group>"; };
+		7A9137FE6C8DA3ECB337849189EE81C3 /* UIImage+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIImage+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		7B76C4387B56784F5A5403E3CCC2B0D2 /* Enum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enum.swift; path = FontAwesome/Enum.swift; sourceTree = "<group>"; };
+		8115DA153776280CE4A26C5F973DBCB6 /* ChameleonFramework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ChameleonFramework.modulemap; sourceTree = "<group>"; };
+		8437616F5078150CA8AA87731519BA04 /* Floaty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Floaty.swift; path = Sources/Floaty.swift; sourceTree = "<group>"; };
+		84E8D98B9C895AAF31D6E304342ECC3C /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = Frameworks/FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		84EFE3B1382664561DAA8D84EC62433E /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
+		88CB4B478E638EAAFB53A4BB8B6F9CD5 /* Floaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Floaty.framework; path = Floaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89271B8122DA9D22266079ABDC27029F /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
 		89AD614B709CE9A9C09E197112760A7C /* Pods-RoomieTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RoomieTests.modulemap"; sourceTree = "<group>"; };
-		8DD07106EF01F31D173803368A1A787A /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
 		8DE397CB4CB769E6F72433F941E10EE3 /* Pods-RoomieUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RoomieUITests-umbrella.h"; sourceTree = "<group>"; };
+		8E8EE29F5ECE9CF1E4698C62AD581022 /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
+		906CCFC86147974A0B4547133F8A72BB /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
+		91FEF70DBDECC2414DF9E919247A3A43 /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9495E7EA70FCC3E92DA42F54F46E539A /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTabBarItem.swift; path = FontAwesome/FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		983438742463C78761EAF44A299C6DFA /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
+		9BD3B8B5C7BE9EE2894EFC266D4A48F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		9D7B312311F2F2567400EB25F163D885 /* UIButton+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Chameleon.h"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.h"; sourceTree = "<group>"; };
+		9DD11D21918748BA7A425696FD91F062 /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeStateRequirement.swift; path = FontAwesome/FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A2732AC9779AF6BA8871A895F1C9DB3A /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
 		A34FCC691A5F0A50C19B4C68CD7A9C64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4B30DC749B72D12969519A74E4511B1 /* FontAwesome.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FontAwesome.swift.modulemap; sourceTree = "<group>"; };
 		A5D2EFA01BD0990C1E3055E2AB35B8D5 /* Pods-RoomieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieTests.release.xcconfig"; sourceTree = "<group>"; };
-		A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FontAwesome.swift.xcconfig; sourceTree = "<group>"; };
-		A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A9FA64C50F9B5A2F8F71B35086E87B83 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		AA6253CEAC66CCD9A1B3DFE8F9006DA6 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		A70263ABDE611DB89D82F4D64FD31F3E /* ChameleonConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonConstants.h; path = "Pod/Classes/Objective-C/ChameleonConstants.h"; sourceTree = "<group>"; };
+		A8130AC07D964E2F2AE27DEC1E19C7BE /* NSArray+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Chameleon.h"; path = "Pod/Classes/Objective-C/NSArray+Chameleon.h"; sourceTree = "<group>"; };
+		AA38004E756D4A35DA3714325ABC8BBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAFFE4B02855C10F420503D04809AA19 /* Pods-RoomieTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RoomieTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ADAAA7EB47A4B90A429D2023EB9D3E08 /* FontAwesome.swift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FontAwesome.swift.bundle; path = FontAwesome.swift.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADC9C11483FD52FE396775AF1C96D527 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		AB7AF19F12966FAEA26BF0B9076B665C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD5965230B33C5F3DB1DC40CD12562EF /* UIView+ChameleonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ChameleonPrivate.h"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.h"; sourceTree = "<group>"; };
+		AD9A048A692E18A1D71D5A9F2678A0CD /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeSegmentedControl.swift; path = FontAwesome/FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		ADCD4E0885745A8DCF5EFAAC83F3A8AF /* UINavigationController+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Chameleon.h"; path = "Pod/Classes/Objective-C/UINavigationController+Chameleon.h"; sourceTree = "<group>"; };
+		AF50C2737ED2AC5F10B1DC1C8C33D9FF /* Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon.h; path = "Pod/Classes/Objective-C/Chameleon.h"; sourceTree = "<group>"; };
 		B1BA57BD4191B1519973BAD650C5424B /* Pods-RoomieUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RoomieUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B24A6482119F33083ED2CB4950BC3735 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
-		B2C3D2C7416BE766A9F6765FC498C203 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
 		B3257D084D7143A038BA2E797D6877B1 /* Pods-Roomie-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Roomie-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B32E9786CF2B75728CA63A73EC63A55D /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
-		BA4961BFEA29E0BDDA05E2F2BF97155E /* Floaty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Floaty-dummy.m"; sourceTree = "<group>"; };
-		BBBFFC707FDA77582BFB4DB23B4FE1B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		BD65A9BA5EA668BDC8103B67B737D4F7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE63963A5FCED6DF6CC304510871D091 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
-		BF641388A73D6B3100AC1CB684B64B39 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFAF9D6616B1AB11F9418090049E82B7 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		B38422D1C532ACF29CC45F28162ECE4B /* Pods_RoomieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieUITests.framework; path = "Pods-RoomieUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA4C98820938115C6FBA862DCD9B7679 /* FontAwesome.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FontAwesome.swift-dummy.m"; sourceTree = "<group>"; };
 		C12D774D96E711F74A7323A5A088D13A /* Pods-RoomieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RoomieTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C27C9D2EA38E24946741B8A6986D760D /* FloatyWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyWindow.swift; path = Sources/FloatyWindow.swift; sourceTree = "<group>"; };
+		C140D065B3909DC1FDE34B34F9566970 /* UILabel+Chameleon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+Chameleon.h"; path = "Pod/Classes/Objective-C/UILabel+Chameleon.h"; sourceTree = "<group>"; };
+		C219F30FE51B7335822949F1585ABC5D /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FontAwesome_swift.framework; path = FontAwesome.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282466FF60E2714137C78A9EE7A6F4F /* Pods-RoomieTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieTests-resources.sh"; sourceTree = "<group>"; };
-		C6797CE8E9560A42F238258AAE12A822 /* FontAwesome.swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FontAwesome.swift-prefix.pch"; sourceTree = "<group>"; };
-		CF8156F95CF41AE0211AEA2FF98B59F4 /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
-		D0035D71C420FCAF8A633BCBF1D251F9 /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = Source/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
+		C2CC5DA75A6DE1EA805D79C3141CBFE0 /* FloatyDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyDelegate.swift; path = Sources/FloatyDelegate.swift; sourceTree = "<group>"; };
+		C4733A0A05C72004025B21BB7DB071D0 /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
+		C57847DA74C7D0343A40EA819A72E311 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		C99ED48E26555C2559F010DB8C49924D /* ChameleonEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ChameleonEnums.h; path = "Pod/Classes/Objective-C/ChameleonEnums.h"; sourceTree = "<group>"; };
+		CEE954FAFA7E8B67C54D9AA770F0AB11 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D14A725FFEF9EEB4D1682FDC0CA73784 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
+		D1F56280C54A9554FB37A533DBF112ED /* FontAwesomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeView.swift; path = FontAwesome/FontAwesomeView.swift; sourceTree = "<group>"; };
 		D3FAD3A923DE5D1EB38D177737781F2D /* Pods-Roomie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Roomie.release.xcconfig"; sourceTree = "<group>"; };
+		D504A37BF27C8ED8B72369D777472EEE /* UIButton+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Chameleon.m"; path = "Pod/Classes/Objective-C/UIButton+Chameleon.m"; sourceTree = "<group>"; };
+		D7AFF4E8269B056EEC4F8DD5D60F36D5 /* UIView+ChameleonPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+ChameleonPrivate.m"; path = "Pod/Classes/Objective-C/UIView+ChameleonPrivate.m"; sourceTree = "<group>"; };
 		D98984E4F252F447F42C37E3995B033A /* Pods-RoomieUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieUITests-resources.sh"; sourceTree = "<group>"; };
+		DA53EF7543B359C989B62B7B6FB6BEBE /* Pods_Roomie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Roomie.framework; path = "Pods-Roomie.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA91B47D2C52AEFC0546F0E2B52F6543 /* Pods-RoomieTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RoomieTests-umbrella.h"; sourceTree = "<group>"; };
-		DE3CEEA8D22050D323A8286BDD00FFFF /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
-		E0A3BD38405BD7F6E4551831FE304ABA /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = Source/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
+		DC720D694F09A865C10C47733B8D328E /* ChameleonFramework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ChameleonFramework-dummy.m"; sourceTree = "<group>"; };
+		DFCA3915C3C304A7F1C2D7C0A53A2FDD /* UIAppearance+Swift.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAppearance+Swift.m"; path = "Pod/Classes/Objective-C/UIAppearance+Swift.m"; sourceTree = "<group>"; };
+		E147E27826EA2795B72EA9D871B44925 /* Floaty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Floaty.xcconfig; sourceTree = "<group>"; };
 		E1A34AE1B93A6ED7B18F173DC73A7C32 /* Pods-RoomieTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RoomieTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E1D4533E4A92144FBE05D5753663CC5D /* FontAwesome.otf */ = {isa = PBXFileReference; includeInIndex = 1; name = FontAwesome.otf; path = FontAwesome/FontAwesome.otf; sourceTree = "<group>"; };
-		E67F6D7F6B12F3A9470D877CEF3AD843 /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeSegmentedControl.swift; path = FontAwesome/FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
-		E807DBE59FE13DF0AC8F0589BB6F81DB /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
-		E831956151E7C219BD4AA0F6C78FFDD2 /* Pods_RoomieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RoomieTests.framework; path = "Pods-RoomieTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDCFCDB06AF94DBD7D1701FDA2C42807 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
-		EEDA902489CEB45BF18AC36F736E291C /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF6C55458B1BB3B681793BFC93CA2A38 /* GTMSessionFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = Source/GTMSessionFetcher.h; sourceTree = "<group>"; };
+		E1BDEAD1DAE3246A9E2C0CA4B1C1FAED /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3A46EF652813ADD5399971E5CEE2FF4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E542A431FC85506EE6E9759D055F4489 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		E5661353C7F2234B853D6E9D13200580 /* GTMSessionFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = Source/GTMSessionFetcher.m; sourceTree = "<group>"; };
+		E6C3D7CB80D9B177CD9276031239B7B3 /* FloatyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatyViewController.swift; path = Sources/FloatyViewController.swift; sourceTree = "<group>"; };
+		E76CC103E460494C1A729E37C0DD68B5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		E944700616C3202FD0F0B8BAA1569596 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		EF6EA4109D70BD04A079589DAD9FDDFA /* Pods-RoomieTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RoomieTests-dummy.m"; sourceTree = "<group>"; };
-		F1F4615744B0AF49AEB7BC9A6311137A /* GTMSessionFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = Source/GTMSessionFetcher.m; sourceTree = "<group>"; };
-		F3E25C2B83E4F2BE0677D51D7BC1DEE8 /* GTMSessionFetcher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GTMSessionFetcher.xcconfig; sourceTree = "<group>"; };
-		F6EDE1631F198DFDBED1D37150930803 /* GTMSessionFetcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-umbrella.h"; sourceTree = "<group>"; };
-		F90C2B19A79CF8BFED53C275360ADDBA /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeTextRepresentable.swift; path = FontAwesome/FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		F522732ED2A9CE402C9BF2DF2C352F23 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
+		F73CF2BF1F0E07EB87571C938D5B60AE /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DropDown.modulemap; sourceTree = "<group>"; };
+		F904E30AF108DFCD05870FA882C7954E /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92A41E413F8DA4D0155AD6F9C76AC44 /* Chameleon_.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chameleon_.h; path = "Pod/Classes/Objective-C/Chameleon_.h"; sourceTree = "<group>"; };
+		F94FCD0C24978DF27FCDD4DFCDE8A88B /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
+		F97A30B89AB9F1804AD79913BAF2EE46 /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontAwesomeImageRepresentable.swift; path = FontAwesome/FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
+		FA7734C89CD9984BB25396AEACC5CD18 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = Source/GTMSessionFetcherService.m; sourceTree = "<group>"; };
+		FB37AE816347BDA456A2B4EB3FAB8AAC /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		FB7E8DD82E3D4087B46C518D8038309D /* UIColor+Chameleon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Chameleon.m"; path = "Pod/Classes/Objective-C/UIColor+Chameleon.m"; sourceTree = "<group>"; };
 		FCAF0B85EA3B6A082A7E32B440D36FB4 /* Pods-RoomieUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RoomieUITests-frameworks.sh"; sourceTree = "<group>"; };
-		FE488D7C7F17E523A92C4FCC73991DD6 /* Floaty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Floaty.modulemap; sourceTree = "<group>"; };
 		FEC04DA78BA595140B2FC3563B459EE5 /* Pods-Roomie-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Roomie-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,11 +353,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9BF729D729F489BA0A765C27DD4122F2 /* Frameworks */ = {
+		8948CAC99F7A90E10D83AB33029093A1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36C3AC1E19E9BCCA968A1B7BC3C82C8E /* Foundation.framework in Frameworks */,
+				480E63B4BD4FAC5697709F373137E1F7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +373,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FD70AC579E74592E2EAC475ADFB8D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91202612969D2BDB5A801F81AE96FFB /* CoreGraphics.framework in Frameworks */,
+				E87D2FB41E6EB857013EB020297C08DF /* Foundation.framework in Frameworks */,
+				34D751AECD252A6F375328CB8BB48D4B /* QuartzCore.framework in Frameworks */,
+				6D9F0C77C6996D7FBC0F03AF8E706276 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,20 +407,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00BBE661E530C27E8F1C999195AC28E7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5658D298139BE8049072730ADD92098E /* GoogleToolboxForMac.modulemap */,
-				59276E44BFE93E8ED0237C7751CD9C2F /* GoogleToolboxForMac.xcconfig */,
-				7EE3B8BFEB7FB7DED4497D2B3196CB5C /* GoogleToolboxForMac-dummy.m */,
-				62807B165C761AF37EE44C6C8A03E745 /* GoogleToolboxForMac-prefix.pch */,
-				EDCFCDB06AF94DBD7D1701FDA2C42807 /* GoogleToolboxForMac-umbrella.h */,
-				285BE19A4D479F2F46D5E826125163C8 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GoogleToolboxForMac";
-			sourceTree = "<group>";
-		};
 		015E9D6CE9EB2147A616FAE20DF82068 /* Pods-RoomieUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,40 +425,85 @@
 			path = "Target Support Files/Pods-RoomieUITests";
 			sourceTree = "<group>";
 		};
-		0B699269EF81EEF7B1EE17F0006A6B8B /* FontAwesome.swift */ = {
+		02BEC617C74EB4C58DB6BA0CAE914EAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2AF328403BBEF86996EF93041F9DE3D4 /* Enum.swift */,
-				2257726145BEFD9B7AA9ECF43C6917D9 /* FontAwesome.swift */,
-				7BA533941E6117F4E6FDA1BFFEF8742E /* FontAwesomeBarButtonItem.swift */,
-				26462298C0984A76639E637703BA12AC /* FontAwesomeImageRepresentable.swift */,
-				5CAE663C1C6282B70B8F7200C80ADB62 /* FontAwesomeImageView.swift */,
-				E67F6D7F6B12F3A9470D877CEF3AD843 /* FontAwesomeSegmentedControl.swift */,
-				6BDB607BB3C90D5B083B65B4C90AAF9D /* FontAwesomeStateRequirement.swift */,
-				9495E7EA70FCC3E92DA42F54F46E539A /* FontAwesomeTabBarItem.swift */,
-				F90C2B19A79CF8BFED53C275360ADDBA /* FontAwesomeTextRepresentable.swift */,
-				80D23E6186FC0CEA41055F5B7566E801 /* FontAwesomeView.swift */,
-				9ED9DDB90844C5B3FDB01F2D32B20AC3 /* Resources */,
-				FA9B3ECDCD0BBE3CAF61D2A0A736E259 /* Support Files */,
-			);
-			name = FontAwesome.swift;
-			path = FontAwesome.swift;
-			sourceTree = "<group>";
-		};
-		0F1AF30E8BEB1E80A8E0137A1247FC94 /* Defines */ = {
-			isa = PBXGroup;
-			children = (
-				BFAF9D6616B1AB11F9418090049E82B7 /* GTMDefines.h */,
-			);
-			name = Defines;
-			sourceTree = "<group>";
-		};
-		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				39F8A39D1B6BF6D38F6521D4709E6A20 /* iOS */,
+				E76CC103E460494C1A729E37C0DD68B5 /* FirebaseCore.framework */,
+				E542A431FC85506EE6E9759D055F4489 /* FirebaseCoreDiagnostics.framework */,
+				84E8D98B9C895AAF31D6E304342ECC3C /* FirebaseNanoPB.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0647456E77D121A9D5F26E89E1A0C8E9 /* Floaty */ = {
+			isa = PBXGroup;
+			children = (
+				8437616F5078150CA8AA87731519BA04 /* Floaty.swift */,
+				C2CC5DA75A6DE1EA805D79C3141CBFE0 /* FloatyDelegate.swift */,
+				257B0963B6043B7C07C06AF29F269F43 /* FloatyItem.swift */,
+				44770D69255FC6FA59B11DD00F70DEA1 /* FloatyManager.swift */,
+				E6C3D7CB80D9B177CD9276031239B7B3 /* FloatyViewController.swift */,
+				5C5C08F788F9371281823DC705683677 /* FloatyWindow.swift */,
+				8420F25BA4F8DBF7F8D73D42F20D1B40 /* Support Files */,
+			);
+			name = Floaty;
+			path = Floaty;
+			sourceTree = "<group>";
+		};
+		073D1071D5527C6362C031EDD58F85E6 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				755A8AC3B8A40DCF86AA247A7DD2632C /* Core */,
+			);
+			name = Firebase;
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72787DFC71E58408F2E8F9E02C5508FA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		11CCE43D638ACE501E5473DA6363AF21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				277340C2948B2CFA2505D16F54331103 /* ChameleonFramework */,
+				CAF79D78FC4821B32162AF51B65D5485 /* DropDown */,
+				073D1071D5527C6362C031EDD58F85E6 /* Firebase */,
+				BFF2AC2DD2F2073A4E5FBCB4663529AD /* FirebaseAnalytics */,
+				27BE7CE4AB8E3596499BB62648CAC0D4 /* FirebaseCore */,
+				83A5F224285B65728B9E3C5A985DC37F /* FirebaseDatabase */,
+				707961B1695A00C3A080506B8E36F070 /* FirebaseInstanceID */,
+				8CD70A8183C41EB88E9479D029F1486A /* FirebaseStorage */,
+				0647456E77D121A9D5F26E89E1A0C8E9 /* Floaty */,
+				EC0D405817CF30C838F0C6A64EFDC306 /* FontAwesome.swift */,
+				BDFB8841484B565DC4A1FF6B3A06513A /* GoogleToolboxForMac */,
+				BCF5414C9AB2D470771340FCD6A1A2FD /* GTMSessionFetcher */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		277340C2948B2CFA2505D16F54331103 /* ChameleonFramework */ = {
+			isa = PBXGroup;
+			children = (
+				6538A27EA61C566EC7381223A5EC6D7E /* Default */,
+				CF723E6A22232A0B3C23EC1D06F71D62 /* Support Files */,
+				6F58ED8B4FF49DC5FB06AB0EDCFF25E0 /* Swift */,
+			);
+			name = ChameleonFramework;
+			path = ChameleonFramework;
+			sourceTree = "<group>";
+		};
+		27BE7CE4AB8E3596499BB62648CAC0D4 /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				02BEC617C74EB4C58DB6BA0CAE914EAF /* Frameworks */,
+			);
+			name = FirebaseCore;
+			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
 		2A82BDD823EADDEB35F71EEB35E73531 /* Pods-RoomieTests */ = {
@@ -404,57 +524,98 @@
 			path = "Target Support Files/Pods-RoomieTests";
 			sourceTree = "<group>";
 		};
-		372F6F8CA23DED7541A6182E34667F6A /* FirebaseCore */ = {
+		303020D8C93842F6D3A74D2A1B4F4269 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				8BE2E05CCD6D73DE579E8E730F30773D /* Frameworks */,
+				1A2D6AF2F74CFB0FB26B93E809E8C398 /* GTMSessionFetcher.h */,
+				E5661353C7F2234B853D6E9D13200580 /* GTMSessionFetcher.m */,
+				108DD54ED29834B97AF24F38C13C6DEF /* GTMSessionFetcherLogging.h */,
+				0DB208ACB72D52CF72282BCCAFC2C641 /* GTMSessionFetcherLogging.m */,
+				4D8F991A0C13B5176AF9E9DBFF7B8C58 /* GTMSessionFetcherService.h */,
+				FA7734C89CD9984BB25396AEACC5CD18 /* GTMSessionFetcherService.m */,
+				1901AEF9C35C69733DF5A9652AF8C8ED /* GTMSessionUploadFetcher.h */,
+				06274E91FD9844B44D383B56C8C256E6 /* GTMSessionUploadFetcher.m */,
 			);
-			name = FirebaseCore;
-			path = FirebaseCore;
+			name = Core;
 			sourceTree = "<group>";
 		};
-		39F8A39D1B6BF6D38F6521D4709E6A20 /* iOS */ = {
+		32C6F639619AC879639707D015E1E359 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6604AE415720BA873268812ACE1146FE /* CoreText.framework */,
-				A8071403BBE07CC7A851132BF46F2C6B /* Foundation.framework */,
-				004C59800A3CBDD311E09A62522D1432 /* Security.framework */,
-				BBBFFC707FDA77582BFB4DB23B4FE1B7 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		45DF690D3852D75659C2CC9F8A226BF6 /* FirebaseStorage */ = {
-			isa = PBXGroup;
-			children = (
-				E412DB9759C0E694933217B8947B5A14 /* Frameworks */,
-			);
-			name = FirebaseStorage;
-			path = FirebaseStorage;
-			sourceTree = "<group>";
-		};
-		49775A35F2C6755C27B19650CC30CE70 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A9FA64C50F9B5A2F8F71B35086E87B83 /* FirebaseAnalytics.framework */,
+				F522732ED2A9CE402C9BF2DF2C352F23 /* FirebaseStorage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		571D0133A8542BD7CFDA03718DC9A22E /* DropDown */ = {
+		3AAFBA61CF5F12C5C49EBBCDFE47A92B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8DD07106EF01F31D173803368A1A787A /* DPDConstants.swift */,
-				4CB9E8846B3CFC69FB683C591A98ECFF /* DPDKeyboardListener.swift */,
-				0504211825538C15850D7DF29432A806 /* DPDUIView+Extension.swift */,
-				628FB910815F117ACFF464E4DB8B7267 /* DropDown.swift */,
-				613845B40E3492F0A7772A1910A7F54E /* DropDown+Appearance.swift */,
-				B32E9786CF2B75728CA63A73EC63A55D /* DropDownCell.swift */,
-				84659537D6735381ADE910F6152E6945 /* Resources */,
-				6970777FEEE298BC48386A4D10561922 /* Support Files */,
+				5E32D6A44988ED51A3ACB6F53D084B51 /* FirebaseDatabase.framework */,
 			);
-			name = DropDown;
-			path = DropDown;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D14D74BAD8EAD4E6D596DF1FF69761C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B1CB29F3FE7716E402354457108EA55 /* FontAwesome.swift.modulemap */,
+				1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */,
+				BA4C98820938115C6FBA862DCD9B7679 /* FontAwesome.swift-dummy.m */,
+				5F005F6892A4D20AD23EC8F6E605A426 /* FontAwesome.swift-prefix.pch */,
+				4C2E6A559B3B7243D6BD56D27C6F6590 /* FontAwesome.swift-umbrella.h */,
+				755ABC3180316507B7B45D68EA4BA151 /* Info.plist */,
+				66098BB1632C4F7BDAE71084E1819AA5 /* ResourceBundle-FontAwesome.swift-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FontAwesome.swift";
+			sourceTree = "<group>";
+		};
+		5E687DB34260E6A634EEF8FCA7AAACB6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D14A725FFEF9EEB4D1682FDC0CA73784 /* GTMSessionFetcher.modulemap */,
+				0354AE18FC62A08E44BE6084B8B0FAB7 /* GTMSessionFetcher.xcconfig */,
+				175804940A0E3B29C2ACD340BE9C7D2D /* GTMSessionFetcher-dummy.m */,
+				22FEDE827F058228C2EA8EA7CBE48ADE /* GTMSessionFetcher-prefix.pch */,
+				4CA8F182C10EE9A1274400D1A07D7E9F /* GTMSessionFetcher-umbrella.h */,
+				AB7AF19F12966FAEA26BF0B9076B665C /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GTMSessionFetcher";
+			sourceTree = "<group>";
+		};
+		6538A27EA61C566EC7381223A5EC6D7E /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				AF50C2737ED2AC5F10B1DC1C8C33D9FF /* Chameleon.h */,
+				F92A41E413F8DA4D0155AD6F9C76AC44 /* Chameleon_.h */,
+				65E692D3BFB5D306ECDDCDDAB30B847C /* Chameleon_.m */,
+				A70263ABDE611DB89D82F4D64FD31F3E /* ChameleonConstants.h */,
+				0DDDCC47FB39EEDFA8EB907B44A32CAD /* ChameleonConstants.m */,
+				C99ED48E26555C2559F010DB8C49924D /* ChameleonEnums.h */,
+				4A976FDEA0504980711C3A2A27279240 /* ChameleonMacros.h */,
+				A8130AC07D964E2F2AE27DEC1E19C7BE /* NSArray+Chameleon.h */,
+				68F34A21BD5D1BD39A4C3AD199A7022D /* NSArray+Chameleon.m */,
+				009B62747E5ECA71EB90268BB9748B96 /* UIAppearance+Swift.h */,
+				DFCA3915C3C304A7F1C2D7C0A53A2FDD /* UIAppearance+Swift.m */,
+				9D7B312311F2F2567400EB25F163D885 /* UIButton+Chameleon.h */,
+				D504A37BF27C8ED8B72369D777472EEE /* UIButton+Chameleon.m */,
+				01AEE9DEF39EE7104136A96C4E77DDD9 /* UIColor+Chameleon.h */,
+				FB7E8DD82E3D4087B46C518D8038309D /* UIColor+Chameleon.m */,
+				445DEDE5E1B73A1E7EEDB68AC3F0131F /* UIColor+ChameleonPrivate.h */,
+				77EB46AEBA57DAF9BC6BE8ACDFCC1848 /* UIColor+ChameleonPrivate.m */,
+				7A9137FE6C8DA3ECB337849189EE81C3 /* UIImage+ChameleonPrivate.h */,
+				62D60D3A6DE59F3AA0507369BFF47E2B /* UIImage+ChameleonPrivate.m */,
+				C140D065B3909DC1FDE34B34F9566970 /* UILabel+Chameleon.h */,
+				6915C1C907FCCA7E5EBCC06CBE93CBA5 /* UILabel+Chameleon.m */,
+				ADCD4E0885745A8DCF5EFAAC83F3A8AF /* UINavigationController+Chameleon.h */,
+				041C093C79C128FBE872B3BE834BBD57 /* UINavigationController+Chameleon.m */,
+				AD5965230B33C5F3DB1DC40CD12562EF /* UIView+ChameleonPrivate.h */,
+				D7AFF4E8269B056EEC4F8DD5D60F36D5 /* UIView+ChameleonPrivate.m */,
+				140C6F2396A470ED29B1EFC73012AFFB /* UIViewController+Chameleon.h */,
+				3C0D2686C3C37F23F9BB705ABFDBCD37 /* UIViewController+Chameleon.m */,
+			);
+			name = Default;
 			sourceTree = "<group>";
 		};
 		6628E310F50C4542316D87AB5EF9ED2C /* Pods-Roomie */ = {
@@ -485,260 +646,259 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6970777FEEE298BC48386A4D10561922 /* Support Files */ = {
+		6F58ED8B4FF49DC5FB06AB0EDCFF25E0 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				1CDE93A514F003B10CAF94276CB944F2 /* DropDown.modulemap */,
-				0FBB741A976A6ECB8BE1B77FC7F78454 /* DropDown.xcconfig */,
-				CF8156F95CF41AE0211AEA2FF98B59F4 /* DropDown-dummy.m */,
-				DE3CEEA8D22050D323A8286BDD00FFFF /* DropDown-prefix.pch */,
-				E807DBE59FE13DF0AC8F0589BB6F81DB /* DropDown-umbrella.h */,
-				82A5B5FB732FA83FF1FC46806C7E2B10 /* Info.plist */,
+				31613295416F3C869CEDE9F53ABF16A1 /* ChameleonShorthand.swift */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/DropDown";
+			name = Swift;
 			sourceTree = "<group>";
 		};
-		6CBB4B12801C5DA4A3B96E91CD106FAD /* NSData+zlib */ = {
+		707961B1695A00C3A080506B8E36F070 /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				ADC9C11483FD52FE396775AF1C96D527 /* GTMNSData+zlib.h */,
-				8989F1ECDAA1E312181E3BCACDAC4674 /* GTMNSData+zlib.m */,
+				B9DCE3CBC879065FC685807F6F01DFDA /* Frameworks */,
 			);
-			name = "NSData+zlib";
+			name = FirebaseInstanceID;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
-		6E918BA17E1132D6B5B2C615D3732A21 /* GoogleToolboxForMac */ = {
+		72787DFC71E58408F2E8F9E02C5508FA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0F1AF30E8BEB1E80A8E0137A1247FC94 /* Defines */,
-				6CBB4B12801C5DA4A3B96E91CD106FAD /* NSData+zlib */,
-				00BBE661E530C27E8F1C999195AC28E7 /* Support Files */,
+				12A832CF7E22BEFDC53D90BACD595410 /* CoreGraphics.framework */,
+				49DA8DB8D61CB67D994DC545EFBF1818 /* CoreText.framework */,
+				A10073ECCF6D5EE0F805FABF4226C283 /* Foundation.framework */,
+				47ADB436880E499174FE45FEC316D0DB /* QuartzCore.framework */,
+				C57847DA74C7D0343A40EA819A72E311 /* Security.framework */,
+				9BD3B8B5C7BE9EE2894EFC266D4A48F3 /* UIKit.framework */,
 			);
-			name = GoogleToolboxForMac;
-			path = GoogleToolboxForMac;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		6EC402872AE69CF5057D621073844F17 /* Core */ = {
+		755A8AC3B8A40DCF86AA247A7DD2632C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EF6C55458B1BB3B681793BFC93CA2A38 /* GTMSessionFetcher.h */,
-				F1F4615744B0AF49AEB7BC9A6311137A /* GTMSessionFetcher.m */,
-				E0A3BD38405BD7F6E4551831FE304ABA /* GTMSessionFetcherLogging.h */,
-				D0035D71C420FCAF8A633BCBF1D251F9 /* GTMSessionFetcherLogging.m */,
-				63740C091A5BFB39A5C9D744200B09D8 /* GTMSessionFetcherService.h */,
-				60C8F314548D5083C9F388F3DBB480B4 /* GTMSessionFetcherService.m */,
-				2E4D432B1775C3B99689EC225D2914D2 /* GTMSessionUploadFetcher.h */,
-				7E5EF18D7E60C5262CFDEC2D26EE47BF /* GTMSessionUploadFetcher.m */,
+				66C9FD20A31506AC26A2865EAD33C390 /* Firebase.h */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		7986D28102CEB0F6A539A9E32F37EB0B /* FirebaseDatabase */ = {
+		7D6558566F6547B2D0E96CAB3B452AAE /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
-				D4851B38CC85C9895C3B10624E4ED4EE /* Frameworks */,
+				5F8A67EB3BD1567721DCB39D85A4BA43 /* GTMNSData+zlib.h */,
+				6624F45DB5F93E96F4CDC64EB0868A34 /* GTMNSData+zlib.m */,
 			);
-			name = FirebaseDatabase;
-			path = FirebaseDatabase;
+			name = "NSData+zlib";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				D129DFFC7DCADCB3397CA3F3533ECA58 /* Pods */,
-				8672371CC7A14CE37E1FF5D0911C786F /* Products */,
+				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
+				11CCE43D638ACE501E5473DA6363AF21 /* Pods */,
+				B604A843DC8D77E4665E682B1AD024A9 /* Products */,
 				6655594E5A89B7456039F756DA5AFB92 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7FD6B0198F7C0CD95A7D92752EB71F54 /* GTMSessionFetcher */ = {
+		83A5F224285B65728B9E3C5A985DC37F /* FirebaseDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				6EC402872AE69CF5057D621073844F17 /* Core */,
-				8B5FBC5103AE676BE59C257A3D2972AF /* Support Files */,
+				3AAFBA61CF5F12C5C49EBBCDFE47A92B /* Frameworks */,
 			);
-			name = GTMSessionFetcher;
-			path = GTMSessionFetcher;
+			name = FirebaseDatabase;
+			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
-		84659537D6735381ADE910F6152E6945 /* Resources */ = {
+		8420F25BA4F8DBF7F8D73D42F20D1B40 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3BE6A48FEB12B929AE3C048A1D531242 /* DropDownCell.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		8672371CC7A14CE37E1FF5D0911C786F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BF641388A73D6B3100AC1CB684B64B39 /* DropDown.framework */,
-				4541514874A9187D1B776B6F4D840AD1 /* Floaty.framework */,
-				ADAAA7EB47A4B90A429D2023EB9D3E08 /* FontAwesome.swift.bundle */,
-				5783D53815B047DBAF40EA144868A0E3 /* FontAwesome_swift.framework */,
-				EEDA902489CEB45BF18AC36F736E291C /* GoogleToolboxForMac.framework */,
-				0F68A3E83F5FBC9DEE99CF486FBDB26E /* GTMSessionFetcher.framework */,
-				0D1EE46C7985FE859D85B67D88D2D589 /* Pods_Roomie.framework */,
-				E831956151E7C219BD4AA0F6C78FFDD2 /* Pods_RoomieTests.framework */,
-				85BA42C1A76948142C783D732FF8B53C /* Pods_RoomieUITests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		87849A353CC8468C92ADD79E660AADED /* Floaty */ = {
-			isa = PBXGroup;
-			children = (
-				742C4E95E4AAD6A05A60B6A52FE003C0 /* Floaty.swift */,
-				BE63963A5FCED6DF6CC304510871D091 /* FloatyDelegate.swift */,
-				366F6139CE243536A4C26C84A485F041 /* FloatyItem.swift */,
-				5E76A39A57BD72BD743BF168537D13F2 /* FloatyManager.swift */,
-				B2C3D2C7416BE766A9F6765FC498C203 /* FloatyViewController.swift */,
-				C27C9D2EA38E24946741B8A6986D760D /* FloatyWindow.swift */,
-				D04566D19AB1C39E879AE0EB1EED25BD /* Support Files */,
-			);
-			name = Floaty;
-			path = Floaty;
-			sourceTree = "<group>";
-		};
-		8B5FBC5103AE676BE59C257A3D2972AF /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B24A6482119F33083ED2CB4950BC3735 /* GTMSessionFetcher.modulemap */,
-				F3E25C2B83E4F2BE0677D51D7BC1DEE8 /* GTMSessionFetcher.xcconfig */,
-				657F4D388F07940ABFBB17F6799CD344 /* GTMSessionFetcher-dummy.m */,
-				64D804554623CDBF04B8853CF9F26D1F /* GTMSessionFetcher-prefix.pch */,
-				F6EDE1631F198DFDBED1D37150930803 /* GTMSessionFetcher-umbrella.h */,
-				4B5E9586F239555B7B837BAA69CF91C6 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GTMSessionFetcher";
-			sourceTree = "<group>";
-		};
-		8BE2E05CCD6D73DE579E8E730F30773D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3582D010D1DA33A1578B4CC989319B85 /* FirebaseCore.framework */,
-				AA6253CEAC66CCD9A1B3DFE8F9006DA6 /* FirebaseCoreDiagnostics.framework */,
-				065ABF79E27FF648B52D74FA8C177365 /* FirebaseNanoPB.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9EAB62A127696E54A48E0C737D560B53 /* FirebaseInstanceID */ = {
-			isa = PBXGroup;
-			children = (
-				D1C3A16FF10875D62A8B9E251710E7B6 /* Frameworks */,
-			);
-			name = FirebaseInstanceID;
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		9ED9DDB90844C5B3FDB01F2D32B20AC3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E1D4533E4A92144FBE05D5753663CC5D /* FontAwesome.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		B7C6AE1B643D39B187646C433C12DB3E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				08935D4EE92B771DFFE78261DD60952B /* Firebase.h */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		D04566D19AB1C39E879AE0EB1EED25BD /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FE488D7C7F17E523A92C4FCC73991DD6 /* Floaty.modulemap */,
-				76E734AC54CD01294B034C7696A0B851 /* Floaty.xcconfig */,
-				BA4961BFEA29E0BDDA05E2F2BF97155E /* Floaty-dummy.m */,
-				2C829745B79D999BC289E3CFB3D9740F /* Floaty-prefix.pch */,
-				6057C998D8DF1AEF7391EC91E0D8F3DB /* Floaty-umbrella.h */,
-				BD65A9BA5EA668BDC8103B67B737D4F7 /* Info.plist */,
+				65D6BEB0544C93E68883DA9B53D4C1CC /* Floaty.modulemap */,
+				E147E27826EA2795B72EA9D871B44925 /* Floaty.xcconfig */,
+				A2732AC9779AF6BA8871A895F1C9DB3A /* Floaty-dummy.m */,
+				18A0E1A89D22EC5CB3196C6D9B55D911 /* Floaty-prefix.pch */,
+				4E71C9F9DEA271ADCAFB2C77ABC0326A /* Floaty-umbrella.h */,
+				AA38004E756D4A35DA3714325ABC8BBE /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Floaty";
 			sourceTree = "<group>";
 		};
-		D129DFFC7DCADCB3397CA3F3533ECA58 /* Pods */ = {
+		8CD70A8183C41EB88E9479D029F1486A /* FirebaseStorage */ = {
 			isa = PBXGroup;
 			children = (
-				571D0133A8542BD7CFDA03718DC9A22E /* DropDown */,
-				DF236897F1762A3CB7BFAC34B3E07352 /* Firebase */,
-				F92A594AA8C9519E902F35A0DB32E6E3 /* FirebaseAnalytics */,
-				372F6F8CA23DED7541A6182E34667F6A /* FirebaseCore */,
-				7986D28102CEB0F6A539A9E32F37EB0B /* FirebaseDatabase */,
-				9EAB62A127696E54A48E0C737D560B53 /* FirebaseInstanceID */,
-				45DF690D3852D75659C2CC9F8A226BF6 /* FirebaseStorage */,
-				87849A353CC8468C92ADD79E660AADED /* Floaty */,
-				0B699269EF81EEF7B1EE17F0006A6B8B /* FontAwesome.swift */,
-				6E918BA17E1132D6B5B2C615D3732A21 /* GoogleToolboxForMac */,
-				7FD6B0198F7C0CD95A7D92752EB71F54 /* GTMSessionFetcher */,
+				32C6F639619AC879639707D015E1E359 /* Frameworks */,
 			);
-			name = Pods;
+			name = FirebaseStorage;
+			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
-		D1C3A16FF10875D62A8B9E251710E7B6 /* Frameworks */ = {
+		9264E01AEA9B6B153457C0645AB9C28A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				391EBDDD318700FF6ECB0E2E18EC3CB5 /* FirebaseInstanceID.framework */,
+				F73CF2BF1F0E07EB87571C938D5B60AE /* DropDown.modulemap */,
+				4E045B6BB4A7720AE7F1688BFF71D2C5 /* DropDown.xcconfig */,
+				F94FCD0C24978DF27FCDD4DFCDE8A88B /* DropDown-dummy.m */,
+				6951F31BEB94CCF286BCA70E4427DA36 /* DropDown-prefix.pch */,
+				906CCFC86147974A0B4547133F8A72BB /* DropDown-umbrella.h */,
+				E3A46EF652813ADD5399971E5CEE2FF4 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DropDown";
+			sourceTree = "<group>";
+		};
+		9E0AB893BA1362F0E4684141FB1E7EEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF5D4742E2938C9E327E47E6C1CEE4 /* FontAwesome.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A3BED953AC3830E0F772BB559230D6CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E8EE29F5ECE9CF1E4698C62AD581022 /* DropDownCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B604A843DC8D77E4665E682B1AD024A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				742B422579D6D8479FF0D7D0D18B3672 /* ChameleonFramework.framework */,
+				580796258B17A24201AB6F21CE80621B /* DropDown.framework */,
+				88CB4B478E638EAAFB53A4BB8B6F9CD5 /* Floaty.framework */,
+				69AB3EFC02BCF4217302E0742C8DBA3B /* FontAwesome.swift.bundle */,
+				C219F30FE51B7335822949F1585ABC5D /* FontAwesome_swift.framework */,
+				518B099F6CB2AE000FB1513E8382D73A /* GoogleToolboxForMac.framework */,
+				F904E30AF108DFCD05870FA882C7954E /* GTMSessionFetcher.framework */,
+				DA53EF7543B359C989B62B7B6FB6BEBE /* Pods_Roomie.framework */,
+				2145978B92B8F037DC3C9AF4E66392F1 /* Pods_RoomieTests.framework */,
+				B38422D1C532ACF29CC45F28162ECE4B /* Pods_RoomieUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9DCE3CBC879065FC685807F6F01DFDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25F43E08665CCB60CE75FF0EA4552263 /* FirebaseInstanceID.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D4851B38CC85C9895C3B10624E4ED4EE /* Frameworks */ = {
+		BCF5414C9AB2D470771340FCD6A1A2FD /* GTMSessionFetcher */ = {
 			isa = PBXGroup;
 			children = (
-				7C2891DE04553DE513047BD83ACCD893 /* FirebaseDatabase.framework */,
+				303020D8C93842F6D3A74D2A1B4F4269 /* Core */,
+				5E687DB34260E6A634EEF8FCA7AAACB6 /* Support Files */,
 			);
-			name = Frameworks;
+			name = GTMSessionFetcher;
+			path = GTMSessionFetcher;
 			sourceTree = "<group>";
 		};
-		DF236897F1762A3CB7BFAC34B3E07352 /* Firebase */ = {
+		BDFB8841484B565DC4A1FF6B3A06513A /* GoogleToolboxForMac */ = {
 			isa = PBXGroup;
 			children = (
-				B7C6AE1B643D39B187646C433C12DB3E /* Core */,
+				E6B34114535F5F56EF8E67DF56868D69 /* Defines */,
+				7D6558566F6547B2D0E96CAB3B452AAE /* NSData+zlib */,
+				CB949EB0583485BC34DB3057068DC0E8 /* Support Files */,
 			);
-			name = Firebase;
-			path = Firebase;
+			name = GoogleToolboxForMac;
+			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
-		E412DB9759C0E694933217B8947B5A14 /* Frameworks */ = {
+		BFF2AC2DD2F2073A4E5FBCB4663529AD /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				2D8C05F1F5152D5E9547A76957DCC170 /* FirebaseStorage.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F92A594AA8C9519E902F35A0DB32E6E3 /* FirebaseAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				49775A35F2C6755C27B19650CC30CE70 /* Frameworks */,
+				EF0B2E24CE3CE02826C25F4C6B8352BB /* Frameworks */,
 			);
 			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		FA9B3ECDCD0BBE3CAF61D2A0A736E259 /* Support Files */ = {
+		CAF79D78FC4821B32162AF51B65D5485 /* DropDown */ = {
 			isa = PBXGroup;
 			children = (
-				A4B30DC749B72D12969519A74E4511B1 /* FontAwesome.swift.modulemap */,
-				A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */,
-				467D4358E28C501AA56A3DA42CC23059 /* FontAwesome.swift-dummy.m */,
-				C6797CE8E9560A42F238258AAE12A822 /* FontAwesome.swift-prefix.pch */,
-				185A6C14208A418F13423B30B3B58BE9 /* FontAwesome.swift-umbrella.h */,
-				211434043304329493DECF50FDA62B28 /* Info.plist */,
-				7BF7900D17F8AD713D87BF017BC8F3C2 /* ResourceBundle-FontAwesome.swift-Info.plist */,
+				84EFE3B1382664561DAA8D84EC62433E /* DPDConstants.swift */,
+				1CDA4EDF00BB50F410834DF103DB3F2F /* DPDKeyboardListener.swift */,
+				0A33C0174C662BB45F6E740D0EEA6D78 /* DPDUIView+Extension.swift */,
+				89271B8122DA9D22266079ABDC27029F /* DropDown.swift */,
+				FB37AE816347BDA456A2B4EB3FAB8AAC /* DropDown+Appearance.swift */,
+				91FEF70DBDECC2414DF9E919247A3A43 /* DropDownCell.swift */,
+				A3BED953AC3830E0F772BB559230D6CA /* Resources */,
+				9264E01AEA9B6B153457C0645AB9C28A /* Support Files */,
+			);
+			name = DropDown;
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		CB949EB0583485BC34DB3057068DC0E8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				65A8F5420B2CDE8493D86DAA5D917A7F /* GoogleToolboxForMac.modulemap */,
+				C4733A0A05C72004025B21BB7DB071D0 /* GoogleToolboxForMac.xcconfig */,
+				614BD50E83B22A88CDC38657E992BCD4 /* GoogleToolboxForMac-dummy.m */,
+				5264D14E0BC29AB64FC45D32DD979B2F /* GoogleToolboxForMac-prefix.pch */,
+				983438742463C78761EAF44A299C6DFA /* GoogleToolboxForMac-umbrella.h */,
+				E1BDEAD1DAE3246A9E2C0CA4B1C1FAED /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/FontAwesome.swift";
+			path = "../Target Support Files/GoogleToolboxForMac";
+			sourceTree = "<group>";
+		};
+		CF723E6A22232A0B3C23EC1D06F71D62 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8115DA153776280CE4A26C5F973DBCB6 /* ChameleonFramework.modulemap */,
+				5EC285E61F2930A769151EAB39FE9E4A /* ChameleonFramework.xcconfig */,
+				DC720D694F09A865C10C47733B8D328E /* ChameleonFramework-dummy.m */,
+				67B42377F1A2F0EA92360293FD0BCC55 /* ChameleonFramework-prefix.pch */,
+				50E2F450ACC263514186485BC4C5FBBE /* ChameleonFramework-umbrella.h */,
+				CEE954FAFA7E8B67C54D9AA770F0AB11 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ChameleonFramework";
+			sourceTree = "<group>";
+		};
+		E6B34114535F5F56EF8E67DF56868D69 /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				4F421D26FD5CA20F69B4BFC5FB7CE7FE /* GTMDefines.h */,
+			);
+			name = Defines;
+			sourceTree = "<group>";
+		};
+		EC0D405817CF30C838F0C6A64EFDC306 /* FontAwesome.swift */ = {
+			isa = PBXGroup;
+			children = (
+				7B76C4387B56784F5A5403E3CCC2B0D2 /* Enum.swift */,
+				30535BCEBF07184FBC1D64476B2AD03E /* FontAwesome.swift */,
+				20BB2156FFEFC2EDCA40B3B18C1C6694 /* FontAwesomeBarButtonItem.swift */,
+				F97A30B89AB9F1804AD79913BAF2EE46 /* FontAwesomeImageRepresentable.swift */,
+				3745B90FB459F66E06E7E2740AB4E2B0 /* FontAwesomeImageView.swift */,
+				AD9A048A692E18A1D71D5A9F2678A0CD /* FontAwesomeSegmentedControl.swift */,
+				9DD11D21918748BA7A425696FD91F062 /* FontAwesomeStateRequirement.swift */,
+				34D689436BE05A543F15D64E50AF5E67 /* FontAwesomeTabBarItem.swift */,
+				673E1EC3BFCD09F99257F699C5EAF10B /* FontAwesomeTextRepresentable.swift */,
+				D1F56280C54A9554FB37A533DBF112ED /* FontAwesomeView.swift */,
+				9E0AB893BA1362F0E4684141FB1E7EEB /* Resources */,
+				5D14D74BAD8EAD4E6D596DF1FF69761C /* Support Files */,
+			);
+			name = FontAwesome.swift;
+			path = FontAwesome.swift;
+			sourceTree = "<group>";
+		};
+		EF0B2E24CE3CE02826C25F4C6B8352BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E944700616C3202FD0F0B8BAA1569596 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -768,11 +928,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82AB09C9DDC48D8A71A64F197A627C99 /* Headers */ = {
+		7E4098260ABCB99A845FAF46F2256FDA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BF5EDEBBEFED3C1F4CE82AB7FE12D45 /* Pods-Roomie-umbrella.h in Headers */,
+				17BC6225D5D1680D27E0ECED9CD85E25 /* Pods-Roomie-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +945,29 @@
 				1ED67707C258751E7888DAC2AB3D8501 /* GTMSessionFetcherLogging.h in Headers */,
 				DF9559C3822E3C6119BE43E4EDFD7EEE /* GTMSessionFetcherService.h in Headers */,
 				F09EDD53B94234F5F8DAC4DCD5CD969E /* GTMSessionUploadFetcher.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D4457F7F2F28A0B99FF8F1B98219F8E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED4DBD1E13182AA813DC1237FA6E3A42 /* Chameleon.h in Headers */,
+				78281D8673FC507089FCFDC439DEDC16 /* Chameleon_.h in Headers */,
+				9A3EAF15D3C58FD56A552FD703A9154C /* ChameleonConstants.h in Headers */,
+				EC786817C5CEBCD51A4C9EC9B883ED6F /* ChameleonEnums.h in Headers */,
+				1B704F3C816C4532F9B7FDFE0625732E /* ChameleonFramework-umbrella.h in Headers */,
+				B4EA53699AA19822E674188743266B2B /* ChameleonMacros.h in Headers */,
+				29F74E8A334254C68C6720E3B247CE32 /* NSArray+Chameleon.h in Headers */,
+				9B6AD39C81FAF37861FC0FEC41022146 /* UIAppearance+Swift.h in Headers */,
+				0D7F425CFB628271BFB6FCFF8201BF4F /* UIButton+Chameleon.h in Headers */,
+				DB5FB611FB6EBF2F2BA7B78FE0CED535 /* UIColor+Chameleon.h in Headers */,
+				44117424757A5E62D87B8BF4B41A4207 /* UIColor+ChameleonPrivate.h in Headers */,
+				86F7D970F220974A0E26C3B632C5C74F /* UIImage+ChameleonPrivate.h in Headers */,
+				604286A8F8A2ACB063BDF97B09D4987C /* UILabel+Chameleon.h in Headers */,
+				BFA97401155C4E14893D9AA1E0D1EC80 /* UINavigationController+Chameleon.h in Headers */,
+				8ECF929AC5E737EBEB542283886D5E07 /* UIView+ChameleonPrivate.h in Headers */,
+				03DCD393DF69EE6DE4AD424B1192DD02 /* UIViewController+Chameleon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,29 +1014,30 @@
 			);
 			name = GoogleToolboxForMac;
 			productName = GoogleToolboxForMac;
-			productReference = EEDA902489CEB45BF18AC36F736E291C /* GoogleToolboxForMac.framework */;
+			productReference = 518B099F6CB2AE000FB1513E8382D73A /* GoogleToolboxForMac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		26BB4D766B72F2028DA3FA15E969DFDF /* Pods-Roomie */ = {
+		2BB9306F63A66891295E23235B16E1A2 /* Pods-Roomie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 165F2A7048B0EF5F5EF93D87885CE425 /* Build configuration list for PBXNativeTarget "Pods-Roomie" */;
+			buildConfigurationList = 260E95AD37750DB828B49527CCD3077D /* Build configuration list for PBXNativeTarget "Pods-Roomie" */;
 			buildPhases = (
-				D3396EBCE5C5811736C7F6799ADE3C9F /* Sources */,
-				9BF729D729F489BA0A765C27DD4122F2 /* Frameworks */,
-				82AB09C9DDC48D8A71A64F197A627C99 /* Headers */,
+				83784F3D2B29B3F702881F24E88CE862 /* Sources */,
+				8948CAC99F7A90E10D83AB33029093A1 /* Frameworks */,
+				7E4098260ABCB99A845FAF46F2256FDA /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B51E1CA9AD1D3B7B347EA119F4C19390 /* PBXTargetDependency */,
-				F462ABB7F45358BDE66AF81B973EB51E /* PBXTargetDependency */,
-				2A5DD393C732B0498A500C32FD0BDB96 /* PBXTargetDependency */,
-				BA983C14D2027B6AB431C2E63348B15E /* PBXTargetDependency */,
-				90D325D4B1206C37ECE1D9C187125222 /* PBXTargetDependency */,
+				4392ED0B8CDCCD567436C9D5FDD6D555 /* PBXTargetDependency */,
+				6B3ADD65E6309D86A24CFFB5EF455686 /* PBXTargetDependency */,
+				6409D7AD43F654DF702417A884752CD6 /* PBXTargetDependency */,
+				A82328B0213238C9B43110B53A43C76C /* PBXTargetDependency */,
+				E660C751D5735D68B01CC79DFE9B014C /* PBXTargetDependency */,
+				D51E6FD53B132456FC5883702F64DCFB /* PBXTargetDependency */,
 			);
 			name = "Pods-Roomie";
 			productName = "Pods-Roomie";
-			productReference = 0D1EE46C7985FE859D85B67D88D2D589 /* Pods_Roomie.framework */;
+			productReference = DA53EF7543B359C989B62B7B6FB6BEBE /* Pods_Roomie.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		39C54651ACA43133FCDDA17C1F94755E /* Pods-RoomieUITests */ = {
@@ -870,7 +1054,7 @@
 			);
 			name = "Pods-RoomieUITests";
 			productName = "Pods-RoomieUITests";
-			productReference = 85BA42C1A76948142C783D732FF8B53C /* Pods_RoomieUITests.framework */;
+			productReference = B38422D1C532ACF29CC45F28162ECE4B /* Pods_RoomieUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */ = {
@@ -888,7 +1072,7 @@
 			);
 			name = DropDown;
 			productName = DropDown;
-			productReference = BF641388A73D6B3100AC1CB684B64B39 /* DropDown.framework */;
+			productReference = 580796258B17A24201AB6F21CE80621B /* DropDown.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5C123A74CD9D6CDA27160800BA68B01A /* Floaty */ = {
@@ -905,7 +1089,7 @@
 			);
 			name = Floaty;
 			productName = Floaty;
-			productReference = 4541514874A9187D1B776B6F4D840AD1 /* Floaty.framework */;
+			productReference = 88CB4B478E638EAAFB53A4BB8B6F9CD5 /* Floaty.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */ = {
@@ -922,8 +1106,25 @@
 			);
 			name = "FontAwesome.swift-FontAwesome.swift";
 			productName = "FontAwesome.swift-FontAwesome.swift";
-			productReference = ADAAA7EB47A4B90A429D2023EB9D3E08 /* FontAwesome.swift.bundle */;
+			productReference = 69AB3EFC02BCF4217302E0742C8DBA3B /* FontAwesome.swift.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		76BD4592010354D6C23D6ECCA20D83A8 /* ChameleonFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07398A672F3D6D682C4B2E94C83E2A0D /* Build configuration list for PBXNativeTarget "ChameleonFramework" */;
+			buildPhases = (
+				FA68695022B7C8DC3A47D6DF81079652 /* Sources */,
+				E3FD70AC579E74592E2EAC475ADFB8D9 /* Frameworks */,
+				8D4457F7F2F28A0B99FF8F1B98219F8E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChameleonFramework;
+			productName = ChameleonFramework;
+			productReference = 742B422579D6D8479FF0D7D0D18B3672 /* ChameleonFramework.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		951839CB1DF9CB36DBB67BE4140E7219 /* Pods-RoomieTests */ = {
 			isa = PBXNativeTarget;
@@ -939,7 +1140,7 @@
 			);
 			name = "Pods-RoomieTests";
 			productName = "Pods-RoomieTests";
-			productReference = E831956151E7C219BD4AA0F6C78FFDD2 /* Pods_RoomieTests.framework */;
+			productReference = 2145978B92B8F037DC3C9AF4E66392F1 /* Pods_RoomieTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C052BEBFBD0AB5218CC64BA3450F6547 /* GTMSessionFetcher */ = {
@@ -956,7 +1157,7 @@
 			);
 			name = GTMSessionFetcher;
 			productName = GTMSessionFetcher;
-			productReference = 0F68A3E83F5FBC9DEE99CF486FBDB26E /* GTMSessionFetcher.framework */;
+			productReference = F904E30AF108DFCD05870FA882C7954E /* GTMSessionFetcher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */ = {
@@ -975,7 +1176,7 @@
 			);
 			name = FontAwesome.swift;
 			productName = FontAwesome.swift;
-			productReference = 5783D53815B047DBAF40EA144868A0E3 /* FontAwesome_swift.framework */;
+			productReference = C219F30FE51B7335822949F1585ABC5D /* FontAwesome_swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -995,17 +1196,18 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 8672371CC7A14CE37E1FF5D0911C786F /* Products */;
+			productRefGroup = B604A843DC8D77E4665E682B1AD024A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				76BD4592010354D6C23D6ECCA20D83A8 /* ChameleonFramework */,
 				5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */,
 				5C123A74CD9D6CDA27160800BA68B01A /* Floaty */,
 				CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */,
 				6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */,
 				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
 				C052BEBFBD0AB5218CC64BA3450F6547 /* GTMSessionFetcher */,
-				26BB4D766B72F2028DA3FA15E969DFDF /* Pods-Roomie */,
+				2BB9306F63A66891295E23235B16E1A2 /* Pods-Roomie */,
 				951839CB1DF9CB36DBB67BE4140E7219 /* Pods-RoomieTests */,
 				39C54651ACA43133FCDDA17C1F94755E /* Pods-RoomieUITests */,
 			);
@@ -1081,6 +1283,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		83784F3D2B29B3F702881F24E88CE862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D20C7A808B589AF279D6D53C9FBE0E25 /* Pods-Roomie-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5A309EC5A80A27DBD420C5176E2122A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1090,14 +1300,6 @@
 				07340F15BACBA601736DBB2ABF1ABC35 /* GTMSessionFetcherLogging.m in Sources */,
 				95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */,
 				F4E294C07EE32FFCDCF7FF4D71D850BD /* GTMSessionUploadFetcher.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3396EBCE5C5811736C7F6799ADE3C9F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D823D79B3940446A59240F5F40E86628 /* Pods-Roomie-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1340,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA68695022B7C8DC3A47D6DF81079652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FA38FEAF957D69E92153FBAFB3DB40 /* Chameleon_.m in Sources */,
+				B26038F91C7C4CC322D7F25C5D16FE9E /* ChameleonConstants.m in Sources */,
+				95E542740750F827BE2EBE3DE6F62D0E /* ChameleonFramework-dummy.m in Sources */,
+				833F15A28A0D562548517BCA8EAF23B6 /* ChameleonShorthand.swift in Sources */,
+				6712100A2CCB9B987281A02F6778473C /* NSArray+Chameleon.m in Sources */,
+				C3C8BB46937DD0BBC7FBE25E298052F8 /* UIAppearance+Swift.m in Sources */,
+				83CFC8F573AD5B75191E162E64C7D039 /* UIButton+Chameleon.m in Sources */,
+				2DDDE2C06FB4DCC639CFD100F224D6FD /* UIColor+Chameleon.m in Sources */,
+				3D08C4F4E2E65D192D317AED0A8237B3 /* UIColor+ChameleonPrivate.m in Sources */,
+				139A9CEDE5163F58CBB1A3A135DAD6A3 /* UIImage+ChameleonPrivate.m in Sources */,
+				FB82C1293D7DDE0D3E2E6D68CDD5852C /* UILabel+Chameleon.m in Sources */,
+				459048ECD9FAA42B77566EC56ECAD793 /* UINavigationController+Chameleon.m in Sources */,
+				A664D0A12D5F3DBD08A7E8DFE3AE83E2 /* UIView+ChameleonPrivate.m in Sources */,
+				5EA9F0ED011B06DEFA8542EEE72508C3 /* UIViewController+Chameleon.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1147,77 +1370,45 @@
 			target = 6991F49AED797519343B1F4591001691 /* FontAwesome.swift-FontAwesome.swift */;
 			targetProxy = A1E7ADA9414728070F39599079B02152 /* PBXContainerItemProxy */;
 		};
-		2A5DD393C732B0498A500C32FD0BDB96 /* PBXTargetDependency */ = {
+		4392ED0B8CDCCD567436C9D5FDD6D555 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FontAwesome.swift;
-			target = CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */;
-			targetProxy = 75EF5168F0C516BEFFD83D716BAE5FBE /* PBXContainerItemProxy */;
+			name = ChameleonFramework;
+			target = 76BD4592010354D6C23D6ECCA20D83A8 /* ChameleonFramework */;
+			targetProxy = F9B5DF8CF422D20848A16A1BF27C22EA /* PBXContainerItemProxy */;
 		};
-		90D325D4B1206C37ECE1D9C187125222 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GoogleToolboxForMac;
-			target = 00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */;
-			targetProxy = 44FB09C95AA54ED35D6FA399A8A0D280 /* PBXContainerItemProxy */;
-		};
-		B51E1CA9AD1D3B7B347EA119F4C19390 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DropDown;
-			target = 5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */;
-			targetProxy = E2BC8E8CCC826729FD4AEEA9C62409AE /* PBXContainerItemProxy */;
-		};
-		BA983C14D2027B6AB431C2E63348B15E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GTMSessionFetcher;
-			target = C052BEBFBD0AB5218CC64BA3450F6547 /* GTMSessionFetcher */;
-			targetProxy = C4D6D0C62BFC02936B4042A62BDEE1B1 /* PBXContainerItemProxy */;
-		};
-		F462ABB7F45358BDE66AF81B973EB51E /* PBXTargetDependency */ = {
+		6409D7AD43F654DF702417A884752CD6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Floaty;
 			target = 5C123A74CD9D6CDA27160800BA68B01A /* Floaty */;
-			targetProxy = CE8DD28291078CA54AED99D511519B5B /* PBXContainerItemProxy */;
+			targetProxy = A1405B5CD23A49FDEA87FB048BD0BF65 /* PBXContainerItemProxy */;
+		};
+		6B3ADD65E6309D86A24CFFB5EF455686 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			target = 5168099F2EBFC99A707C03C9EADE01A5 /* DropDown */;
+			targetProxy = 2D90F6BA6232425A2E38D8FDD23DDE3A /* PBXContainerItemProxy */;
+		};
+		A82328B0213238C9B43110B53A43C76C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FontAwesome.swift;
+			target = CD11672B6619C297B6AEE3DFB8213C59 /* FontAwesome.swift */;
+			targetProxy = B83E9F3947A00DEA3615E96B95C15DA0 /* PBXContainerItemProxy */;
+		};
+		D51E6FD53B132456FC5883702F64DCFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleToolboxForMac;
+			target = 00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */;
+			targetProxy = FB2320D732F9CB7E3D296656098081A2 /* PBXContainerItemProxy */;
+		};
+		E660C751D5735D68B01CC79DFE9B014C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTMSessionFetcher;
+			target = C052BEBFBD0AB5218CC64BA3450F6547 /* GTMSessionFetcher */;
+			targetProxy = AB1DF19F0057FE35CB035CE066277F30 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0241F65D268967C5C4337654752F984F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3FAD3A923DE5D1EB38D177737781F2D /* Pods-Roomie.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Roomie;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		02CEE69179774D4D117784DBEE23FBA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C12D774D96E711F74A7323A5A088D13A /* Pods-RoomieTests.debug.xcconfig */;
@@ -1256,7 +1447,7 @@
 		};
 		0FDFD0914F226F60E35F5088944B6E30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1271,48 +1462,9 @@
 			};
 			name = Release;
 		};
-		10D6E24FB21851E4D1CB7AB03D472F1A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Roomie;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		161ED49E920B24005D08317AD0766C16 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76E734AC54CD01294B034C7696A0B851 /* Floaty.xcconfig */;
+			baseConfigurationReference = E147E27826EA2795B72EA9D871B44925 /* Floaty.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1347,7 +1499,7 @@
 		};
 		173EB991F4189BD0521FB9FF314C1A99 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3E25C2B83E4F2BE0677D51D7BC1DEE8 /* GTMSessionFetcher.xcconfig */;
+			baseConfigurationReference = 0354AE18FC62A08E44BE6084B8B0FAB7 /* GTMSessionFetcher.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1371,6 +1523,45 @@
 				PRODUCT_NAME = GTMSessionFetcher;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		326F8033F8FED31BF5D4BAC4072D67B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344F94675B9F520CC89BD7583EC6D932 /* Pods-Roomie.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Roomie;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1416,7 +1607,7 @@
 		};
 		3908D004F813917DBE3F38897949B70E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1451,7 +1642,7 @@
 		};
 		4E3BB37312E5D4518EDFAD78B7C89440 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59276E44BFE93E8ED0237C7751CD9C2F /* GoogleToolboxForMac.xcconfig */;
+			baseConfigurationReference = C4733A0A05C72004025B21BB7DB071D0 /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1532,7 +1723,7 @@
 		};
 		5985138FAB15F070B451C28E4EB13FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76E734AC54CD01294B034C7696A0B851 /* Floaty.xcconfig */;
+			baseConfigurationReference = E147E27826EA2795B72EA9D871B44925 /* Floaty.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1566,7 +1757,7 @@
 		};
 		5EC9DDC590E000FC3BF93D2E1B5E2AFB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3E25C2B83E4F2BE0677D51D7BC1DEE8 /* GTMSessionFetcher.xcconfig */;
+			baseConfigurationReference = 0354AE18FC62A08E44BE6084B8B0FAB7 /* GTMSessionFetcher.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1635,7 +1826,7 @@
 		};
 		7D9CF2A8F360170BB840BB40EF7CC4FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FBB741A976A6ECB8BE1B77FC7F78454 /* DropDown.xcconfig */;
+			baseConfigurationReference = 4E045B6BB4A7720AE7F1688BFF71D2C5 /* DropDown.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1668,6 +1859,75 @@
 			};
 			name = Debug;
 		};
+		81698B2FD31295CA410B091C79817E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EC285E61F2930A769151EAB39FE9E4A /* ChameleonFramework.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83A86BE868D0716DAAC9DBBF0125F742 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EC285E61F2930A769151EAB39FE9E4A /* ChameleonFramework.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ChameleonFramework/ChameleonFramework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ChameleonFramework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ChameleonFramework/ChameleonFramework.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ChameleonFramework;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		BD089FFD7A08672256E87E2110038725 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5D2EFA01BD0990C1E3055E2AB35B8D5 /* Pods-RoomieTests.release.xcconfig */;
@@ -1698,6 +1958,44 @@
 				PRODUCT_NAME = Pods_RoomieTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BD62F2620A7F68AD0B1E27FD6CB7F3EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3FAD3A923DE5D1EB38D177737781F2D /* Pods-Roomie.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Roomie/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Roomie/Pods-Roomie.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Roomie;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1750,7 +2048,7 @@
 		};
 		BE9B55DCDA299EAE202F6DB76CAA485A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59276E44BFE93E8ED0237C7751CD9C2F /* GoogleToolboxForMac.xcconfig */;
+			baseConfigurationReference = C4733A0A05C72004025B21BB7DB071D0 /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1783,7 +2081,7 @@
 		};
 		C026723B06B94482BAA318DB129038E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1817,7 +2115,7 @@
 		};
 		E0721897CFC7A1D36B4C8FA9C5BBB934 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79DDB1F2A7E62561E5628FA50F7EC27 /* FontAwesome.swift.xcconfig */;
+			baseConfigurationReference = 1E74680B07D6E91D4F6CD6F3ABB8B98B /* FontAwesome.swift.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1834,7 +2132,7 @@
 		};
 		F031A80BACE40595BD74CA9AB53A2EEB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FBB741A976A6ECB8BE1B77FC7F78454 /* DropDown.xcconfig */;
+			baseConfigurationReference = 4E045B6BB4A7720AE7F1688BFF71D2C5 /* DropDown.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1878,6 +2176,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		07398A672F3D6D682C4B2E94C83E2A0D /* Build configuration list for PBXNativeTarget "ChameleonFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81698B2FD31295CA410B091C79817E01 /* Debug */,
+				83A86BE868D0716DAAC9DBBF0125F742 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		11DD83B99F71D3E302573ED38372EA3B /* Build configuration list for PBXNativeTarget "Floaty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1896,11 +2203,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		165F2A7048B0EF5F5EF93D87885CE425 /* Build configuration list for PBXNativeTarget "Pods-Roomie" */ = {
+		260E95AD37750DB828B49527CCD3077D /* Build configuration list for PBXNativeTarget "Pods-Roomie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10D6E24FB21851E4D1CB7AB03D472F1A /* Debug */,
-				0241F65D268967C5C4337654752F984F /* Release */,
+				326F8033F8FED31BF5D4BAC4072D67B7 /* Debug */,
+				BD62F2620A7F68AD0B1E27FD6CB7F3EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,4 +1,7 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - DropDown (2)
   - Firebase/Core (4.0.0):
     - FirebaseAnalytics (= 4.0.0)
@@ -31,6 +34,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.10)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DropDown (~> 2)
   - Firebase/Core
   - Firebase/Database
@@ -38,7 +42,17 @@ DEPENDENCIES:
   - Floaty (~> 3.0.0)
   - FontAwesome.swift
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: acc480fbe023c6e5fe40f68593f4a70a8c4c7ad5
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
@@ -51,6 +65,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
 
-PODFILE CHECKSUM: a52ca5963f517ba8e2bb3b756b3cea8bcbed2e70
+PODFILE CHECKSUM: 8c2475337b40fcbd4265095216468c7bacd1bd27
 
 COCOAPODS: 1.2.1

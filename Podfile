@@ -23,4 +23,5 @@ pod 'Firebase/Storage'
 pod "Floaty", "~> 3.0.0"
 pod 'FontAwesome.swift'
 pod 'DropDown', '~> 2'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'	
 end
