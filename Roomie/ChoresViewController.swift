@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Toast_Swift
 
 class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
@@ -490,6 +491,9 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
             else {
 //                chores.remove(at: indexPath.row)
 //                choresTableView.reloadData()
+                
+                self.view.makeToast("Only its creator can delete it!")
+                self.choresTableView.reloadData()
                 
             }
             

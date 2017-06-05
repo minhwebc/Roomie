@@ -32,6 +32,7 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Floaty (~> 3.0.0)
   - FontAwesome.swift
+  - Toast-Swift (~> 2.0.0)
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -64,7 +66,8 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 60063e3f19ba4801155d4b0f2334ab7585763ab3
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 8c2475337b40fcbd4265095216468c7bacd1bd27
+PODFILE CHECKSUM: 68d96fe5c191c1a3ac64271577a484021d74655f
 
 COCOAPODS: 1.2.1
