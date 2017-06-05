@@ -20,6 +20,7 @@ target 'Roomie' do
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'Toast-Swift', '~> 2.0.0'
 pod "Floaty", "~> 3.0.0"
 pod 'FontAwesome.swift'
 pod 'DropDown', '~> 2'
