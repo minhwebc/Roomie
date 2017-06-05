@@ -29,6 +29,8 @@
 		9DA96CF71EDD128D00CBFF21 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA96CF61EDD128D00CBFF21 /* UserListViewController.swift */; };
 		A80546DC1ED6A9B3005F3ACB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80546DB1ED6A9B3005F3ACB /* User.swift */; };
 		A80546DE1ED6B61E005F3ACB /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80546DD1ED6B61E005F3ACB /* SessionManager.swift */; };
+		A806E90E1EE50AA9005F0BCB /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806E90D1EE50AA9005F0BCB /* FoldingCell.swift */; };
+		A806E9101EE50AAF005F0BCB /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806E90F1EE50AAF005F0BCB /* BillCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		9DA96CF61EDD128D00CBFF21 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A80546DB1ED6A9B3005F3ACB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A80546DD1ED6B61E005F3ACB /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		A806E90D1EE50AA9005F0BCB /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
+		A806E90F1EE50AAF005F0BCB /* BillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		BA0686BF95471186BCCFD829 /* Pods-Roomie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roomie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roomie/Pods-Roomie.debug.xcconfig"; sourceTree = "<group>"; };
 		C92B1E966725277B8749F7F1 /* Pods-RoomieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomieTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RoomieTests/Pods-RoomieTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB25621706E8A8C3672BD8A0 /* Pods-RoomieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomieUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RoomieUITests/Pods-RoomieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				93A3DEDA1EE3F67C00442894 /* RemindersViewController.swift */,
 				934094291ECE512B00B06C9E /* ProfileViewController.swift */,
 				93ACF7FB1ECD8B630093432E /* Main.storyboard */,
+				A806E90F1EE50AAF005F0BCB /* BillCell.swift */,
+				A806E90D1EE50AA9005F0BCB /* FoldingCell.swift */,
 				93ACF7FE1ECD8B630093432E /* Assets.xcassets */,
 				93ACF8001ECD8B630093432E /* LaunchScreen.storyboard */,
 				93ACF8031ECD8B630093432E /* Info.plist */,
@@ -487,10 +493,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				934094261ECE50FE00B06C9E /* RoommateViewController.swift in Sources */,
+				A806E90E1EE50AA9005F0BCB /* FoldingCell.swift in Sources */,
 				9DA96CF71EDD128D00CBFF21 /* UserListViewController.swift in Sources */,
 				934094281ECE511800B06C9E /* GroceriesViewController.swift in Sources */,
 				934094221ECE50CF00B06C9E /* ChoresViewController.swift in Sources */,
 				93ACF7FA1ECD8B630093432E /* LoginViewController.swift in Sources */,
+				A806E9101EE50AAF005F0BCB /* BillCell.swift in Sources */,
 				934094241ECE50E400B06C9E /* BillsViewController.swift in Sources */,
 				A80546DC1ED6A9B3005F3ACB /* User.swift in Sources */,
 				93ACF7F81ECD8B620093432E /* AppDelegate.swift in Sources */,
