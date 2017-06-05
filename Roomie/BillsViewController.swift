@@ -16,7 +16,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
     var ref: DatabaseReference!
     let dateFormatter = DateFormatter()
-    let tabOne = TabOneViewController()
+    var tabOne = TabOneViewController()
     let tabOneBarItem = UITabBarItem();
     
     
@@ -293,6 +293,9 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         ref = Database.database().reference()
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "hello") as? TabOneViewController {
+            tabOne = viewController;
+        }
         
         tabOneBarItem.image = UIImage.fontAwesomeIcon(name: .money, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         
@@ -325,9 +328,12 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
 }
 
-
-
 class TabOneViewController: UITableViewController {
+    
+    let kCloseCellHeight: CGFloat = 75
+    let kOpenCellHeight: CGFloat = 120
+    let kRowsCount = 10
+    var cellHeights: [CGFloat] = []
     var firebaseRef : DatabaseReference!
     let sessionManager = SessionManager()
     // Array to contain chores
@@ -339,58 +345,26 @@ class TabOneViewController: UITableViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         self.title = "Current Bills"
+        refreshTable()
+        setup()
     }
     override func viewDidAppear(_ animated: Bool) {
         refreshTable()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func setup() {
+        cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
+        tableView.estimatedRowHeight = kCloseCellHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "backgroundImage"))
     }
     
-    ////////////////////////////
-    //////////////
-    //// Setup table view to display added bills
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.bills.count
-    }
-    
-    
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.clear
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
-        
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
-        }
-        
-        cell!.textLabel?.text = bills[indexPath.row].title
-        cell!.detailTextLabel?.text = bills[indexPath.row].amount
-        // Title Label
-        let label:UILabel = {
-            let txt = UILabel()
-            txt.text = bills[indexPath.row].dueDate
-            txt.translatesAutoresizingMaskIntoConstraints = false
-            return txt
-        }()
-        cell!.contentView.addSubview(label)
-        
-        label.rightAnchor.constraint(equalTo: (cell?.rightAnchor)!).isActive = true
-        label.topAnchor.constraint(equalTo: (cell?.textLabel?.bottomAnchor)!,constant:1 ).isActive = true
-        return cell!;
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    //    ////////////////////////////
+    //    //////////////
+    //    //// Setup table view to display added bills
+    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //        return self.bills.count
+    //    }
     
     func refreshTable() {
         self.bills.removeAll()
@@ -405,7 +379,94 @@ class TabOneViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
+    
 }
+// MARK: - TableView
+extension TabOneViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bills.count
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard case let cell as BillCell = cell else {
+            return
+        }
+        
+        cell.backgroundColor = .clear
+        
+        if cellHeights[indexPath.row] == kCloseCellHeight {
+            cell.unfold(false, animated: false, completion:nil)
+        } else {
+            cell.unfold(true, animated: false, completion: nil)
+        }
+        
+        cell.number = indexPath.row
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        //        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
+        //
+        //        if cell == nil {
+        //            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
+        //        }
+        //
+        //        cell!.textLabel?.text = bills[indexPath.row].title
+        //        cell!.detailTextLabel?.text = bills[indexPath.row].amount
+        //        // Title Label
+        //        return cell!;
+        let cell = tableView.dequeueReusableCell(withIdentifier: "billCell", for: indexPath) as! FoldingCell
+        let durations: [TimeInterval] = [0.26, 0.2, 0.2]
+        
+        cell.durationsForExpandedState = durations
+        cell.durationsForCollapsedState = durations
+        let label:UILabel = {
+            let txt = UILabel()
+            txt.text = bills[indexPath.row].dueDate
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        cell.foregroundView.addSubview(label)
+        
+        label.rightAnchor.constraint(equalTo: (cell.foregroundView.rightAnchor)).isActive = true
+        label.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: -10 ).isActive = true
+
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.row]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! FoldingCell
+        
+        if cell.isAnimating() {
+            return
+        }
+        
+        var duration = 0.0
+        let cellIsCollapsed = cellHeights[indexPath.row] == kCloseCellHeight
+        if cellIsCollapsed {
+            cellHeights[indexPath.row] = kOpenCellHeight
+            cell.unfold(true, animated: true, completion: nil)
+            duration = 0.5
+        } else {
+            cellHeights[indexPath.row] = kCloseCellHeight
+            cell.unfold(false, animated: true, completion: nil)
+            duration = 0.8
+        }
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }, completion: nil)
+        
+    }
+    
+}
+
 
 public class Bill{
     public var dueDate : String;
