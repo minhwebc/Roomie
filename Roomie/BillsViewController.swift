@@ -338,13 +338,13 @@ class TabOneViewController: UITableViewController {
     let sessionManager = SessionManager()
     // Array to contain chores
     var bills: [Bill] = []
+    var users: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseRef = Database.database().reference()
-        // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         self.title = "Current Bills"
+        self.tableView.separatorStyle = .none
         refreshTable()
         setup()
     }
@@ -356,7 +356,6 @@ class TabOneViewController: UITableViewController {
         cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "backgroundImage"))
     }
     
     //    ////////////////////////////
@@ -368,6 +367,19 @@ class TabOneViewController: UITableViewController {
     
     func refreshTable() {
         self.bills.removeAll()
+        self.users.removeAll()
+        
+        firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let name = value["name"];
+                    if(name != nil){
+                        self.users.append(name as! String);
+                    }
+                }
+            }
+        })
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
@@ -404,33 +416,68 @@ extension TabOneViewController {
         cell.number = indexPath.row
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
-        //        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
-        //
-        //        if cell == nil {
-        //            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
-        //        }
-        //
-        //        cell!.textLabel?.text = bills[indexPath.row].title
-        //        cell!.detailTextLabel?.text = bills[indexPath.row].amount
-        //        // Title Label
-        //        return cell!;
         let cell = tableView.dequeueReusableCell(withIdentifier: "billCell", for: indexPath) as! FoldingCell
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
-        let label:UILabel = {
+        let due:UILabel = {
             let txt = UILabel()
             txt.text = bills[indexPath.row].dueDate
             txt.translatesAutoresizingMaskIntoConstraints = false
             return txt
         }()
-        cell.foregroundView.addSubview(label)
+        let title:UILabel = {
+            let txt = UILabel()
+            txt.text = bills[indexPath.row].title
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        let amount:UILabel = {
+            let txt = UILabel()
+            txt.text = "$\(bills[indexPath.row].amount)"
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        cell.foregroundView.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
+        cell.foregroundView.layer.cornerRadius = 10;
+        cell.foregroundView.addSubview(title)
+        cell.foregroundView.addSubview(due)
+        cell.foregroundView.addSubview(amount)
         
-        label.rightAnchor.constraint(equalTo: (cell.foregroundView.rightAnchor)).isActive = true
-        label.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: -10 ).isActive = true
+        due.rightAnchor.constraint(equalTo: (cell.foregroundView.rightAnchor), constant: -7).isActive = true
+        due.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 25 ).isActive = true
+        
+        title.leftAnchor.constraint(equalTo: (cell.foregroundView.leftAnchor), constant: 5).isActive = true
+        title.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 15 ).isActive = true
+        
+        amount.leftAnchor.constraint(equalTo: (cell.foregroundView.leftAnchor), constant: 5).isActive = true
+        amount.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 35 ).isActive = true
+        
+        let stackView = UIStackView();
+        stackView.axis = UILayoutConstraintAxis.vertical
+        stackView.distribution = UIStackViewDistribution.equalSpacing
+        stackView.alignment = UIStackViewAlignment.center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let average : Double = Double(bills[indexPath.row].amount)! / Double(self.users.count);
+        for name in users{
+            let amount:UILabel = {
+                let txt = UILabel()
+                txt.text = "\(name) $\(average)"
+                txt.translatesAutoresizingMaskIntoConstraints = false
+                return txt
+            }()
+            stackView.addArrangedSubview(amount)
+            print("\(name) $\(average)");
+        }
+        cell.containerView.layer.cornerRadius = 10;
+        cell.containerView.backgroundColor = UIColor.
+        cell.containerView.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: cell.containerView.topAnchor, constant: 5).isActive = true;
+        stackView.leftAnchor.constraint(equalTo: cell.containerView.leftAnchor, constant: 5).isActive = true;
+        stackView.rightAnchor.constraint(equalTo: cell.containerView.rightAnchor, constant: 5).isActive = true;
 
+        
         return cell
     }
     
@@ -495,6 +542,7 @@ class TabTwoViewController: UITableViewController {
     
     func refreshTable() {
         self.bills.removeAll()
+        
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
