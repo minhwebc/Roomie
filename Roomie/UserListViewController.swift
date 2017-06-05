@@ -50,8 +50,9 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
+        let cell = RoommateTableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
         cell.textLabel?.text = users[indexPath.row]["name"]
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: users[indexPath.row]["profileURL"]!)
         return cell
     }
     
@@ -86,7 +87,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
             let values = snap.value as! NSDictionary
             for key in values.allKeys{
                 let value = values[key] as! NSDictionary
-                let dict = ["id": key, "name": value["name"]]
+                let dict = ["id": key, "name": value["name"], "profileURL": "\(value["profileImageURL"] ?? "")"]
                 self.users.append(dict as! [String : String])
             }
             self.userTableView.reloadData()
@@ -94,3 +95,4 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
 }
+
