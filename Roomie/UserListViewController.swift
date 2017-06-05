@@ -27,6 +27,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         let userRef = groupRef.child("users/\(users[indexPath.row]["id"]!)")
         
         groupRef.child("chores/\(id)/assignTo").setValue(users[indexPath.row]["name"]!)
+        groupRef.child("chores/\(id)/assigneeID").setValue(users[indexPath.row]["id"]!)
         
         userRef.child("chores/\(id)/title").setValue(name)
         userRef.child("chores/\(id)/creator").setValue(creator)

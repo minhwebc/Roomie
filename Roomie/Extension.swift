@@ -18,6 +18,7 @@ extension UIImageView {
         
         if let downloadImage = imageCache.object(forKey: urlString as AnyObject) {
             self.image = downloadImage
+            return
         }
         
         let url = NSURL(string: urlString)
