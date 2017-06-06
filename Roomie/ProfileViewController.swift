@@ -94,10 +94,10 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return  chores.count
+            return  group.count
         }
         if section == 1{
-            return   group.count
+            return   chores.count
         }
         if section == 2{
             return bills.count
@@ -113,7 +113,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         cell.textLabel?.textColor = UIColor.white
         cell.detailTextLabel?.textColor = UIColor.white
         
-        if indexPath.section == 0{
+        if indexPath.section == 1{
             let dueDateLabelOnCell:UILabel = {
                 let label = UILabel()
                 label.textAlignment = NSTextAlignment.right
@@ -131,7 +131,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
             cell.textLabel?.text = chores[indexPath.row]["title"]
             cell.detailTextLabel?.text = chores[indexPath.row]["creator"]!
         }
-        if indexPath.section == 1{
+        if indexPath.section == 0{
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.textLabel?.text = group[indexPath.row]
         }
