@@ -516,7 +516,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
         return item
     }()
     
-    let OverdueItem: UITabBarItem = {
+    let CompletedItem: UITabBarItem = {
         let item = UITabBarItem()
         item.title = "Completed"
         item.image = #imageLiteral(resourceName: "Present-50")
@@ -553,12 +553,12 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
     }
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right && tabbar.selectedItem == OverdueItem {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right && tabbar.selectedItem == CompletedItem {
             print("Swipe Right")
             self.tabBar(tabbar, didSelect: TodoItem)
         } else if gesture.direction == UISwipeGestureRecognizerDirection.left && tabbar.selectedItem == TodoItem {
             print("Swipe Left")
-            self.tabBar(tabbar, didSelect: OverdueItem)
+            self.tabBar(tabbar, didSelect: CompletedItem)
         }
     }
     
@@ -591,7 +591,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
         tabbar.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         tabbar.backgroundColor = UIColor.gray
-        tabbar.items = [TodoItem, OverdueItem]
+        tabbar.items = [TodoItem, CompletedItem]
         tabbar.selectedItem = TodoItem
     }
     
@@ -609,16 +609,20 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
                 for key in values.allKeys{
                     let value = values[key] as! NSDictionary
                     
-                    if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending{
+                    if (self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending)  ||  ((value["totalAmount"]) !=  nil) {
                         
                         let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     
-                    if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
+                    
+                    
+                    
+                    if self.tabbar.selectedItem! == self.CompletedItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending && (value["totalAmount"]) ==  nil {
                         let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
+                    
                     self.refreshTableData()
                 }
                 
