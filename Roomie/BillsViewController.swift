@@ -309,7 +309,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
             index += 1
         }
         url += "&ios=hello&count=\(tabOne.bills.count)"
-        url = url.replacingOccurrences(of: " ", with: "")
+        url = url.replacingOccurrences(of: " ", with: "%20")
         let req = NSMutableURLRequest(url: NSURL(string:url)! as URL)
         req.httpMethod = "GET"
         req.httpBody = "key=\"value\"".data(using: String.Encoding.utf8) //This isn't for GET requests, but for POST requests so you would need to change `HTTPMethod` property
