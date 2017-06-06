@@ -10,7 +10,7 @@
 import UIKit
 import Firebase
 
-class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroceryListViewController: UIViewController {
     
     var rootRef: DatabaseReference = Database.database().reference()
     let sessionManager = SessionManager()
@@ -21,79 +21,95 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     var due_on: String?
     var gvc: GroceriesViewController?
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = groceryID!
-        let name = groceryName!
-        let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
-        let userRef = groupRef.child("users/\(users[indexPath.row]["id"]!)")
-        
-//        groupRef.child("grocery/\(id)/assignTo").setValue(users[indexPath.row]["name"]!)
-        groupRef.child("grocery/\(id)/assigneeID").setValue(users[indexPath.row]["id"]!)
-        
-        userRef.child("grocery/\(id)/title").setValue(name)
-        userRef.child("grocery/\(id)/creator").setValue(creator)
-        userRef.child("grocery/\(id)/due_on").setValue(due_on)
-        print("Successfully assign the grocery(id=\(id)) to the user(id=\(users[indexPath.row]["id"]!))!")
-        
-        //////////////////////////////////////////////
-        // better show some alert on user screen!
-        
-        // back to grocery list
-        gvc?.refreshTable()
-        self.navigationController?.popViewController(animated: true)
-    }
     
-    @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
-    }
-    
-    @available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = RoommateTableViewCell(style: .subtitle, reuseIdentifier: "groceryCell")
-        cell.textLabel?.text = users[indexPath.row]["name"]
-        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: users[indexPath.row]["profileURL"]!)
-        return cell
-    }
-    
-    let userTableView:UITableView = {
-        let view = UITableView()
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "userCell")
+    let addAmountView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 30
+        view.layer.opacity = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+        
     }()
+    
+    // amount lable
+    let amountLabel:UILabel = {
+        let txt = UILabel()
+        txt.text = "Item amount:"
+        txt.font = UIFont.boldSystemFont(ofSize: 20)
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        return txt
+    }()
+    
+    // amount enter TextField
+    let amountTextField:UITextField = {
+        let txt = UITextField()
+        txt.attributedPlaceholder = NSAttributedString(string:" Enter a amount in USD", attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+        txt.layer.borderWidth = 1
+        txt.layer.borderColor = UIColor.lightGray.cgColor
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        return txt
+    }()
+    
+    func constrainAddAmountView(){
+        addAmountView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        addAmountView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5).isActive = true
+        addAmountView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1/2).isActive = true
+        addAmountView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -3).isActive = true
+        
+        addAmountView.addSubview(amountTextField)
+        addAmountView.addSubview(amountLabel)
+        
+        constrainAmountLabel()
+        constrainAddAmountView()
+        
+    }
+    
+    func constrainAmountLabel(){
+        amountLabel.heightAnchor.constraint(equalTo: addAmountView.heightAnchor, multiplier: 1/6).isActive = true
+        amountLabel.topAnchor.constraint(equalTo: addAmountView.topAnchor, constant: 15).isActive = true
+        amountLabel.leftAnchor.constraint(equalTo: addAmountView.leftAnchor, constant: 5).isActive = true
+        amountLabel.rightAnchor.constraint(equalTo: addAmountView.rightAnchor, constant: 5).isActive = true
+        
+    }
+    
+    func constrainAmountTextView(){
+        amountTextField.heightAnchor.constraint(equalTo: addAmountView.heightAnchor, multiplier: 1/6).isActive = true
+        amountTextField.widthAnchor.constraint(equalTo: addAmountView.widthAnchor, multiplier: 1/2).isActive = true
+        amountLabel.leftAnchor.constraint(equalTo: addAmountView.leftAnchor, constant: 5).isActive = true
+        amountLabel.rightAnchor.constraint(equalTo: addAmountView.rightAnchor, constant: 5).isActive = true
+        amountTextField.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 5).isActive = true
+    }
+
+//    func addAmount()  {
+//        self.view.addSubview(addAmountView)
+//        constrainAddAmountView()
+//    }
+
+//        let id = groceryID!
+//        let name = groceryName!
+//        let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+//        let userRef = groupRef.child("users/\(users[indexPath.row]["id"]!)")
+    
+//        ////////////////////check this later
+//        groupRef.child("grocery/\(id)/totalAmount").setValue(users[indexPath.row]["name"]!)
+//        groupRef.child("grocery/\(id)/payID").setValue(users[indexPath.row]["id"]!)
+//        
+//        userRef.child("grocery/\(id)/title").setValue(name)
+//        userRef.child("grocery/\(id)/creator").setValue(creator)
+//        userRef.child("grocery/\(id)/due_on").setValue(due_on)
+//        print("Successfully assign the grocery(id=\(id)) to the user(id=\(users[indexPath.row]["id"]!))!")
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllUsers()
-        
-        userTableView.dataSource = self
-        userTableView.delegate = self
-        
-        view.addSubview(userTableView)
-        constrainUserTableView()
-        self.userTableView.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
-        self.userTableView.tableFooterView = UIView()
-        view.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+        self.edgesForExtendedLayout = []
+        view.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
     }
     
-    func constrainUserTableView()  {
-        userTableView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-        userTableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-    func getAllUsers() {
-        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users").observeSingleEvent(of: .value, with: { (snap) in
-            let values = snap.value as! NSDictionary
-            for key in values.allKeys{
-                let value = values[key] as! NSDictionary
-                let dict = ["id": key, "name": value["name"], "profileURL": "\(value["profileImageURL"] ?? "")"]
-                self.users.append(dict as! [String : String])
-            }
-            self.userTableView.reloadData()
-        })
-    }
-    
 }
-
-import Foundation

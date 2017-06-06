@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-//import Toast_Swift
+import Toast_Swift
 
 class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDataSource, UITableViewDelegate {
     let rootRef  = Database.database().reference()
@@ -483,7 +483,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             
             if groceries[indexPath.row]["creatorID"]! == sessionManager.getUserDetails()["userID"]! {
                 groupRef.child("grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
-                groupRef.child("users/\(groceries[indexPath.row]["assigneeID"]!)/grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
+                groupRef.child("users/\(groceries[indexPath.row]["payID"]!)/grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
                 
                 previousIndexPath = nil
                 self.groceriesTableView.beginUpdates()
@@ -491,8 +491,8 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
                 self.groceriesTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 self.groceriesTableView.endUpdates()
             }else {
-//                self.view.makeToast("Only its creator can delete it!")
-//                self.groceriesTableView.reloadData()
+                self.view.makeToast("Only its creator can delete it!")
+                self.groceriesTableView.reloadData()
             }
             
         }
@@ -607,12 +607,12 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
                     
                     if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending{
                         
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     
                     if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     self.refreshTableData()
