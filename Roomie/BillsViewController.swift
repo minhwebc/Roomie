@@ -14,15 +14,6 @@ import Firebase
 import ChameleonFramework
 import Toast_Swift
 
-extension UILabel {
-    
-    var ssubstituteFontName : String {
-        get { return self.font.fontName }
-        set { self.font = UIFont(name: newValue, size: self.font.pointSize) }
-    }
-    
-}
-
 class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     var ref: DatabaseReference!
     let dateFormatter = DateFormatter()
@@ -290,6 +281,12 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
                     "frequency": self.dropDownResult.text!,
                     "due": selectedDate]
         billRef.updateChildValues(bill);
+        for userID in tabOne.usersID{
+            let billUserRef = self.ref.child("groups/\(groupName)/bills/\(key)/users/\(userID)");
+            let paid = ["paid":false]
+            billUserRef.updateChildValues(paid)
+        }
+        
         for email in userEmails{
             sendEmailNotification(email, self.amountTextField.text!,self.titleTextField.text!);
         }
@@ -433,7 +430,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
 class TabOneViewController: UITableViewController {
     let dateFormatter = DateFormatter()
     let kCloseCellHeight: CGFloat = 75
-    let kOpenCellHeight: CGFloat = 120
+    let kOpenCellHeight: CGFloat = 160
     var kRowsCount = 10
     var cellHeights: [CGFloat] = []
     var firebaseRef : DatabaseReference!
@@ -441,10 +438,10 @@ class TabOneViewController: UITableViewController {
     // Array to contain chores
     var bills: [Bill] = []
     var users: [String] = []
+    var usersID : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UILabel.appearance().ssubstituteFontName = "San Francisco"
         firebaseRef = Database.database().reference()
         self.title = "Current Bills"
         self.tableView.separatorStyle = .none
@@ -460,13 +457,7 @@ class TabOneViewController: UITableViewController {
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
-    //    ////////////////////////////
-    //    //////////////
-    //    //// Setup table view to display added bills
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return self.bills.count
-    //    }
+
     
     func refreshTable() {
         dateFormatter.dateFormat = "dd MMM yyyy";
@@ -480,6 +471,7 @@ class TabOneViewController: UITableViewController {
                     let name = value["name"];
                     if(name != nil){
                         self.users.append(name as! String);
+                        self.usersID.append(key as! String);
                     }
                 }
             }
@@ -488,7 +480,7 @@ class TabOneViewController: UITableViewController {
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
                     let value = values[key] as! NSDictionary
-                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String)
+                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String,paid: false, id: key as! String)
                     let calendar = NSCalendar.current
                     if(bill.frequency == "every month"){
                         var dueDate = self.dateFormatter.date(from: bill.dueDate);
@@ -502,7 +494,6 @@ class TabOneViewController: UITableViewController {
                             }
                         }
                         if(currentDate > dueDate!){
-                            print("overdue");
                             bill.overdue = true;
                         }else{
                             bill.dueDate = self.dateFormatter.string(from: dueDate!)
@@ -560,6 +551,18 @@ extension TabOneViewController {
         
         cell.number = indexPath.row
     }
+    
+    // MARK: Button Action
+    func payButtonPressed(_ button: UIButton) {
+        
+        let billID = button.title(for: UIControlState.disabled)!;
+        let billRef = firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills/\(billID)/users/\(sessionManager.getUserDetails()["userID"]!)")
+        let paid = ["paid" : true]
+        billRef.updateChildValues(paid);
+        button.setTitle("Paid", for: UIControlState.normal)
+        button.backgroundColor = UIColor(hexString: "#98FB98")
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "billCell", for: indexPath) as! FoldingCell
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
@@ -584,9 +587,36 @@ extension TabOneViewController {
             let txt = UILabel()
             txt.text = "$\(bills[indexPath.row].amount)"
             txt.translatesAutoresizingMaskIntoConstraints = false
+            txt.backgroundColor = UIColor(hexString: "#00CD66")
             txt.textColor = UIColor(hexString: "#8E8E93");
             return txt
         }()
+        let button:UIButton = {
+            let but = UIButton()
+            
+            var paid : Bool = false;
+            firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills/\(bills[indexPath.row].id)/users/\(sessionManager.getUserDetails()["userID"]!)").observeSingleEvent(of: .value, with: { (snap) in
+                if let values = snap.value as? NSDictionary {
+                    print(values["paid"] as! Bool)
+                    paid = values["paid"] as! Bool
+                }
+                if(paid){
+                    self.bills[indexPath.row].paid = true;
+                    but.setTitle("Paid", for: UIControlState.normal)
+                    but.backgroundColor = UIColor(hexString: "#98FB98")
+                }else{
+                    but.setTitle("Pay", for: UIControlState.normal)
+                    but.backgroundColor = UIColor(hexString: "#CD3700")
+                }
+            })
+            but.layer.cornerRadius = 10;
+            but.translatesAutoresizingMaskIntoConstraints = false
+            but.titleLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+            but.setTitle(self.bills[indexPath.row].id, for: UIControlState.disabled)
+            but.addTarget(self, action: #selector(self.payButtonPressed(_:)), for: .touchUpInside)
+            return but
+        }()
+        
         cell.foregroundView.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         cell.foregroundView.layer.cornerRadius = 10;
         cell.foregroundView.addSubview(title)
@@ -602,6 +632,7 @@ extension TabOneViewController {
         amount.leftAnchor.constraint(equalTo: (cell.foregroundView.leftAnchor), constant: 5).isActive = true
         amount.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 35 ).isActive = true
         
+        
         let stackView = UIStackView();
         stackView.axis = UILayoutConstraintAxis.vertical
         stackView.distribution = UIStackViewDistribution.equalSpacing
@@ -613,6 +644,7 @@ extension TabOneViewController {
                 let txt = UILabel()
                 txt.text = "\(name) $\(average)"
                 txt.translatesAutoresizingMaskIntoConstraints = false
+                
                 return txt
             }()
             stackView.addArrangedSubview(amount)
@@ -621,9 +653,15 @@ extension TabOneViewController {
         cell.containerView.layer.cornerRadius = 10;
         cell.containerView.addSubview(stackView)
         cell.containerView.backgroundColor = UIColor(hexString:"#e74c3c");
+        cell.containerView.addSubview(button)
+
         stackView.topAnchor.constraint(equalTo: cell.containerView.topAnchor, constant: 5).isActive = true;
         stackView.leftAnchor.constraint(equalTo: cell.containerView.leftAnchor, constant: 5).isActive = true;
         stackView.rightAnchor.constraint(equalTo: cell.containerView.rightAnchor, constant: 5).isActive = true;
+        
+        button.bottomAnchor.constraint(equalTo: cell.containerView.bottomAnchor, constant: -10).isActive = true;
+        button.leftAnchor.constraint(equalTo: cell.containerView.leftAnchor, constant: 1).isActive = true;
+        button.rightAnchor.constraint(equalTo: cell.containerView.rightAnchor, constant: 1).isActive = true;
         
         return cell
     }
@@ -668,12 +706,16 @@ public class Bill{
     public var frequency : String;
     public var title : String;
     public var overdue : Bool;
-    init(dueDate : String, amount : String, frequency : String, title : String) {
+    public var paid : Bool;
+    public var id : String;
+    init(dueDate : String, amount : String, frequency : String, title : String, paid : Bool, id : String) {
         self.dueDate = dueDate;
         self.amount = amount;
         self.frequency = frequency;
         self.title = title;
         self.overdue = false;
+        self.paid = paid;
+        self.id = id;
     }
 }
 
@@ -694,53 +736,60 @@ class TabTwoViewController: UITableViewController {
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
                     let value = values[key] as! NSDictionary
-                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String)
-                    let calendar = NSCalendar.current
-                    if(bill.frequency == "every month"){
-                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
-                        let currentDate = Date()
-                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
-                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
-                        let distance : Int = monthOfCurrentDate - monthOfDueDate;
-                        if(distance > 0){
-                            for _ in 1...distance {
-                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 1, to: dueDate!)
+                    var paid : Bool = false;
+                    self.firebaseRef.child("groups/\(self.sessionManager.getUserDetails()["groupName"]!)/bills/\(key)/users/\(self.sessionManager.getUserDetails()["userID"]!)").observeSingleEvent(of: .value, with: { (snap) in
+                        if let values1 = snap.value as? NSDictionary {
+                            paid = values1["paid"] as! Bool
+                        }
+                        if(!paid){
+                            let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String, paid: false, id : key as! String)
+                            let calendar = NSCalendar.current
+                            if(bill.frequency == "every month"){
+                                var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                                let currentDate = Date()
+                                let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                                let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                                let distance : Int = monthOfCurrentDate - monthOfDueDate;
+                                if(distance > 0){
+                                    for _ in 1...distance {
+                                        dueDate = calendar.date(byAdding: Calendar.Component.month, value: 1, to: dueDate!)
+                                    }
+                                }
+                                if(currentDate > dueDate!){
+                                    print("overdue");
+                                    bill.overdue = true;
+                                }
+                                if(bill.overdue){
+                                    self.bills.append(bill);
+                                }
+                            }else{
+                                var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                                let currentDate = Date()
+                                let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                                let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                                var distance : Int = monthOfCurrentDate - monthOfDueDate;
+                                if(distance > 0){
+                                    distance = distance % 2;
+                                    for _ in 1...distance {
+                                        dueDate = calendar.date(byAdding: Calendar.Component.month, value: 2, to: dueDate!)
+                                    }
+                                }
+                                if(currentDate > dueDate!){
+                                    print("overdue");
+                                    bill.overdue = true;
+                                }
+                                if(bill.overdue){
+                                    self.bills.append(bill);
+                                }
                             }
                         }
-                        if(currentDate > dueDate!){
-                            print("overdue");
-                            bill.overdue = true;
-                        }
-                        if(bill.overdue){
-                            self.bills.append(bill);
-                        }
-                    }else{
-                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
-                        let currentDate = Date()
-                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
-                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
-                        var distance : Int = monthOfCurrentDate - monthOfDueDate;
-                        if(distance > 0){
-                            distance = distance % 2;
-                            for _ in 1...distance {
-                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 2, to: dueDate!)
-                            }
-                        }
-                        if(currentDate > dueDate!){
-                            print("overdue");
-                            bill.overdue = true;
-                        }
-                        if(bill.overdue){
-                            self.bills.append(bill);
-                        }
-                    }
+                        self.tableView.reloadData()
+                    })
                 }
             }
             
-            self.tableView.reloadData()
         })
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
