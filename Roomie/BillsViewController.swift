@@ -793,7 +793,7 @@ class TabTwoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.red
+        self.view.backgroundColor = UIColor(hexString: "#FF3B3F")
         self.title = "Past Due Bills"
         firebaseRef = Database.database().reference()
         dateFormatter.dateFormat = "dd MMM yyyy";
@@ -809,6 +809,21 @@ class TabTwoViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
     }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let billRef = firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills/\(bills[indexPath.row].id)/users/\(sessionManager.getUserDetails()["userID"]!)")
+            let paid = ["paid" : true]
+            billRef.updateChildValues(paid);
+            self.tableView.beginUpdates()
+            self.bills.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.tableView.endUpdates()
+            self.tableView.reloadData()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")

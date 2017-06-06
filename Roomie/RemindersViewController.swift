@@ -16,11 +16,9 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
     let sessionManager = SessionManager()
     var userID: String = ""
 
-    
     ////////////////////
     //////
-    // Sample data to display
-    var bills = [["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"],["title":"tv","amountDue":"70","dueDate":"07 Jun 2017","creator":"show"],["title":"internet","amountDue":"700","dueDate":"09 Jun 2017","creator":"show"],["title":"phone","amountDue":"800","dueDate":"11 Jun 2017","creator":"show"],["title":"extra","amountDue":"50","dueDate":"07 Jun 2017","creator":"show"]]
+    var bills : [[String : String]] = []
     
     var chores = [["title":"clean","dueDate":"10 Jun 2017","creator":"show","assignee":"Bro"],["title":"dog","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"],["title":"bro","dueDate":"09 Jun 2017","creator":"show","assignee":"Bro"],["title":"sis","dueDate":"11 Jun 2017","creator":"show","assignee":"Bro"],["title":"extra","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"]]
     
@@ -160,7 +158,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         super.viewDidLoad()
         dateFormatter.dateFormat = "dd MMM yyyy"
         initChoresData()
-        
+        initBillData()
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
@@ -197,6 +195,58 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     
+    func initBillData(){
+        //["title":"rent","amountDue":"500","dueDate":"10 Jun 2017","creator":"show"]
+        
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String,paid: false, id: key as! String)
+                    let calendar = NSCalendar.current
+                    if(bill.frequency == "every month"){
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        let currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        let distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 1, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            bill.overdue = true;
+                        }else{
+                            bill.dueDate = self.dateFormatter.string(from: dueDate!)
+                            self.bills.append(["title" : bill.title, "amountDue" : bill.amount, "dueDate" : bill.dueDate, "creator": "show"]);
+                        }
+                    }else{
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        let currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        var distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            distance = distance % 2;
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 2, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            print("overdue");
+                            bill.overdue = true;
+                        }else{
+                            bill.dueDate = self.dateFormatter.string(from: dueDate!)
+                            self.bills.append(["title" : bill.title, "amountDue" : bill.amount, "dueDate" : bill.dueDate, "creator": "show"]);
+                        }
+                    }
+                }
+            }
+            self.reminderTableView.reloadData()
+        })
+    }
+
     
     
     
