@@ -147,7 +147,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
                 label.translatesAutoresizingMaskIntoConstraints = false
                 return label
             }()
-            amountLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)! + 4t)
+            amountLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)! + 4)
             amountLabelOnCell.text = "$ " + groceries[indexPath.row]["amount"]!
             print("amount is \(groceries[indexPath.row]["amount"]!) ")
             cell.addSubview(amountLabelOnCell)

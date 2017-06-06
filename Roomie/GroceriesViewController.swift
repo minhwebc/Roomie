@@ -616,8 +616,6 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
                     }
                     
                     
-                    
-                    
                     if self.tabbar.selectedItem! == self.CompletedItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending && (value["totalAmount"]) ==  nil {
                         let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
