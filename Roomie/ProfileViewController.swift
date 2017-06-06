@@ -252,7 +252,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(profileImageView)
         self.view.addSubview(nameLabel)
         
-        initData()
+        initChoresData()
         
         constrainProfileImageView()
         constrainNameLabel()
@@ -263,7 +263,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         constrainProfileTableView()
     }
     
-    func initData() {
+    func initChoresData() {
         let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
         
         // fetch user data

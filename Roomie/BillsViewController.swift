@@ -11,13 +11,24 @@ import Floaty
 import FontAwesome_swift
 import DropDown
 import Firebase
+import ChameleonFramework
+import Toast_Swift
+
+extension UILabel {
+    
+    var ssubstituteFontName : String {
+        get { return self.font.fontName }
+        set { self.font = UIFont(name: newValue, size: self.font.pointSize) }
+    }
+    
+}
 
 class BillsViewController: UITabBarController, UITabBarControllerDelegate{
-    
     var ref: DatabaseReference!
     let dateFormatter = DateFormatter()
     var tabOne = TabOneViewController()
     let tabOneBarItem = UITabBarItem();
+    var userEmails = [String]()
     
     
     // view to enter bill details
@@ -25,7 +36,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 30
-        view.layer.opacity = 0.5
+        view.layer.opacity = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
@@ -103,6 +114,15 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         return txt
     }()
     
+    // Amount Label
+    let frequencyLabel:UILabel = {
+        let txt = UILabel()
+        txt.text = "Frequency:"
+        txt.font = UIFont.boldSystemFont(ofSize: 20)
+        txt.translatesAutoresizingMaskIntoConstraints = false
+        return txt
+    }()
+    
     // date picker for due date
     let dueDatePicker:UIDatePicker = {
         let due = UIDatePicker()
@@ -156,7 +176,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         addBillView.addSubview(dropDownView)
         dropDownView.addSubview(dropDownResult)
         addBillView.addSubview(dueDateLabel)
-        
+        addBillView.addSubview(frequencyLabel)
         
         constrainTitleLabel()
         constrainAmountLabel()
@@ -178,9 +198,11 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         dropDownResult.rightAnchor.constraint(equalTo: dropDownView.rightAnchor, constant: -15).isActive = true
         dropDownResult.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10).isActive = true
         
+        frequencyLabel.leftAnchor.constraint(equalTo: addBillView.leftAnchor, constant: 20).isActive = true
+        frequencyLabel.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10).isActive = true
         
         dropDown.dataSource = ["every month", "every 2 months"]
-        dropDown.width = 100
+        dropDown.width = 200
         
         // Action triggered on selection
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -250,6 +272,12 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     }
     
     func handleSave(){
+        if(Double(self.amountTextField.text!) == nil){
+            let alert = UIAlertController(title: "Alert", message: "Amount can't be letters", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let selectedDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!)
         let sessionManager : SessionManager = SessionManager()
         var userDetails : [String: String] = sessionManager.getUserDetails()
@@ -262,8 +290,58 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
                     "frequency": self.dropDownResult.text!,
                     "due": selectedDate]
         billRef.updateChildValues(bill);
+        for email in userEmails{
+            sendEmailNotification(email, self.amountTextField.text!,self.titleTextField.text!);
+        }
+        
+        //Toast to notify all users
+        self.view.makeToast("Notified users")
+        
+
         tabOne.refreshTable()
         addBillView.removeFromSuperview();
+    }
+    func sendEmailNotificationForAllBills(_ email : String){
+        var url : String = "http://ec2-54-212-232-252.us-west-2.compute.amazonaws.com/form.php?email=\(email)"
+        var index = 0;
+        for bill in tabOne.bills{
+            url += "&arr\(index)=\(bill.title)%20:%20$\(Double(bill.amount)!/Double(userEmails.count))%20,%20due%20on%20\(bill.dueDate)"
+            index += 1
+        }
+        url += "&ios=hello&count=\(tabOne.bills.count)"
+        url = url.replacingOccurrences(of: " ", with: "%20")
+        let req = NSMutableURLRequest(url: NSURL(string:url)! as URL)
+        req.httpMethod = "GET"
+        req.httpBody = "key=\"value\"".data(using: String.Encoding.utf8) //This isn't for GET requests, but for POST requests so you would need to change `HTTPMethod` property
+        URLSession.shared.dataTask(with: req as URLRequest) { data, response, error in
+            if error != nil {
+                //Your HTTP request failed.
+                print(error?.localizedDescription)
+            } else {
+                //Your HTTP request succeeded
+                print(response)
+            }
+            }.resume()
+        
+
+    }
+    //send emails to all users
+    func sendEmailNotification(_ email : String, _ amount : String, _ title : String){
+        let userDetails : [String : String] = SessionManager().getUserDetails();
+        let name = userDetails["name"];
+        let req = NSMutableURLRequest(url: NSURL(string:"http://ec2-54-212-232-252.us-west-2.compute.amazonaws.com/form.php?email=\(email)&bill_amount=\(amount)&ios=yes&bill_title=\(title)&from=\(name!)")! as URL)
+        req.httpMethod = "GET"
+        req.httpBody = "key=\"value\"".data(using: String.Encoding.utf8) //This isn't for GET requests, but for POST requests so you would need to change `HTTPMethod` property
+        URLSession.shared.dataTask(with: req as URLRequest) { data, response, error in
+            if error != nil {
+                //Your HTTP request failed.
+                print(error?.localizedDescription)
+            } else {
+                //Your HTTP request succeeded
+                print("success")
+            }
+            }.resume()
+        
     }
     
     // function to add a subview to be able to add a chore
@@ -274,13 +352,27 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let firebaseRef : DatabaseReference! = Database.database().reference()
+        let sessionManager = SessionManager()
+
         dateFormatter.dateFormat = "dd MMM yyyy";
         self.edgesForExtendedLayout = []
         
         // Do any additional setup after loading the view.
         self.delegate = self;
+        self.userEmails.removeAll()
         
+        firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let name = value["email"];
+                    if(name != nil){
+                        self.userEmails.append(name as! String);
+                    }
+                }
+            }
+        })
         
     }
     
@@ -314,12 +406,22 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
             self.addBill();
             floaty.close()
         })
-        //        floaty.translatesAutoresizingMaskIntoConstraints = false
+        floaty.addItem("Notify users ", icon: UIImage.fontAwesomeIcon(name: .bullhorn, textColor: UIColor.black, size: CGSize(width: 30, height: 30)), handler: { item in
+            self.notifyAllUsers();
+            floaty.close()
+        })
         
         self.view.addSubview(floaty)
         self.viewControllers = [tabOne, tabTwo]
     }
     
+    func notifyAllUsers(){
+        for email in userEmails {
+            sendEmailNotificationForAllBills(email);
+        }
+        self.view.makeToast("Notified users")
+        
+    }
     // UITabBarControllerDelegate method
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
@@ -329,22 +431,23 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
 }
 
 class TabOneViewController: UITableViewController {
-    
+    let dateFormatter = DateFormatter()
     let kCloseCellHeight: CGFloat = 75
     let kOpenCellHeight: CGFloat = 120
-    let kRowsCount = 10
+    var kRowsCount = 10
     var cellHeights: [CGFloat] = []
     var firebaseRef : DatabaseReference!
     let sessionManager = SessionManager()
     // Array to contain chores
     var bills: [Bill] = []
+    var users: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UILabel.appearance().ssubstituteFontName = "San Francisco"
         firebaseRef = Database.database().reference()
-        // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
         self.title = "Current Bills"
+        self.tableView.separatorStyle = .none
         refreshTable()
         setup()
     }
@@ -356,7 +459,6 @@ class TabOneViewController: UITableViewController {
         cellHeights = Array(repeating: kCloseCellHeight, count: kRowsCount)
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "backgroundImage"))
     }
     
     //    ////////////////////////////
@@ -367,16 +469,71 @@ class TabOneViewController: UITableViewController {
     //    }
     
     func refreshTable() {
+        dateFormatter.dateFormat = "dd MMM yyyy";
         self.bills.removeAll()
+        self.users.removeAll()
+        
+        firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    let name = value["name"];
+                    if(name != nil){
+                        self.users.append(name as! String);
+                    }
+                }
+            }
+        })
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
                     let value = values[key] as! NSDictionary
                     let bill = Bill(dueDate : value["due"]! as! String, amount : value["amount"] as! String, frequency : value["frequency"] as! String, title : value["title"] as! String)
-                    self.bills.append(bill);
+                    let calendar = NSCalendar.current
+                    if(bill.frequency == "every month"){
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        let currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        let distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 1, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            print("overdue");
+                            bill.overdue = true;
+                        }else{
+                            bill.dueDate = self.dateFormatter.string(from: dueDate!)
+                            self.bills.append(bill);
+                        }
+                    }else{
+                        var dueDate = self.dateFormatter.date(from: bill.dueDate);
+                        let currentDate = Date()
+                        let monthOfDueDate = calendar.component(.month, from: dueDate!)
+                        let monthOfCurrentDate = calendar.component(.month, from: currentDate )
+                        var distance : Int = monthOfCurrentDate - monthOfDueDate;
+                        if(distance > 0){
+                            distance = distance % 2;
+                            for _ in 1...distance {
+                                dueDate = calendar.date(byAdding: Calendar.Component.month, value: 2, to: dueDate!)
+                            }
+                        }
+                        if(currentDate > dueDate!){
+                            print("overdue");
+                            bill.overdue = true;
+                        }else{
+                            bill.dueDate = self.dateFormatter.string(from: dueDate!)
+                            self.bills.append(bill);
+                        }
+                    }
                 }
             }
+            
+            self.kRowsCount = self.bills.count
             self.tableView.reloadData()
+            self.setup()
         })
     }
     
@@ -404,33 +561,70 @@ extension TabOneViewController {
         cell.number = indexPath.row
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
-        //        var cell = tableView.dequeueReusableCell(withIdentifier: "billCell")
-        //
-        //        if cell == nil {
-        //            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "billCell")
-        //        }
-        //
-        //        cell!.textLabel?.text = bills[indexPath.row].title
-        //        cell!.detailTextLabel?.text = bills[indexPath.row].amount
-        //        // Title Label
-        //        return cell!;
         let cell = tableView.dequeueReusableCell(withIdentifier: "billCell", for: indexPath) as! FoldingCell
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
+        cell.foregroundView.subviews.forEach({ $0.removeFromSuperview() })
+        cell.containerView.subviews.forEach({ $0.removeFromSuperview() })
         
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
-        let label:UILabel = {
+        let due:UILabel = {
             let txt = UILabel()
             txt.text = bills[indexPath.row].dueDate
             txt.translatesAutoresizingMaskIntoConstraints = false
             return txt
         }()
-        cell.foregroundView.addSubview(label)
+        let title:UILabel = {
+            let txt = UILabel()
+            txt.text = bills[indexPath.row].title
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            return txt
+        }()
+        let amount:UILabel = {
+            let txt = UILabel()
+            txt.text = "$\(bills[indexPath.row].amount)"
+            txt.translatesAutoresizingMaskIntoConstraints = false
+            txt.textColor = UIColor(hexString: "#8E8E93");
+            return txt
+        }()
+        cell.foregroundView.backgroundColor = UIColor(red: 238/255.0, green:163/255.0 , blue: 163/255.0 ,alpha:1)
+        cell.foregroundView.layer.cornerRadius = 10;
+        cell.foregroundView.addSubview(title)
+        cell.foregroundView.addSubview(due)
+        cell.foregroundView.addSubview(amount)
         
-        label.rightAnchor.constraint(equalTo: (cell.foregroundView.rightAnchor)).isActive = true
-        label.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: -10 ).isActive = true
-
+        due.rightAnchor.constraint(equalTo: (cell.foregroundView.rightAnchor), constant: -7).isActive = true
+        due.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 25 ).isActive = true
+        
+        title.leftAnchor.constraint(equalTo: (cell.foregroundView.leftAnchor), constant: 5).isActive = true
+        title.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 15 ).isActive = true
+        
+        amount.leftAnchor.constraint(equalTo: (cell.foregroundView.leftAnchor), constant: 5).isActive = true
+        amount.topAnchor.constraint(equalTo: (cell.foregroundView.topAnchor),constant: 35 ).isActive = true
+        
+        let stackView = UIStackView();
+        stackView.axis = UILayoutConstraintAxis.vertical
+        stackView.distribution = UIStackViewDistribution.equalSpacing
+        stackView.alignment = UIStackViewAlignment.center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let average : Double = Double(bills[indexPath.row].amount)! / Double(self.users.count);
+        for name in users{
+            let amount:UILabel = {
+                let txt = UILabel()
+                txt.text = "\(name) $\(average)"
+                txt.translatesAutoresizingMaskIntoConstraints = false
+                return txt
+            }()
+            stackView.addArrangedSubview(amount)
+            print("\(name) $\(average)");
+        }
+        cell.containerView.layer.cornerRadius = 10;
+        cell.containerView.addSubview(stackView)
+        cell.containerView.backgroundColor = UIColor(hexString:"#e74c3c");
+        stackView.topAnchor.constraint(equalTo: cell.containerView.topAnchor, constant: 5).isActive = true;
+        stackView.leftAnchor.constraint(equalTo: cell.containerView.leftAnchor, constant: 5).isActive = true;
+        stackView.rightAnchor.constraint(equalTo: cell.containerView.rightAnchor, constant: 5).isActive = true;
+        
         return cell
     }
     
@@ -495,6 +689,7 @@ class TabTwoViewController: UITableViewController {
     
     func refreshTable() {
         self.bills.removeAll()
+        
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
@@ -503,7 +698,7 @@ class TabTwoViewController: UITableViewController {
                     let calendar = NSCalendar.current
                     if(bill.frequency == "every month"){
                         var dueDate = self.dateFormatter.date(from: bill.dueDate);
-                        var currentDate = Date()
+                        let currentDate = Date()
                         let monthOfDueDate = calendar.component(.month, from: dueDate!)
                         let monthOfCurrentDate = calendar.component(.month, from: currentDate )
                         let distance : Int = monthOfCurrentDate - monthOfDueDate;
@@ -521,7 +716,7 @@ class TabTwoViewController: UITableViewController {
                         }
                     }else{
                         var dueDate = self.dateFormatter.date(from: bill.dueDate);
-                        var currentDate = Date()
+                        let currentDate = Date()
                         let monthOfDueDate = calendar.component(.month, from: dueDate!)
                         let monthOfCurrentDate = calendar.component(.month, from: currentDate )
                         var distance : Int = monthOfCurrentDate - monthOfDueDate;

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Toast_Swift
 
 class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
@@ -410,7 +411,7 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         AssignToButtonOnCell.tag = indexPath.row
         AssignToButtonOnCell.addTarget(self, action: #selector(handleChoresAssignment(_:)), for: .touchUpInside)
         
-        if chores[indexPath.row]["assignee"] != "Assigned to: \(self.na)" {
+        if chores[indexPath.row]["assignee"] != "Assigned to: \(self.na)" || tabbar.selectedItem == OverdueItem {
             AssignToButtonOnCell.isEnabled = false
             AssignToButtonOnCell.backgroundColor = UIColor.gray
         }
@@ -475,17 +476,25 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete chore
-            if chores[indexPath.row]["creatorID"]! == sessionManager.getUserDetails()["userID"]! {
-                rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores/\(chores[indexPath.row]["id"]!)").setValue(nil)
+            let chore = chores[indexPath.row]
+            let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+            if chore["creatorID"]! == sessionManager.getUserDetails()["userID"]! {
+                groupRef.child("chores/\(chore["id"]!)").setValue(nil)
+                groupRef.child("users/\(chore["assigneeID"]!)/chores/\(chore["id"]!)").setValue(nil)
                 
+                previousIndexPath = nil
                 self.choresTableView.beginUpdates()
                 self.chores.remove(at: indexPath.row)
                 self.choresTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 self.choresTableView.endUpdates()
             }
             else {
-                chores.remove(at: indexPath.row)
-                choresTableView.reloadData()
+//                chores.remove(at: indexPath.row)
+//                choresTableView.reloadData()
+                
+                self.view.makeToast("Only its creator can delete it!")
+                self.choresTableView.reloadData()
+                
             }
             
         }
@@ -601,12 +610,12 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
                     
                     
                     if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? self.na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? self.na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "assigneeID": "\(value["assigneeID"] ?? self.na)"]
                         self.chores.append(dict as! [String : String])
                     }
                     
                     if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? self.na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","assignee":"Assigned to: \(value["assignTo"] ?? self.na)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "assigneeID": "\(value["assigneeID"] ?? self.na)"]
                         self.chores.append(dict as! [String : String])
                     }
                     self.refreshTableData()
