@@ -52,7 +52,7 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         image.draw(in: CGRect(x: 0,y: 0,width: newSize.width,height: newSize.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage!.withRenderingMode(.alwaysTemplate)
+        return newImage!.withRenderingMode(.alwaysOriginal)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,7 +68,9 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
             //imageView.layer.borderWidth = 1
             //imageView.layer.borderColor = UIColor.white.cgColor
             imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "Email.png")
+            //imageView.image = UIImage(named: "Email.png")
+            imageView.image = imageWithImage(image: UIImage(named: "Email.png")!, scaledToSize: CGSize(width: 30, height: 30))
+            //imageView.image?.withRenderingMode(.alwaysOriginal)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
         }()
@@ -86,10 +88,11 @@ class RoommateViewController: UIViewController,UITableViewDataSource,UITableView
         cell.detailTextLabel?.text = roommate[indexPath.row]["email"] ?? ""
         cell.addSubview(emailImageView)
         // constrain email image view
-        emailImageView.heightAnchor.constraint(equalTo: (cell.imageView?.heightAnchor)!).isActive = true
-        emailImageView.widthAnchor.constraint(equalTo: (cell.imageView?.widthAnchor)!).isActive = true
+        
+        //emailImageView.heightAnchor.constraint(equalTo: (cell.imageView?.heightAnchor)!).isActive = true
+        //emailImageView.widthAnchor.constraint(equalTo: (cell.imageView?.widthAnchor)!).isActive = true
         emailImageView.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -10).isActive = true
-        emailImageView.centerYAnchor.constraint(equalTo: (cell.imageView?.centerYAnchor)!).isActive = true
+        emailImageView.centerYAnchor.constraint(equalTo: (cell.centerYAnchor)).isActive = true
         //emailImageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: -5).isActive = true
         
         return cell
