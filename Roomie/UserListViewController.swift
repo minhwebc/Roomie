@@ -27,6 +27,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
         let userRef = groupRef.child("users/\(users[indexPath.row]["id"]!)")
         
         groupRef.child("chores/\(id)/assignTo").setValue(users[indexPath.row]["name"]!)
+        groupRef.child("chores/\(id)/assigneeID").setValue(users[indexPath.row]["id"]!)
         
         userRef.child("chores/\(id)/title").setValue(name)
         userRef.child("chores/\(id)/creator").setValue(creator)
@@ -49,8 +50,9 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
+        let cell = RoommateTableViewCell(style: .subtitle, reuseIdentifier: "choreCell")
         cell.textLabel?.text = users[indexPath.row]["name"]
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: users[indexPath.row]["profileURL"]!)
         return cell
     }
     
@@ -85,7 +87,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
             let values = snap.value as! NSDictionary
             for key in values.allKeys{
                 let value = values[key] as! NSDictionary
-                let dict = ["id": key, "name": value["name"]]
+                let dict = ["id": key, "name": value["name"], "profileURL": "\(value["profileImageURL"] ?? "")"]
                 self.users.append(dict as! [String : String])
             }
             self.userTableView.reloadData()
@@ -93,3 +95,4 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
 }
+

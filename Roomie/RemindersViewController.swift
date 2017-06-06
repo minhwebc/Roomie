@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class RemindersViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    let rootRef = Database.database().reference()
+    let storageRef = Storage.storage(url: "gs://checkmateios-d1800.appspot.com").reference()
+    let sessionManager = SessionManager()
+    var userID: String = ""
+
     
     ////////////////////
     //////
@@ -130,6 +137,10 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
             array2.append(now)
         }
         
+        if array2.count < 1 {
+            return
+        }
+        
         for i in 0...array2.count-1{
             for j in 0...arrayObj.count-1{
                 if arrayObj[j]["dueDate"] == array2[i]{
@@ -142,10 +153,13 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         
     }
 
+    let dateFormatter = DateFormatter()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        initChoresData()
         
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = []
@@ -161,6 +175,31 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         sortArrayByDueDate(arrayObj: &bills)
         sortArrayByDueDate(arrayObj: &chores)
     }
+    
+    let na = "N/A"
+    func initChoresData() {
+        // ["title":"clean","dueDate":"10 Jun 2017","creator":"show","assignee":"Bro"]
+        chores.removeAll()
+        
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/chores").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    if self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"\(value["creator"]!)","assignee":"\(value["assignTo"] ?? self.na)","dueDate":"\(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "assigneeID": "\(value["assigneeID"] ?? self.na)"]
+                        self.chores.append(dict as! [String : String])
+                    }
+                    self.reminderTableView.reloadData()
+                }
+            }
+        })
+
+    }
+    
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
