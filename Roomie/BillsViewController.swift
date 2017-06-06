@@ -20,7 +20,8 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
     var tabOne = TabOneViewController()
     let tabOneBarItem = UITabBarItem();
     var userEmails = [String]()
-    
+    let tabTwo = TabTwoViewController()
+
     
     // view to enter bill details
     let addBillView:UIView = {
@@ -296,6 +297,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         
 
         tabOne.refreshTable()
+        tabTwo.refreshTable()
         addBillView.removeFromSuperview();
     }
     func sendEmailNotificationForAllBills(_ email : String){
@@ -391,7 +393,6 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         tabOne.tabBarItem = tabOneBarItem;
         
         // Create Tab two
-        let tabTwo = TabTwoViewController()
         let tabTwoBarItem2 = UITabBarItem()
         tabTwoBarItem2.image = UIImage.fontAwesomeIcon(name: .history, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         
@@ -793,7 +794,7 @@ class TabTwoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor(hexString: "#FF3B3F")
+        self.view.backgroundColor = UIColor(hexString: "#fff980")
         self.title = "Past Due Bills"
         firebaseRef = Database.database().reference()
         dateFormatter.dateFormat = "dd MMM yyyy";
