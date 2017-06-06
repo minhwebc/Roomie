@@ -12,6 +12,7 @@ import FontAwesome_swift
 import DropDown
 import Firebase
 import ChameleonFramework
+import Toast_Swift
 
 extension UILabel {
     
@@ -292,14 +293,42 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         for email in userEmails{
             sendEmailNotification(email, self.amountTextField.text!,self.titleTextField.text!);
         }
+        
+        //Toast to notify all users
+        self.view.makeToast("Notified users")
+        
+
         tabOne.refreshTable()
         addBillView.removeFromSuperview();
     }
-    
+    func sendEmailNotificationForAllBills(_ email : String){
+        var url : String = "http://ec2-54-212-232-252.us-west-2.compute.amazonaws.com/form.php?email=\(email)"
+        var index = 0;
+        for bill in tabOne.bills{
+            url += "&arr\(index)=\(bill.title)%20:%20$\(Double(bill.amount)!/Double(userEmails.count))%20,%20due%20on%20\(bill.dueDate)"
+            index += 1
+        }
+        url += "&ios=hello&count=\(tabOne.bills.count)"
+        url = url.replacingOccurrences(of: " ", with: "")
+        let req = NSMutableURLRequest(url: NSURL(string:url)! as URL)
+        req.httpMethod = "GET"
+        req.httpBody = "key=\"value\"".data(using: String.Encoding.utf8) //This isn't for GET requests, but for POST requests so you would need to change `HTTPMethod` property
+        URLSession.shared.dataTask(with: req as URLRequest) { data, response, error in
+            if error != nil {
+                //Your HTTP request failed.
+                print(error?.localizedDescription)
+            } else {
+                //Your HTTP request succeeded
+                print(response)
+            }
+            }.resume()
+        
+
+    }
+    //send emails to all users
     func sendEmailNotification(_ email : String, _ amount : String, _ title : String){
         let userDetails : [String : String] = SessionManager().getUserDetails();
         let name = userDetails["name"];
-        print("http://ec2-54-212-232-252.us-west-2.compute.amazonaws.com/form.php?email=\(email)&bill_amount=\(amount)&ios=yes&bill_title=\(title)&from=\(name!))");
         let req = NSMutableURLRequest(url: NSURL(string:"http://ec2-54-212-232-252.us-west-2.compute.amazonaws.com/form.php?email=\(email)&bill_amount=\(amount)&ios=yes&bill_title=\(title)&from=\(name!)")! as URL)
         req.httpMethod = "GET"
         req.httpBody = "key=\"value\"".data(using: String.Encoding.utf8) //This isn't for GET requests, but for POST requests so you would need to change `HTTPMethod` property
@@ -312,6 +341,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
                 print("success")
             }
             }.resume()
+        
     }
     
     // function to add a subview to be able to add a chore
@@ -377,7 +407,7 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
             floaty.close()
         })
         floaty.addItem("Notify users ", icon: UIImage.fontAwesomeIcon(name: .bullhorn, textColor: UIColor.black, size: CGSize(width: 30, height: 30)), handler: { item in
-            self.addBill();
+            self.notifyAllUsers();
             floaty.close()
         })
         
@@ -385,6 +415,13 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
         self.viewControllers = [tabOne, tabTwo]
     }
     
+    func notifyAllUsers(){
+        for email in userEmails {
+            sendEmailNotificationForAllBills(email);
+        }
+        self.view.makeToast("Notified users")
+        
+    }
     // UITabBarControllerDelegate method
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
@@ -397,7 +434,7 @@ class TabOneViewController: UITableViewController {
     let dateFormatter = DateFormatter()
     let kCloseCellHeight: CGFloat = 75
     let kOpenCellHeight: CGFloat = 120
-    let kRowsCount = 10
+    var kRowsCount = 10
     var cellHeights: [CGFloat] = []
     var firebaseRef : DatabaseReference!
     let sessionManager = SessionManager()
@@ -493,7 +530,10 @@ class TabOneViewController: UITableViewController {
                     }
                 }
             }
+            
+            self.kRowsCount = self.bills.count
             self.tableView.reloadData()
+            self.setup()
         })
     }
     
