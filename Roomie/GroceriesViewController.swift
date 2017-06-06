@@ -435,11 +435,15 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
     
     @objc func handleGroceriesAssignment(_ sender: UIButton) {
         let gvc = GroceryListViewController()
+        //Which grocery editing
         gvc.groceryID = groceries[sender.tag]["id"]
+        //editing grocery's name
         gvc.groceryName = groceries[sender.tag]["title"]
+        //creater's info
         gvc.creator = groceries[sender.tag]["creator"]
-        gvc.due_on = groceries[sender.tag]["dueDate"]
-        gvc.gvc = self
+        //current user ID
+        gvc.userID = sessionManager.getUserDetails()["userID"]!
+//        gvc.due_on = groceries[sender.tag]["dueDate"]
         self.navigationController?.pushViewController(gvc, animated: true)
     }
     
