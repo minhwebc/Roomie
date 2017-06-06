@@ -22,6 +22,8 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
     
     var chores = [["title":"clean","dueDate":"10 Jun 2017","creator":"show","assignee":"Bro"],["title":"dog","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"],["title":"bro","dueDate":"09 Jun 2017","creator":"show","assignee":"Bro"],["title":"sis","dueDate":"11 Jun 2017","creator":"show","assignee":"Bro"],["title":"extra","dueDate":"07 Jun 2017","creator":"show","assignee":"Bro"]]
     
+    var groceries : [[String : String]] = []
+    
     // table view to display data
     let reminderTableView:UITableView = {
         let table = UITableView()
@@ -34,7 +36,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
     //////
     // Setup TableVieew
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,8 +47,11 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         if section == 0{
             return  bills.count
         }
-        else {
+        else if section == 1{
             return chores.count
+        }
+        else {
+            return groceries.count
         }
     }
     
@@ -92,6 +97,26 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
             assigneeLabelOnCell.text = "Assigned to : " + chores[indexPath.row]["assignee"]!
             cell.detailTextLabel?.text = "Created by: "+chores[indexPath.row]["creator"]!
         }
+        
+        // cells for grocery
+        if indexPath.section == 2{
+            let groceryLabelOnCell:UILabel = {
+                let label = UILabel()
+                label.textAlignment = NSTextAlignment.right
+                label.textColor = UIColor.white
+                label.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            cell.addSubview(groceryLabelOnCell)
+            groceryLabelOnCell.topAnchor.constraint(equalTo: (cell.detailTextLabel?.topAnchor)!).isActive = true
+            groceryLabelOnCell.rightAnchor.constraint(equalTo: dueDateLabelOnCell.rightAnchor).isActive = true
+            
+            cell.textLabel?.text = groceries[indexPath.row]["title"]
+            dueDateLabelOnCell.text = "Due on: " + groceries[indexPath.row]["dueDate"]!
+            groceryLabelOnCell.text = "Detail: " + groceries[indexPath.row]["desc"]!
+            cell.detailTextLabel?.text = "Created by: " + groceries[indexPath.row]["creator"]!
+        }
 
         return cell
     }
@@ -103,8 +128,10 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         if section == 0{
             return "Upcoming bills"
         }
-        else {
+        else if section == 1 {
             return "Upcoming chores"
+        }else {
+            return "Upcoming groceries"
         }
         
     }
@@ -159,6 +186,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         dateFormatter.dateFormat = "dd MMM yyyy"
         initChoresData()
         initBillData()
+        initGroceryData()
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
@@ -172,6 +200,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         // sorting by date
         sortArrayByDueDate(arrayObj: &bills)
         sortArrayByDueDate(arrayObj: &chores)
+        sortArrayByDueDate(arrayObj: &groceries)
     }
     
     let na = "N/A"
@@ -193,6 +222,27 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         })
 
     }
+    
+    
+
+    func initGroceryData() {
+        groceries.removeAll()
+        
+        rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/grocery").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                for key in values.allKeys{
+                    let value = values[key] as! NSDictionary
+                    if self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending {
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"\(value["creator"]!)","dueDate":"\(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "\(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
+                        self.groceries.append(dict as! [String : String])
+                    }
+                    self.reminderTableView.reloadData()
+                }
+            }
+        })
+        
+    }
+    
     
     
     func initBillData(){
