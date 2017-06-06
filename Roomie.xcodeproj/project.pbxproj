@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		29F40E834745022DAF0BD0CF /* Pods_RoomieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E46B0194261C2F9F4B7C3 /* Pods_RoomieTests.framework */; };
 		323997C92277B8265D2D29FB /* Pods_RoomieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61836ED3C09780CF6C9FED38 /* Pods_RoomieUITests.framework */; };
+		5874B44F1EE622A000839090 /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874B44E1EE622A000839090 /* GroceryListViewController.swift */; };
 		58F86BED1ED93E4700935A12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58F86BEC1ED93E4700935A12 /* GoogleService-Info.plist */; };
 		615E82D46ABC85663DA7FE58 /* Pods_Roomie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACDE1C739AC5A4F35B9B013 /* Pods_Roomie.framework */; };
 		934094221ECE50CF00B06C9E /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934094211ECE50CF00B06C9E /* ChoresViewController.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		1ACDE1C739AC5A4F35B9B013 /* Pods_Roomie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Roomie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCB0DD97E59CE7749FECF4C /* Pods-RoomieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomieTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RoomieTests/Pods-RoomieTests.release.xcconfig"; sourceTree = "<group>"; };
+		5874B44E1EE622A000839090 /* GroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		58F86BEC1ED93E4700935A12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		599EC895CDDE8AB8DA13DDF8 /* Pods-RoomieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomieUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RoomieUITests/Pods-RoomieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		61836ED3C09780CF6C9FED38 /* Pods_RoomieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoomieUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				934094231ECE50E400B06C9E /* BillsViewController.swift */,
 				934094251ECE50FE00B06C9E /* RoommateViewController.swift */,
 				934094271ECE511800B06C9E /* GroceriesViewController.swift */,
+				5874B44E1EE622A000839090 /* GroceryListViewController.swift */,
 				93A3DEDA1EE3F67C00442894 /* RemindersViewController.swift */,
 				934094291ECE512B00B06C9E /* ProfileViewController.swift */,
 				93ACF7FB1ECD8B630093432E /* Main.storyboard */,
@@ -492,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5874B44F1EE622A000839090 /* GroceryListViewController.swift in Sources */,
 				934094261ECE50FE00B06C9E /* RoommateViewController.swift in Sources */,
 				A806E90E1EE50AA9005F0BCB /* FoldingCell.swift in Sources */,
 				9DA96CF71EDD128D00CBFF21 /* UserListViewController.swift in Sources */,

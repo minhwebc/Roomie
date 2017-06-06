@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+//import Toast_Swift
 
 class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDataSource, UITableViewDelegate {
     let rootRef  = Database.database().reference()
@@ -254,7 +255,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             groceryRef.child("\(key)/creator").setValue(userName)
             groceryRef.child("\(key)/creatorID").setValue(sessionManager.getUserDetails()["userID"]!)
             print("add grocery item successfully!")
-            let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: \(userName)", "dueDate":"Due on: \(selectedDate)", "id": "\(key)"]
+            let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: \(userName)", "dueDate":"Due on: \(selectedDate)", "id": "\(key)", "amount": "Total amount is "]
             
             groceries.append(dict)
 //            addGroceriesView.removeFromSuperview()
@@ -320,6 +321,32 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             return label
         }()
         
+        let detailViewOnCell:UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.white
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+        
+        let detailLabelOnCell: UILabel = {
+            let label = UILabel()
+            label.text = self.groceries[indexPath.row]["amount"]
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 2
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let CompleteButtonOnCell: UIButton = {
+            let button = UIButton()
+            button.setTitle("Completed", for: .normal)
+            button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 7)
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.layer.cornerRadius = 5
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+        
         // setup extra labels in each cell
         dueDateLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!)
         dueDateLabelOnCell.text = groceries[indexPath.row]["dueDate"]!
@@ -333,6 +360,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
         cell.addSubview(ItemLabel)
         cell.addSubview(CreatorLabelOnCell)
         cell.addSubview(DescLabelOnCell)
+        cell.addSubview(detailViewOnCell)
         
         //contrain extra labels on cell
         dueDateLabelOnCell.topAnchor.constraint(equalTo: (cell.topAnchor), constant: 5).isActive = true
@@ -351,6 +379,47 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
         CreatorLabelOnCell.leftAnchor.constraint(equalTo: DescLabelOnCell.rightAnchor, constant: 2.5).isActive = true
         CreatorLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -2.5).isActive = true
         
+        // detail cell setup
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        detailViewOnCell.topAnchor.constraint(equalTo: (DescLabelOnCell.bottomAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.leftAnchor.constraint(equalTo: (cell.leftAnchor), constant: 2.5).isActive = true
+        detailViewOnCell.bottomAnchor.constraint(equalTo: (cell.bottomAnchor), constant: -1).isActive = true
+        detailViewOnCell.rightAnchor.constraint(equalTo: (cell.rightAnchor), constant: -2.5).isActive = true
+        
+        detailLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)!-2)
+        detailViewOnCell.addSubview(detailLabelOnCell)
+        detailViewOnCell.addSubview(CompleteButtonOnCell)
+        
+        detailLabelOnCell.leftAnchor.constraint(equalTo: detailViewOnCell.leftAnchor, constant: 2.5).isActive = true
+        detailLabelOnCell.rightAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -22.5).isActive = true
+        detailLabelOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+        CompleteButtonOnCell.rightAnchor.constraint(equalTo: detailViewOnCell.rightAnchor, constant: -2.5).isActive = true
+        CompleteButtonOnCell.leftAnchor.constraint(equalTo: detailLabelOnCell.rightAnchor, constant: -2.5).isActive = true
+        CompleteButtonOnCell.centerYAnchor.constraint(equalTo: detailViewOnCell.centerYAnchor).isActive = true
+        
+        CompleteButtonOnCell.tag = indexPath.row
+        CompleteButtonOnCell.addTarget(self, action: #selector(handleGroceriesAssignment(_:)), for: .touchUpInside)
+        
+        CompleteButtonOnCell.isEnabled = true
+        CompleteButtonOnCell.backgroundColor = UIColor(red: 201/255.0, green:198/255.0 , blue: 170/255.0 ,alpha:1)
+        
+//        if groceries[indexPath.row]["assignee"] != "Assigned to: \(self.na)" {
+//            CompleteButtonOnCell.isEnabled = false
+//            CompleteButtonOnCell.backgroundColor = UIColor.gray
+//        }
+//        else {
+//            CompleteButtonOnCell.isEnabled = true
+//            CompleteButtonOnCell.backgroundColor = UIColor(red: 233/255.0, green:92/255.0 , blue: 111/255.0 ,alpha:1)
+//        }
+        
+        if groceriesTableView.rectForRow(at: indexPath).height == EXPAND_HEIGHT {
+            detailViewOnCell.isHidden = false
+        }
+        else {
+            detailViewOnCell.isHidden = true
+        }
+        
         
         return cell
         
@@ -362,6 +431,17 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
     //        print(groceries[indexPath.row]["item"]!)
     //        return cell
     //    }
+    
+    
+    @objc func handleGroceriesAssignment(_ sender: UIButton) {
+        let gvc = GroceryListViewController()
+        gvc.groceryID = groceries[sender.tag]["id"]
+        gvc.groceryName = groceries[sender.tag]["title"]
+        gvc.creator = groceries[sender.tag]["creator"]
+        gvc.due_on = groceries[sender.tag]["dueDate"]
+        gvc.gvc = self
+        self.navigationController?.pushViewController(gvc, animated: true)
+    }
     
     var previousIndexPath: IndexPath?
     @available(iOS 2.0, *)
@@ -399,21 +479,20 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // swipe to delete grocery
+            let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+            
             if groceries[indexPath.row]["creatorID"]! == sessionManager.getUserDetails()["userID"]! {
-                rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
+                groupRef.child("grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
+                groupRef.child("users/\(groceries[indexPath.row]["assigneeID"]!)/grocery/\(groceries[indexPath.row]["id"]!)").setValue(nil)
                 
+                previousIndexPath = nil
                 self.groceriesTableView.beginUpdates()
                 self.groceries.remove(at: indexPath.row)
                 self.groceriesTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 self.groceriesTableView.endUpdates()
             }else {
-//                groceries.remove(at: indexPath.row)
-//                groceriesTableView.reloadData()
-                let alert = UIAlertController(title: "Error", message: "You're not the Creater, cannot delete the item", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-                
-                self.present(alert, animated: true);
+//                self.view.makeToast("Only its creator can delete it!")
+//                self.groceriesTableView.reloadData()
             }
             
         }
@@ -428,7 +507,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
     
     let TodoItem: UITabBarItem = {
         let item = UITabBarItem()
-        item.title = "To Do"
+        item.title = "Shopping List"
         item.image = #imageLiteral(resourceName: "List-50")
         return item
     }()
@@ -517,6 +596,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
         refreshTable()
     }
     
+    let na = "N/A"
     func refreshTable() {
         groceries.removeAll()
         
@@ -527,12 +607,12 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
                     
                     if self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending{
                         
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     
                     if self.tabbar.selectedItem! == self.OverdueItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending {
-                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)"]
+                        let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     self.refreshTableData()
