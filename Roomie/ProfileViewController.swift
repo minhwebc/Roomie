@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     // this is just sample data for testing purposes
     var chores: [Dictionary<String,String>] = [["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath room","creator":"Mo","dueDate":"29 May 2017"],["title":"clean bath","creator":"Mo","dueDate":"29 May 2017"],["title":"clean room","creator":"Mo","dueDate":"29 May 2017"],["title":"bath room","creator":"Mo","dueDate":"29 May 2017"]]
     var group = ["Mo","Quan","Fan","Victoria"]
-    var groceries = ["Cereal","chicken","beef","veggies"]
+    var groceries: [Dictionary<String,String>] = [["title":"meat","creator":"Mo","amount":"13"],["title":"vege","creator":"Mo","amount":"4"],["title":"fish","creator":"Mo","amount":"11"]]
     var bills = ["rent","light","water","sewage","tv","internet"]
     
     let rootRef = Database.database().reference()
@@ -140,8 +140,23 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
             cell.textLabel?.text = bills[indexPath.row]
         }
         if indexPath.section == 3{
+            let amountLabelOnCell:UILabel = {
+                let label = UILabel()
+                label.textAlignment = NSTextAlignment.right
+                label.textColor = UIColor.white
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            amountLabelOnCell.font = UIFont(name: (cell.detailTextLabel?.font.fontName)!, size: (cell.detailTextLabel?.font.pointSize)! + 4t)
+            amountLabelOnCell.text = "$ " + groceries[indexPath.row]["amount"]!
+            print("amount is \(groceries[indexPath.row]["amount"]!) ")
+            cell.addSubview(amountLabelOnCell)
+            amountLabelOnCell.topAnchor.constraint(equalTo: (cell.textLabel?.topAnchor)!).isActive = true
+            amountLabelOnCell.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -15).isActive = true
+            
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            cell.textLabel?.text = groceries[indexPath.row]
+            cell.textLabel?.text = groceries[indexPath.row]["title"]
+            cell.detailTextLabel?.text = groceries[indexPath.row]["creator"]!
         }
         
         
@@ -153,10 +168,10 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
-            return "My chores"
+            return "My Roommates"
         }
         if section == 1{
-            return   "My Roommates"
+            return   "My Chores"
         }
         if section == 2{
             return "My Bills"
@@ -254,6 +269,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
         
         initChoresData()
         initBillData()
+        initGroceryData()
         constrainProfileImageView()
         constrainNameLabel()
         profileTableView.delegate = self
@@ -340,6 +356,40 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
                                 let chore = chores[ckey] as! NSDictionary
                                 let dict = ["title": chore["title"] ?? "","creator":chore["creator"] ?? "","dueDate":chore["due_on"] ?? ""]
                                 self.chores.append(dict as! [String: String])
+                            }
+                        }
+                    }
+                }
+                self.profileTableView.reloadData()
+            }
+            else {
+                print("user list is empty!")
+                return
+            }
+        })
+    }
+    
+    func initGroceryData() {
+        let groupRef = rootRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)")
+        
+        // fetch user data
+        groupRef.child("users").observeSingleEvent(of: .value, with: { (snap) in
+            if let values = snap.value as? NSDictionary {
+                self.group.removeAll()
+                self.groceries.removeAll()
+                for key in values.allKeys{
+                    if let value = values[key] as? NSDictionary {
+                        if let name = value["name"] as? String {
+                            self.group.append(name)
+                        }
+                        if key as! String == self.userID, let groceries = value["grocery"] as? NSDictionary{
+                            
+                            self.profileImageView.loadImageUsingCacheWithUrlString(urlString:  "\(value["profileImageURL"] ?? "")")
+
+                            for ckey in groceries.allKeys {
+                                let grocery = groceries[ckey] as! NSDictionary
+                                let dict = ["title": grocery["title"] ?? "","creator":grocery["creator"] ?? "","amount":grocery["amount"] ?? ""]
+                                self.groceries.append(dict as! [String: String])
                             }
                         }
                     }
