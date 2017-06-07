@@ -356,7 +356,6 @@ class BillsViewController: UITabBarController, UITabBarControllerDelegate{
 
         dateFormatter.dateFormat = "dd MMM yyyy";
         self.edgesForExtendedLayout = []
-        
         // Do any additional setup after loading the view.
         self.delegate = self;
         self.userEmails.removeAll()
@@ -464,7 +463,7 @@ class TabOneViewController: UITableViewController {
         dateFormatter.dateFormat = "dd MMM yyyy";
         self.bills.removeAll()
         self.users.removeAll()
-        
+        firebaseRef = Database.database().reference()
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/users").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
@@ -794,8 +793,8 @@ class TabTwoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor(hexString: "#fff980")
         self.title = "Past Due Bills"
+        self.view.backgroundColor = UIColor(hexString: "#fff980")
         firebaseRef = Database.database().reference()
         dateFormatter.dateFormat = "dd MMM yyyy";
         refreshTable();

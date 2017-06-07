@@ -254,6 +254,7 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             groceryRef.child("\(key)/due_on").setValue(selectedDate)
             groceryRef.child("\(key)/creator").setValue(userName)
             groceryRef.child("\(key)/creatorID").setValue(sessionManager.getUserDetails()["userID"]!)
+//            groceryRef.child("\(key)/totalAmount").setValue("N/A")
             print("add grocery item successfully!")
             let dict = ["title":titleTextField.text!,"desc":descTextField.text!,"creator":"Created by: \(userName)", "dueDate":"Due on: \(selectedDate)", "id": "\(key)", "amount": "Total amount is "]
             
@@ -420,7 +421,8 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             detailViewOnCell.isHidden = true
         }
         
-        
+        if(self.groceries[indexPath.row]["amount"] == "N/A" && self.title == "Shopping List"){
+        }
         return cell
         
     }
@@ -608,22 +610,21 @@ class GroceriesViewController: UIViewController, UITabBarDelegate, UITableViewDa
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{
                     let value = values[key] as! NSDictionary
-                    
-                    if (self.tabbar.selectedItem! == self.TodoItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending)  ||  ((value["totalAmount"]) !=  nil) {
-                        
+                    // && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) == .orderedDescending
+                    if self.tabbar.selectedItem == self.TodoItem && value.object(forKey: "totalAmount") == nil {
                         let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     
                     
-                    if self.tabbar.selectedItem! == self.CompletedItem && self.dateFormatter.date(from: value["due_on"] as! String)!.compare(Date()) != .orderedDescending && (value["totalAmount"]) ==  nil {
+                    if self.tabbar.selectedItem == self.CompletedItem && value.object(forKey: "totalAmount") != nil {
                         let dict = ["title": value["title"],"desc": value["description"],"creator":"Created by: \(value["creator"]!)","dueDate":"Due on: \(value["due_on"]!)", "id": "\(key)", "creatorID": "\(value["creatorID"]!)", "amount": "Total amount is \(value["totalAmount"] ?? self.na)", "payID": "\(value["payID"] ?? self.na)"]
                         self.groceries.append(dict as! [String : String])
                     }
                     
-                    self.refreshTableData()
+                    
                 }
-                
+                self.refreshTableData()
             }
             self.refreshControl.endRefreshing()
         })
