@@ -731,7 +731,8 @@ class TabTwoViewController: UITableViewController {
     
     func refreshTable() {
         self.bills.removeAll()
-        
+        firebaseRef = Database.database().reference()
+        dateFormatter.dateFormat = "dd MMM yyyy";
         firebaseRef.child("groups/\(sessionManager.getUserDetails()["groupName"]!)/bills").observeSingleEvent(of: .value, with: { (snap) in
             if let values = snap.value as? NSDictionary {
                 for key in values.allKeys{

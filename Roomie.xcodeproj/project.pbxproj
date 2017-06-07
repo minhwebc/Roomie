@@ -287,7 +287,6 @@
 				TargetAttributes = {
 					93ACF7F31ECD8B620093432E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 74EN4ZDAGB;
 						ProvisioningStyle = Automatic;
 					};
 					93ACF8071ECD8B630093432E = {
@@ -664,7 +663,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74EN4ZDAGB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Roomie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -681,7 +680,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74EN4ZDAGB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Roomie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
