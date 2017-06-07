@@ -74,12 +74,14 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         
         // cells for bills
         if indexPath.section == 0{
+            sortArrayByDueDate(arrayObj: &bills)
             dueDateLabelOnCell.text = "Due on: " + bills[indexPath.row]["dueDate"]!
             cell.textLabel?.text = bills[indexPath.row]["title"]
             cell.detailTextLabel?.text = "$"+bills[indexPath.row]["amountDue"]!
         }
         // cells for chores
         if indexPath.section == 1{
+            sortArrayByDueDate(arrayObj: &chores)
             let assigneeLabelOnCell:UILabel = {
                 let label = UILabel()
                 label.textAlignment = NSTextAlignment.right
@@ -100,6 +102,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         
         // cells for grocery
         if indexPath.section == 2{
+            sortArrayByDueDate(arrayObj: &groceries)
             let groceryLabelOnCell:UILabel = {
                 let label = UILabel()
                 label.textAlignment = NSTextAlignment.right
@@ -144,6 +147,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
 
     // Method to sort the an Array by dueDate
     func sortArrayByDueDate(arrayObj:inout [ Dictionary<String, String>]) {
+        print(arrayObj)
         var array:[Date] = []
         var array2 : [String] = []
         for i in arrayObj{
@@ -155,6 +159,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
             
         }
         let ready = array.sorted(by: { $0.compare($1) == .orderedAscending })
+        print(ready)
         for i in ready{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
@@ -187,6 +192,10 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         initChoresData()
         initBillData()
         initGroceryData()
+        // sorting by date
+//        sortArrayByDueDate(arrayObj: &bills)
+//        sortArrayByDueDate(arrayObj: &chores)
+//        sortArrayByDueDate(arrayObj: &groceries)
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = []
         view.backgroundColor = UIColor(red: 141/255.0, green:172/255.0 , blue: 154/255.0 ,alpha:1)
@@ -197,10 +206,7 @@ class RemindersViewController: UIViewController,UITableViewDelegate, UITableView
         reminderTableView.delegate = self
         reminderTableView.dataSource = self
         
-        // sorting by date
-        sortArrayByDueDate(arrayObj: &bills)
-        sortArrayByDueDate(arrayObj: &chores)
-        sortArrayByDueDate(arrayObj: &groceries)
+        
     }
     
     let na = "N/A"
