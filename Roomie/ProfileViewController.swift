@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     let profileImageView:UIImageView = {
         let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "User")
         imageView.backgroundColor = UIColor.clear
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false

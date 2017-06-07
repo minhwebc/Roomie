@@ -252,7 +252,8 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     
     // function for when a user saves a chore
     func handleSave() {
-        let selectedDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!)
+        // Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!
+        let selectedDate = dateFormatter.string(from: dueDatePicker.date)
         
         if let title = titleTextField.text {
             let desc = descTextField.text ?? ""
@@ -628,7 +629,8 @@ class ChoresViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     
     func refreshTableData() {
         choresTableView.reloadData()
-        dueDatePicker.date = NSDate() as Date
+        //date(byAdding: .day, value: 1, to: Date())!
+        dueDatePicker.date =  Calendar.current.date(byAdding: .day, value: 1, to: dueDatePicker.date)!
         titleTextField.text = ""
         descTextField.text = ""
         self.addChoreView.removeFromSuperview()
